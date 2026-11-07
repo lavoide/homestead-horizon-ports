@@ -1,0 +1,52 @@
+# smwyg: Show Me What You Got 1.1.1 (Apace, MIT) for Horizon. In an inventory, Ctrl+T over an item
+# opens the chat with the item's name in it. Sending the message shows everyone the line with the
+# name as the item's hoverable `[name]`, as vanilla's ItemStack.getDisplayName shows it.
+#
+# The window's half is a game module (`crate::game::smwyg`) and two HEAD injections: the key (on
+# `Game::key_pressed`) and the send (on `Game::handle_chat_input`). The send goes to the server as the
+# mod message `smwyg:share`. The server's half is the trait mod in `api/`: it writes the line with
+# `tellraw @a`, the sender's name from the server's own player list where it has one.
+[mod]
+id = "smwyg"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[api]
+path = "api"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "smwyg"
+source = "runtime.rs"
+
+[[injection]]
+id = "key"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::key_pressed"
+helper = "key.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "key", ty = "KeyCode", value = "key" },
+]
+
+[[injection]]
+id = "send"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::chat::Game<'_>::handle_chat_input"
+helper = "send.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "message", ty = "&str", value = "message" },
+]
+
+[[injection]]
+id = "open"
+kind = "HEAD"
+target = "horizon_client::game::chat::Game<'_>::open_chat_method"
+helper = "open.rs"
+bindings = []
