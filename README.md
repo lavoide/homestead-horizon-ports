@@ -33,6 +33,7 @@ Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
 | [respectmytrims](respectmytrims/) | Piglins respect gold armour trims. | [Respect My Trims](https://github.com/tnoctua/respectmytrims) by N (tnoctua) | LGPL-2.1-only |
 | [blockrunner](blockrunner/) | Walk faster on path blocks. | [Block Runner](https://github.com/Fuzss/blockrunner) by Fuzs | MPL-2.0 |
 | [easymagic](easymagic/) | Enchanting tables keep their items and can re-roll. | [Easy Magic](https://github.com/Fuzss/easymagic) by Fuzs | MPL-2.0 |
+| [universalbonemeal](universalbonemeal/) | Bone meal grows cactus, sugar cane, vines, flowers, coral, chorus and more. | [Universal Bone Meal](https://github.com/Fuzss/universalbonemeal-forge) by Fuzs | MPL-2.0 |
 | [accelerateddecay](accelerateddecay/) | Leaves decay quickly after a tree is cut. | [Accelerated Decay](https://github.com/errormikey/accelerated-decay) by ErrorMikey | GPL-3.0-only |
 | [betterthanmending](betterthanmending/) | Sneak-use to repair mending gear with experience. | [BetterThanMending](https://github.com/legobmw99/BetterThanMending/tree/fabric) by legobmw99 | GPL-3.0-only |
 | [fallingtrees](fallingtrees/) | Trees fall when their base is cut. | [Panda's Falling Tree's](https://github.com/PandaMods-Dev/Pandas-Falling-Trees) by The Panda Oliver | GPL-3.0-only |
