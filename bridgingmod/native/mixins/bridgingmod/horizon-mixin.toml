@@ -1,0 +1,42 @@
+# bridgingmod: Bridging Mod 2.5.1 (CG360, MIT) for Horizon, with Homestead's config: a right click
+# with a block while the crosshair hits nothing places it against the nearest block along the view
+# (Bedrock-style bridging), out to the block reach. Slab assist: bridging sideways places a slab in
+# the half that matches the height you stand at. Torches don't bridge.
+#
+# A game module (`crate::game::bridgingmod`) finds the target as PathTraversalHandler does. The use
+# paths take it as their hit: the window's own player (`Game::use_hand`, given no hit) and a LAN
+# client (`remote::Game::remote_use_item_on`, through `forced_hit`, which `pick` reads first).
+[mod]
+id = "bridgingmod"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "bridgingmod"
+source = "runtime.rs"
+
+[[injection]]
+id = "local"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::use_hand"
+helper = "local.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "block_hit", ty = "Option<&Hit>", value = "block_hit" },
+]
+
+[[injection]]
+id = "remote"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::remote::Game<'_>::remote_use_item_on"
+helper = "remote.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "hand", ty = "Hand", value = "hand" },
+]
