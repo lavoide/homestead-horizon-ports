@@ -1,0 +1,82 @@
+{
+  "textures": {
+    "particle": "minecraft:block/lime_wool",
+    "bag": "comforts:block/sleeping_bag/lime"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        3,
+        16
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.75,
+            5.5,
+            4.75,
+            9.5
+          ],
+          "texture": "#bag"
+        },
+        "down": {
+          "uv": [
+            5.5,
+            5.5,
+            9.5,
+            9.5
+          ],
+          "texture": "#bag",
+          "cullface": "down"
+        },
+        "north": {
+          "uv": [
+            4.75,
+            4.75,
+            0.75,
+            5.5
+          ],
+          "texture": "#bag"
+        },
+        "south": {
+          "uv": [
+            4.75,
+            4.75,
+            8.75,
+            5.5
+          ],
+          "texture": "#bag",
+          "cullface": "south"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            5.5,
+            0.75,
+            9.5
+          ],
+          "texture": "#bag",
+          "rotation": 90,
+          "cullface": "west"
+        },
+        "east": {
+          "uv": [
+            4.75,
+            5.5,
+            5.5,
+            9.5
+          ],
+          "texture": "#bag",
+          "rotation": 270,
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

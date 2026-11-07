@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "condition": {
+            "type": "minecraft:match_block",
+            "blocks": "comforts:hammock_purple",
+            "state": {
+              "part": "head"
+            }
+          },
+          "name": "comforts:hammock_purple"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

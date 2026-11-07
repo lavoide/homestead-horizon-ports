@@ -1,0 +1,9 @@
+{
+  "addition": "minecraft:netherite_ingot",
+  "base": "tokimistoolshed:diamond_hammer",
+  "result": {
+    "id": "tokimistoolshed:netherite_hammer"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

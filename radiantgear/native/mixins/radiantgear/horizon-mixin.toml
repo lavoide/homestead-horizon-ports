@@ -1,0 +1,35 @@
+# radiantgear: Radiant Gear 2.1.6 (Illusive Soulworks, LGPL-3.0-or-later). Worn trinkets that glow
+# light up with Horizon Extras' dynamic lights. It reads native/trinkets' `trinkets:worn` player
+# attachment and needs none of its code. ITEM_LIGHTS (radiantgear_data.rs) is written by
+# tools/trinkets_port.py.
+[mod]
+id = "radiantgear"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "data"
+file = "crates/horizon-client/src/game.rs"
+name = "radiantgear_data"
+source = "radiantgear_data.rs"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "radiantgear"
+source = "runtime.rs"
+
+
+# Radiant Gear: a worn trinket that glows lights up (Horizon Extras' dynamic lights).
+[[injection]]
+id = "lights"
+kind = "RETURN"
+target = "horizon_client::game::dynamic_lights::Game<'_>::dynamic_light_sources"
+helper = "lights.rs"
+bindings = [
+  { name = "value", ty = "Vec<(Source, Option<String>)>", value = "$value" },
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "alpha", ty = "f64", value = "alpha" },
+]

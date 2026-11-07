@@ -1,0 +1,10 @@
+# Comforts 6.4.0 (TheIllusiveC4, LGPL-3.0-or-later): sleeping bags, hammocks and the rope
+# and nail. Written by tools/comforts_assets.py from the Java jar; the sleeping rules are
+# the native mixin bundle native/comforts, which has to be built into the game.
+id = "comforts"
+name = "Comforts"
+version = "0.1.0"
+description = "Sleeping bags and hammocks (content half; native/comforts has the rules)."
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

@@ -1,0 +1,65 @@
+# convenientnametags: a mixin bundle. As Convenient Name Tags 1.1.0 (mim1q) with Homestead's
+# config:
+# - a named mob that dies drops a name tag with its name (dropNameTagsOnDeath);
+# - sneak and use shears on a named mob: the name comes off as a name tag, the shears take 1
+#   damage, and the mob's own interaction doesn't run (enableNameTagShearing);
+# - naming a named mob drops its old name as a tag; a tag with the same name isn't used up
+#   (dropNameTagsOnNameChange).
+# The rename screen (use a name tag in the air) is not ported. The recipe is in mods/homestead.
+[mod]
+id = "convenientnametags"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game/creatures.rs"
+name = "convenientnametags"
+source = "runtime.rs"
+
+# LivingEntityMixin.dropInventory: the death drops.
+[[injection]]
+id = "death"
+kind = "HEAD"
+target = "horizon_client::game::creatures::Game<'_>::drop_death_loot"
+helper = "death.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "m", ty = "&Mob", value = "&*m" },
+]
+
+# NameTagItemMixin.useOnEntity.
+[[injection]]
+id = "rename"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::names::Game<'_>::name_mob"
+helper = "rename.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "index", ty = "usize", value = "index" },
+]
+
+# ShearsItemMixin.useOnEntity and CancelInteractMobMixin.
+[[injection]]
+id = "shear"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::creatures::Game<'_>::interact_mob"
+helper = "shear.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "target", ty = "Option<InteractTarget>", value = "target" },
+]
+
+# Engine fix this needs: a mob's name taken away never reached clients (mob_meta pushed no
+# default for DATA_CUSTOM_NAME / DATA_CUSTOM_NAME_VISIBLE, unlike armor stands), so a sheared
+# name stayed on screen. The defaults go out as none / false, as lan_entities.rs does for stands.
+[[injection]]
+id = "name-defaults"
+kind = "HEAD"
+target = "horizon_client::game::lan::mob_meta"
+helper = "defaults.rs"
+bindings = [{ name = "defaults", ty = "&mut Vec<(u8, i32, Value)>", value = "&mut *defaults" }]

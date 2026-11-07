@@ -1,0 +1,17 @@
+{
+  "key": {
+    "c": "things:gleaming_compound",
+    "g": "minecraft:gold_ingot",
+    "m": "minecraft:mossy_cobblestone",
+    "t": "minecraft:ghast_tear"
+  },
+  "pattern": [
+    "tgt",
+    "cgc",
+    "gmg"
+  ],
+  "result": {
+    "id": "things:moss_necklace"
+  },
+  "type": "minecraft:crafting_shaped"
+}

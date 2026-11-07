@@ -1,0 +1,9 @@
+{
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "tokimistoolshed:obsidian_lumber_axe",
+  "result": {
+    "id": "obsidianequipmentrework:obsidian_ingot"
+  },
+  "type": "minecraft:smelting"
+}

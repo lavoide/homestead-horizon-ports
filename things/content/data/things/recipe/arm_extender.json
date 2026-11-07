@@ -1,0 +1,18 @@
+{
+  "key": {
+    "C": "things:gleaming_compound",
+    "I": "minecraft:iron_ingot",
+    "N": "minecraft:netherite_ingot",
+    "P": "minecraft:piston",
+    "R": "minecraft:redstone_block"
+  },
+  "pattern": [
+    "RNP",
+    "ICI",
+    "PNR"
+  ],
+  "result": {
+    "id": "things:arm_extender"
+  },
+  "type": "minecraft:crafting_shaped"
+}

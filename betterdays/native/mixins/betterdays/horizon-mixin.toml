@@ -1,0 +1,11 @@
+# betterdays: a native trait mod (docs/native-mods.md, "Trait mods"). Build it with
+# `horizon-launcher native-build <this folder> --instance <instance> --trust-native-code`.
+[mod]
+id = "betterdays"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[api]
+path = "api"

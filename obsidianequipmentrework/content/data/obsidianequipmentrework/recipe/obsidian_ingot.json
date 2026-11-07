@@ -1,0 +1,10 @@
+{
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "ingredient": "minecraft:obsidian",
+  "result": {
+    "id": "obsidianequipmentrework:obsidian_ingot"
+  },
+  "type": "minecraft:blasting"
+}

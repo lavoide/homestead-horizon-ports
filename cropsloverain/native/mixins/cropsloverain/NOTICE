@@ -1,0 +1,11 @@
+cropsloverain for Horizon 26.3 (version 0.1.0)
+
+A port of Crops Love Rain 1.4.0 by ThePoultryMan.
+Original source: https://github.com/ThePoultryMan/Crops-Love_Rain
+Original licence: MIT
+
+Ported to Horizon by lavoide: the rules are re-implemented as a Horizon native mod (Rust), and
+the content (items, blocks, textures, models, data) is carried over from the original jar.
+This port is distributed under the same licence as the original (MIT); the licence text is
+in LICENSE (the original's own file where its jar has one). It needs Horizon at commit
+3fb4c3138e0c5d8fdd2fdb555cf31368e8897497.

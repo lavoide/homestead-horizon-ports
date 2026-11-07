@@ -1,0 +1,33 @@
+{
+  "title": "itemGroup.things.things",
+  "icon": "things:bater_wucket",
+  "items": [
+    "things:things_almanac",
+    "things:recall_potion",
+    "things:container_key",
+    "things:bater_wucket",
+    "things:monocle",
+    "things:moss_necklace",
+    "things:placebo",
+    "things:mining_gloves",
+    "things:riot_gauntlet",
+    "things:infernal_scepter",
+    "things:hades_crystal",
+    "things:enchanted_wax_gland",
+    "things:item_magnet",
+    "things:rabbit_foot_charm",
+    "things:luck_of_the_irish",
+    "things:hardening_catalyst",
+    "things:socks",
+    "things:arm_extender",
+    "things:shock_absorber",
+    "things:gleaming_powder",
+    "things:gleaming_compound",
+    "things:stone_glowstone_fixture",
+    "things:quartz_glowstone_fixture",
+    "things:deepslate_glowstone_fixture",
+    "things:gleaming_ore",
+    "things:deepslate_gleaming_ore",
+    "things:diamond_pressure_plate"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "key": {
+    "N": "minecraft:gold_nugget",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "SSS",
+    "NNN",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tokimistoolshed:abacus"
+  },
+  "type": "minecraft:crafting_shaped"
+}

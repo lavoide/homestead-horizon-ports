@@ -1,0 +1,19 @@
+{
+  "item.obsidianequipmentrework.obsidian_ingot": "Obsidian Ingot",
+  "item.obsidianequipmentrework.obsidian_sword": "Obsidian Sword",
+  "item.obsidianequipmentrework.obsidian_pickaxe": "Obsidian Pickaxe",
+  "item.obsidianequipmentrework.obsidian_shovel": "Obsidian Shovel",
+  "item.obsidianequipmentrework.obsidian_axe": "Obsidian Axe",
+  "item.obsidianequipmentrework.obsidian_hoe": "Obsidian Hoe",
+  "item.obsidianequipmentrework.obsidian_helmet": "Obsidian Helmet",
+  "item.obsidianequipmentrework.obsidian_chestplate": "Obsidian Chestplate",
+  "item.obsidianequipmentrework.obsidian_leggings": "Obsidian Leggings",
+  "item.obsidianequipmentrework.obsidian_boots": "Obsidian Boots",
+  "item.obsidianequipmentrework.obsidian_horse_armor": "Obsidian Horse Armor",
+  "item.obsidianequipmentrework.obsidian_upgrade_smithing_template": "Obsidian Upgrade",
+  "upgrade.obsidianequipmentrework.obsidian_upgrade": "Obsidian Upgrade",
+  "item.obsidianequipmentrework.smithing_template.obsidian_upgrade.applies_to": "Diamond Equipment",
+  "item.obsidianequipmentrework.smithing_template.obsidian_upgrade.ingredients": "Obsidian Ingot",
+  "item.obsidianequipmentrework.smithing_template.obsidian_upgrade.base_slot_description": "Add diamond armor, weapon, or tool",
+  "item.obsidianequipmentrework.smithing_template.obsidian_upgrade.additions_slot_description": "Add Obsidian Ingot"
+}

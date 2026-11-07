@@ -1,0 +1,8 @@
+# Sooty Chimneys 1.3.4 (mortuusars): carried with tools/carry_jars.py and fixed up by
+# tools/sootychimneys_port.py. Rules: native/sootychimneys.
+id = "sootychimneys"
+name = "Sooty Chimneys"
+version = "1.3.4"
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

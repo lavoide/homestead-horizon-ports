@@ -1,0 +1,15 @@
+{
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "III",
+    "ISI",
+    " S "
+  ],
+  "result": {
+    "id": "tokimistoolshed:iron_hammer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

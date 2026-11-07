@@ -1,0 +1,7 @@
+{
+  "template": "minecraft:diamond_ore",
+  "properties": {
+    "light": 5,
+    "requires_tool": true
+  }
+}

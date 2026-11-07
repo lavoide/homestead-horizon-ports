@@ -1,0 +1,16 @@
+{
+  "group": "mud_brick_chimney",
+  "key": {
+    "B": "minecraft:mud_bricks",
+    "C": "#minecraft:coals"
+  },
+  "pattern": [
+    "B B",
+    "B B",
+    "BCB"
+  ],
+  "result": {
+    "id": "sootychimneys:mud_brick_chimney"
+  },
+  "type": "minecraft:crafting_shaped"
+}

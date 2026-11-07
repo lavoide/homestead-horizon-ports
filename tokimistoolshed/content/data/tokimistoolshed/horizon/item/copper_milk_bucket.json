@@ -1,0 +1,10 @@
+{
+  "template": "minecraft:milk_bucket",
+  "max_stack_size": 1,
+  "components": {
+    "minecraft:max_damage": 16,
+    "minecraft:use_remainder": {
+      "id": "tokimistoolshed:copper_bucket"
+    }
+  }
+}

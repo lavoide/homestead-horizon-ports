@@ -1,0 +1,30 @@
+# craftingpad: a mixin bundle. As Crafting Pad 1.0.12 (StrikerRocker): using the crafting pad
+# opens a 3x3 crafting grid wherever the player is. The item itself (texture, recipe: a
+# crafting table over a stick) is in the Homestead dev mod, `mods/homestead`, namespace
+# `craftingpad`.
+[mod]
+id = "craftingpad_native"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+# use_hand is one hand's turn of the right click (startUseItem); in single player it runs on the
+# server thread's Game, for the window's player as for a LAN guest. The pad in hand opens the
+# 3x3 grid as a crafting table's click does, at a position no block has (open.rs).
+[[injection]]
+id = "open"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::use_hand"
+helper = "open.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+# CraftingMenu.stillValid on the server: true for the pad's position.
+[[injection]]
+id = "valid"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::lan_crafting::Game<'_>::lan_table_valid"
+helper = "valid.rs"
+bindings = [{ name = "pos", ty = "[i32; 3]", value = "pos" }]

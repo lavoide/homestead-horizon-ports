@@ -1,0 +1,44 @@
+{
+  "template": "minecraft:iron_axe",
+  "components": {
+    "minecraft:max_damage": 5076,
+    "minecraft:enchantable": {
+      "value": 15
+    },
+    "minecraft:repairable": {
+      "items": "minecraft:netherite_ingot"
+    },
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:attack_damage",
+        "amount": 10.0,
+        "id": "minecraft:base_attack_damage",
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "amount": -3.2,
+        "id": "minecraft:base_attack_speed",
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ],
+    "minecraft:tool": {
+      "rules": [
+        {
+          "blocks": "#minecraft:incorrect_for_netherite_tool",
+          "correct_for_drops": false
+        },
+        {
+          "blocks": "#minecraft:mineable/axe",
+          "correct_for_drops": true,
+          "speed": 9.0
+        }
+      ]
+    },
+    "minecraft:damage_resistant": {
+      "types": "#minecraft:is_fire"
+    }
+  }
+}

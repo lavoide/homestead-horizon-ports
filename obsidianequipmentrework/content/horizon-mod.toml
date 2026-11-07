@@ -1,0 +1,8 @@
+# Obsidian Equipment Reworked 1.0 (Cozy Studios, CC0-1.0): carried with tools/carry_jars.py
+# and fixed up by tools/obsidian_port.py. Chest loot: native/obsidianequipmentrework.
+id = "obsidianequipmentrework"
+name = "Obsidian Equipment Reworked"
+version = "1.0"
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

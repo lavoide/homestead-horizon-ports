@@ -1,0 +1,67 @@
+{
+  "filters": [
+    {
+      "id": "minecraft:netherite_sword_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_sword",
+        "to": "obsidianequipmentrework:obsidian_sword"
+      }
+    },
+    {
+      "id": "minecraft:netherite_pickaxe_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_pickaxe",
+        "to": "obsidianequipmentrework:obsidian_pickaxe"
+      }
+    },
+    {
+      "id": "minecraft:netherite_shovel_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_shovel",
+        "to": "obsidianequipmentrework:obsidian_shovel"
+      }
+    },
+    {
+      "id": "minecraft:netherite_axe_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_axe",
+        "to": "obsidianequipmentrework:obsidian_axe"
+      }
+    },
+    {
+      "id": "minecraft:netherite_hoe_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_hoe",
+        "to": "obsidianequipmentrework:obsidian_hoe"
+      }
+    },
+    {
+      "id": "minecraft:netherite_helmet_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_helmet",
+        "to": "obsidianequipmentrework:obsidian_helmet"
+      }
+    },
+    {
+      "id": "minecraft:netherite_chestplate_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_chestplate",
+        "to": "obsidianequipmentrework:obsidian_chestplate"
+      }
+    },
+    {
+      "id": "minecraft:netherite_leggings_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_leggings",
+        "to": "obsidianequipmentrework:obsidian_leggings"
+      }
+    },
+    {
+      "id": "minecraft:netherite_boots_smithing",
+      "replace_input": {
+        "from": "minecraft:diamond_boots",
+        "to": "obsidianequipmentrework:obsidian_boots"
+      }
+    }
+  ]
+}

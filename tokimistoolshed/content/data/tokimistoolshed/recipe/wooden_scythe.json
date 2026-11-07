@@ -1,0 +1,15 @@
+{
+  "key": {
+    "M": "#minecraft:planks",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    "MS ",
+    " S "
+  ],
+  "result": {
+    "id": "tokimistoolshed:wooden_scythe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

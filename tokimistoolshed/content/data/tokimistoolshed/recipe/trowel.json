@@ -1,0 +1,15 @@
+{
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " II",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tokimistoolshed:trowel"
+  },
+  "type": "minecraft:crafting_shaped"
+}

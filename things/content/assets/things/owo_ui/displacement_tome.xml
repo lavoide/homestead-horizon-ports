@@ -1,0 +1,190 @@
+<owo-ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/wisp-forest/owo-lib/1.19/owo-ui.xsd">
+    <components>
+        <flow-layout direction="vertical">
+            <children>
+                <flow-layout direction="vertical">
+                    <children>
+                        <texture texture="things:textures/gui/displacement_tome.png" region-width="147" region-height="166" id="background"/>
+
+                        <flow-layout direction="horizontal">
+                            <children>
+                                <label id="charge-label">
+                                    <margins>
+                                        <left>2</left>
+                                    </margins>
+                                </label>
+
+                                <button id="new-button">
+                                    <text>+</text>
+                                    <active>false</active>
+
+                                    <renderer>
+                                        <texture texture="things:textures/gui/displacement_tome.png" u="147" v="0" texture-width="256" texture-height="256"/>
+                                    </renderer>
+
+                                    <sizing>
+                                        <vertical method="fixed">12</vertical>
+                                        <horizontal method="fixed">12</horizontal>
+                                    </sizing>
+
+                                    <positioning type="relative">100,50</positioning>
+                                </button>
+                            </children>
+
+                            <vertical-alignment>center</vertical-alignment>
+                            <positioning type="absolute">0,4</positioning>
+                            <sizing>
+                                <horizontal method="fill">100</horizontal>
+                                <vertical method="fixed">12</vertical>
+                            </sizing>
+                            <margins>
+                                <horizontal>5</horizontal>
+                            </margins>
+                        </flow-layout>
+
+                        <scroll direction="vertical">
+                            <flow-layout direction="vertical" id="button-container">
+                                <children/>
+
+                                <padding>
+                                    <all>1</all>
+                                </padding>
+                            </flow-layout>
+
+                            <sizing>
+                                <horizontal method="fixed">136</horizontal>
+                                <vertical method="fixed">140</vertical>
+                            </sizing>
+                            <positioning type="absolute">5,18</positioning>
+                        </scroll>
+                    </children>
+
+                    <sizing>
+                        <horizontal method="fixed">147</horizontal>
+                    </sizing>
+                </flow-layout>
+
+                <flow-layout direction="vertical" id="floating-anchor">
+                    <children/>
+                </flow-layout>
+            </children>
+
+            <vertical-alignment>center</vertical-alignment>
+            <horizontal-alignment>center</horizontal-alignment>
+
+            <surface>
+                <vanilla-translucent/>
+            </surface>
+        </flow-layout>
+    </components>
+
+    <templates>
+        <teleport-button>
+            <flow-layout direction="vertical">
+                <children>
+                    <button id="teleport-button">
+                        <text>+</text>
+                        <text-shadow>false</text-shadow>
+
+                        <renderer>
+                            <texture texture="things:textures/gui/displacement_tome.png" u="0" v="166" texture-width="256" texture-height="256"/>
+                        </renderer>
+
+                        <margins>
+                            <vertical>2</vertical>
+                        </margins>
+
+                        <sizing>
+                            <vertical method="fixed">13</vertical>
+                            <horizontal method="fixed">133</horizontal>
+                        </sizing>
+                    </button>
+
+                    <label id="edit-label">
+                        <text translate="true">gui.things.displacement_tome.edit_hint</text>
+                        <positioning type="relative">110,60</positioning>
+                        <color>#0096FF</color>
+                    </label>
+                </children>
+            </flow-layout>
+        </teleport-button>
+
+        <floating-box>
+            <flow-layout direction="vertical">
+                <children>
+                    <text-box id="text-field">
+                        <text>{{text}}</text>
+                        <sizing>
+                            <vertical method="fixed">13</vertical>
+                            <horizontal method="fill">100</horizontal>
+                        </sizing>
+                    </text-box>
+
+                    <template-child id="button-row">
+                        <margins>
+                            <top>3</top>
+                        </margins>
+                    </template-child>
+                </children>
+
+                <horizontal-alignment>center</horizontal-alignment>
+
+                <sizing>
+                    <horizontal method="fixed">135</horizontal>
+                </sizing>
+                <padding>
+                    <all>5</all>
+                </padding>
+            </flow-layout>
+        </floating-box>
+
+        <edit-box>
+            <template name="floating-box">
+                <child id="button-row">
+                    <flow-layout direction="horizontal">
+                        <children>
+                            <button id="rename-button">
+                                <text translate="true">gui.things.displacement_tome.rename</text>
+                                <sizing>
+                                    <horizontal method="fixed">60</horizontal>
+                                </sizing>
+                                <margins>
+                                    <left>1</left>
+                                    <right>4</right>
+                                </margins>
+                                <active>false</active>
+                            </button>
+                            <button id="delete-button">
+                                <text translate="true">gui.things.displacement_tome.delete</text>
+                                <sizing>
+                                    <horizontal method="fixed">60</horizontal>
+                                </sizing>
+                            </button>
+                        </children>
+                    </flow-layout>
+                </child>
+            </template>
+        </edit-box>
+
+        <create-box>
+            <template name="floating-box">
+                <child id="button-row">
+                    <flow-layout direction="horizontal">
+                        <children>
+                            <button id="create-button">
+                                <text translate="true">gui.things.displacement_tome.create</text>
+                                <sizing>
+                                    <horizontal method="fixed">65</horizontal>
+                                </sizing>
+                                <active>false</active>
+                            </button>
+                        </children>
+
+                        <horizontal-alignment>center</horizontal-alignment>
+                    </flow-layout>
+                </child>
+            </template>
+        </create-box>
+    </templates>
+</owo-ui>

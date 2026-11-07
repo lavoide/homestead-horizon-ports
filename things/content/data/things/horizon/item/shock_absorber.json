@@ -1,0 +1,23 @@
+{
+  "template": "minecraft:paper",
+  "max_stack_size": 1,
+  "components": {
+    "minecraft:lore": [
+      {
+        "text": "Decreases fall damage by 20% up to 8 hearts",
+        "color": "gray",
+        "italic": false
+      },
+      {
+        "text": "and kinetic damage by 75%",
+        "color": "gray",
+        "italic": false
+      },
+      {
+        "text": "Wear it in a trinket slot (G).",
+        "color": "gray",
+        "italic": false
+      }
+    ]
+  }
+}

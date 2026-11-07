@@ -1,0 +1,18 @@
+{
+  "key": {
+    "D": "minecraft:diamond",
+    "N": "minecraft:nether_star",
+    "O": "minecraft:obsidian",
+    "S": "minecraft:shulker_shell",
+    "n": "minecraft:netherite_ingot"
+  },
+  "pattern": [
+    "nOS",
+    "DND",
+    "SOn"
+  ],
+  "result": {
+    "id": "things:hardening_catalyst"
+  },
+  "type": "minecraft:crafting_shaped"
+}

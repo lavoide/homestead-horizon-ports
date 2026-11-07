@@ -1,0 +1,18 @@
+{
+  "template": "minecraft:paper",
+  "max_stack_size": 1,
+  "components": {
+    "minecraft:lore": [
+      {
+        "text": "Extends your reach by 2 blocks",
+        "color": "gray",
+        "italic": false
+      },
+      {
+        "text": "Wear it in a trinket slot (G).",
+        "color": "gray",
+        "italic": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+# elytraslot: Elytra Slot 6.4.4 (Illusive Soulworks, LGPL-3.0-or-later). An elytra worn in a trinket
+# slot (native/trinkets' cape slot) glides, wears and draws its wings. It reads native/trinkets'
+# `trinkets:worn` player attachment and needs none of its code.
+[mod]
+id = "elytraslot"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "elytraslot"
+source = "runtime.rs"
+
+
+# Elytra Slot: an elytra worn in the cape slot glides (LivingEntity.canGlide).
+[[injection]]
+id = "glider"
+kind = "RETURN"
+target = "horizon_client::game::Game<'_>::glider_worn"
+helper = "glider.rs"
+bindings = [
+  { name = "value", ty = "bool", value = "$value" },
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+]
+
+# ...and wears as the chest's would.
+[[injection]]
+id = "wear_glider"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::wear_glider"
+helper = "wear_glider.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "points", ty = "u32", value = "points" },
+]
+
+# ElytraSlotLayer: its wings on the window's own player.
+[[injection]]
+id = "wings"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::perspective::Game<'_>::player_elytra_geometry"
+helper = "wings.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "m", ty = "&horizon_client::mobs::Mob", value = "m" },
+  { name = "chest", ty = "Option<&str>", value = "chest" },
+  { name = "camera", ty = "glam::DVec3", value = "camera" },
+  { name = "partial", ty = "f32", value = "partial" },
+  { name = "light", ty = "u32", value = "light" },
+  { name = "out", ty = "&mut Vec<horizon_client::mesher::Vertex>", value = "out" },
+]

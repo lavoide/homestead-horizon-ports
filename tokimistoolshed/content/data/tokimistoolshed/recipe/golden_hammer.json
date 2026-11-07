@@ -1,0 +1,15 @@
+{
+  "key": {
+    "G": "minecraft:gold_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "GGG",
+    "GSG",
+    " S "
+  ],
+  "result": {
+    "id": "tokimistoolshed:golden_hammer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

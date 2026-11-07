@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "comforts:sleeping_bag",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": "minecraft:gray_wool"
+  },
+  "result": {
+    "id": "comforts:sleeping_bag_gray"
+  }
+}

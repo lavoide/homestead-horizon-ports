@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mcaccel:block/soul_jack_o_lantern_heart",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mcaccel:block/soul_jack_o_lantern_heart"
+    },
+    "facing=south": {
+      "model": "mcaccel:block/soul_jack_o_lantern_heart",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mcaccel:block/soul_jack_o_lantern_heart",
+      "y": 270
+    }
+  }
+}

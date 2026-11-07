@@ -1,0 +1,15 @@
+{
+  "key": {
+    "g": "minecraft:glowstone",
+    "s": "minecraft:stone_brick_slab"
+  },
+  "pattern": [
+    "g",
+    "s"
+  ],
+  "result": {
+    "count": 4,
+    "id": "things:stone_glowstone_fixture"
+  },
+  "type": "minecraft:crafting_shaped"
+}

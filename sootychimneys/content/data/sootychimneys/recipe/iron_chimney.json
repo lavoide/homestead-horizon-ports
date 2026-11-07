@@ -1,0 +1,17 @@
+{
+  "group": "iron_chimney",
+  "key": {
+    "C": "#minecraft:coals",
+    "I": "#c:iron_ingots",
+    "N": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "I I",
+    "N N",
+    "ICI"
+  ],
+  "result": {
+    "id": "sootychimneys:iron_chimney"
+  },
+  "type": "minecraft:crafting_shaped"
+}

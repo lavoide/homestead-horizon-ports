@@ -1,0 +1,15 @@
+{
+  "key": {
+    "M": "minecraft:diamond",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    "MS ",
+    " S "
+  ],
+  "result": {
+    "id": "tokimistoolshed:diamond_scythe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

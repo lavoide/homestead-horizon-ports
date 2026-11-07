@@ -1,0 +1,9 @@
+{
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "tokimistoolshed:iron_scythe",
+  "result": {
+    "id": "minecraft:iron_ingot"
+  },
+  "type": "minecraft:smelting"
+}

@@ -1,0 +1,15 @@
+{
+  "key": {
+    "D": "minecraft:diamond",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " DD",
+    " SD",
+    "S  "
+  ],
+  "result": {
+    "id": "tokimistoolshed:diamond_excavator"
+  },
+  "type": "minecraft:crafting_shaped"
+}

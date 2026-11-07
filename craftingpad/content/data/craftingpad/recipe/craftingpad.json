@@ -1,0 +1,4 @@
+{ "type": "minecraft:crafting_shaped",
+  "pattern": ["# ", "Q "],
+  "key": { "#": "minecraft:crafting_table", "Q": "minecraft:stick" },
+  "result": { "id": "craftingpad:craftingpad" } }

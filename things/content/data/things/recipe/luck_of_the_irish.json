@@ -1,0 +1,17 @@
+{
+  "key": {
+    "c": "things:gleaming_compound",
+    "l": "#minecraft:leaves",
+    "p": "minecraft:enchanted_golden_apple"
+  },
+  "pattern": [
+    "cl ",
+    "lpl",
+    " lc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "things:luck_of_the_irish"
+  },
+  "type": "minecraft:crafting_shaped"
+}

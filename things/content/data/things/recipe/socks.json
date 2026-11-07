@@ -1,0 +1,16 @@
+{
+  "key": {
+    "#": "#minecraft:wool",
+    "g": "things:gleaming_powder"
+  },
+  "pattern": [
+    "g g",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "things:socks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

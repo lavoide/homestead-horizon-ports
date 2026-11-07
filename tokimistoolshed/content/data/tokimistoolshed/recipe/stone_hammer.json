@@ -1,0 +1,15 @@
+{
+  "key": {
+    "C": "#minecraft:stone_tool_materials",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "CCC",
+    "CSC",
+    " S "
+  ],
+  "result": {
+    "id": "tokimistoolshed:stone_hammer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

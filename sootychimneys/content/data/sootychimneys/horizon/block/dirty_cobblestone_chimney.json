@@ -1,0 +1,52 @@
+{
+  "template": "minecraft:glass",
+  "properties": {
+    "hardness": 2.0,
+    "explosion_resistance": 2.0,
+    "sounds": "minecraft:cobblestone"
+  },
+  "state_properties": {
+    "blocked": {
+      "type": "boolean"
+    },
+    "lit": {
+      "type": "boolean"
+    },
+    "stacked": {
+      "type": "boolean"
+    }
+  },
+  "shapes": {
+    "property": "stacked",
+    "values": {
+      "false": [
+        [
+          0.1875,
+          0.0,
+          0.1875,
+          0.8125,
+          1.0,
+          0.8125
+        ],
+        [
+          0.0625,
+          0.25,
+          0.0625,
+          0.9375,
+          1.0,
+          0.9375
+        ]
+      ],
+      "true": [
+        [
+          0.1875,
+          0.0,
+          0.1875,
+          0.8125,
+          1.0,
+          0.8125
+        ]
+      ]
+    }
+  }
+}

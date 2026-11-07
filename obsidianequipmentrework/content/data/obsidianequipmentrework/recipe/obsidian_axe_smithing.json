@@ -1,0 +1,9 @@
+{
+  "addition": "obsidianequipmentrework:obsidian_ingot",
+  "base": "minecraft:diamond_axe",
+  "result": {
+    "id": "obsidianequipmentrework:obsidian_axe"
+  },
+  "template": "obsidianequipmentrework:obsidian_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

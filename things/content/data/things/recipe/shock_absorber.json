@@ -1,0 +1,16 @@
+{
+  "key": {
+    "C": "things:gleaming_compound",
+    "P": "minecraft:phantom_membrane",
+    "W": "#minecraft:wool"
+  },
+  "pattern": [
+    "WCW",
+    "CPC",
+    "WCW"
+  ],
+  "result": {
+    "id": "things:shock_absorber"
+  },
+  "type": "minecraft:crafting_shaped"
+}

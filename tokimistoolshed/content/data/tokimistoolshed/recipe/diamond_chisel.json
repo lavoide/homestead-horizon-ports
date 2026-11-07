@@ -1,0 +1,16 @@
+{
+  "key": {
+    "D": "minecraft:diamond",
+    "M": "minecraft:smooth_stone",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "  D",
+    " M ",
+    "S  "
+  ],
+  "result": {
+    "id": "tokimistoolshed:diamond_chisel"
+  },
+  "type": "minecraft:crafting_shaped"
+}

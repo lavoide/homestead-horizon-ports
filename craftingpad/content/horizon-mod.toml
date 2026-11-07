@@ -1,0 +1,10 @@
+# Crafting Pad 1.0.12 (StrikerRocker, MIT; see native/craftingpad/LICENSE-CraftingPad.txt): the
+# item, its texture, name and recipe. Using it opens a crafting grid: that part is the native
+# mixin bundle native/craftingpad, which has to be built into the game.
+id = "craftingpad"
+name = "Crafting Pad"
+version = "0.1.0"
+description = "A portable crafting table (content half; the native mod opens the grid)."
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    "mcaccel:carved_pumpkin_x",
+    "mcaccel:carved_pumpkin_smile",
+    "mcaccel:carved_pumpkin_derp",
+    "mcaccel:carved_pumpkin_check",
+    "mcaccel:carved_pumpkin_creeper",
+    "mcaccel:carved_pumpkin_herobrine",
+    "mcaccel:carved_pumpkin_evil",
+    "mcaccel:carved_pumpkin_heart",
+    "mcaccel:carved_pumpkin_shout",
+    "mcaccel:jack_o_lantern_x",
+    "mcaccel:jack_o_lantern_smile",
+    "mcaccel:jack_o_lantern_derp",
+    "mcaccel:jack_o_lantern_check",
+    "mcaccel:jack_o_lantern_creeper",
+    "mcaccel:jack_o_lantern_herobrine",
+    "mcaccel:jack_o_lantern_evil",
+    "mcaccel:jack_o_lantern_heart",
+    "mcaccel:jack_o_lantern_shout",
+    "mcaccel:soul_jack_o_lantern_x",
+    "mcaccel:soul_jack_o_lantern_smile",
+    "mcaccel:soul_jack_o_lantern_derp",
+    "mcaccel:soul_jack_o_lantern_check",
+    "mcaccel:soul_jack_o_lantern_creeper",
+    "mcaccel:soul_jack_o_lantern_herobrine",
+    "mcaccel:soul_jack_o_lantern_evil",
+    "mcaccel:soul_jack_o_lantern_heart",
+    "mcaccel:soul_jack_o_lantern_shout",
+    "mcaccel:soul_jack_o_lantern_normal"
+  ]
+}

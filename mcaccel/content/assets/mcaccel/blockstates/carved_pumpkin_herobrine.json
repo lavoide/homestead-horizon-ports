@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mcaccel:block/carved_pumpkin_herobrine",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mcaccel:block/carved_pumpkin_herobrine"
+    },
+    "facing=south": {
+      "model": "mcaccel:block/carved_pumpkin_herobrine",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mcaccel:block/carved_pumpkin_herobrine",
+      "y": 270
+    }
+  }
+}

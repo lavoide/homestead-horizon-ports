@@ -1,0 +1,15 @@
+{
+  "key": {
+    "S": "minecraft:stick",
+    "W": "#minecraft:planks"
+  },
+  "pattern": [
+    " WW",
+    " SW",
+    "S  "
+  ],
+  "result": {
+    "id": "tokimistoolshed:wooden_excavator"
+  },
+  "type": "minecraft:crafting_shaped"
+}

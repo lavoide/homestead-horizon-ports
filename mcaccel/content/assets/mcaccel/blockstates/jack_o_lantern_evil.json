@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mcaccel:block/jack_o_lantern_evil",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mcaccel:block/jack_o_lantern_evil"
+    },
+    "facing=south": {
+      "model": "mcaccel:block/jack_o_lantern_evil",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mcaccel:block/jack_o_lantern_evil",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "tokimistoolshed:wooden_scythe",
+    "tokimistoolshed:stone_scythe",
+    "tokimistoolshed:iron_scythe",
+    "tokimistoolshed:golden_scythe",
+    "tokimistoolshed:diamond_scythe",
+    "tokimistoolshed:netherite_scythe",
+    {
+      "id": "tokimistoolshed:obsidian_scythe",
+      "required": false
+    }
+  ]
+}

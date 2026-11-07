@@ -1,0 +1,15 @@
+{
+  "key": {
+    "M": "#minecraft:stone_tool_materials",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    "MS ",
+    " S "
+  ],
+  "result": {
+    "id": "tokimistoolshed:stone_scythe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "mcaccel:carved_pumpkin_x",
+    "T": "minecraft:torch"
+  },
+  "pattern": [
+    "P",
+    "T"
+  ],
+  "result": {
+    "id": "mcaccel:jack_o_lantern_x"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,13 @@
+{
+  "key": {
+    "b": "minecraft:water_bucket"
+  },
+  "pattern": [
+    "b b",
+    " b "
+  ],
+  "result": {
+    "id": "things:bater_wucket"
+  },
+  "type": "minecraft:crafting_shaped"
+}

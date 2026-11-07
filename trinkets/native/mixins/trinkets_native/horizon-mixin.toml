@@ -1,0 +1,123 @@
+# trinkets: Trinkets 3.7.2 (Emi, MIT), the player's extra equipment slots for the Homestead mods that
+# declare them (runtime.rs; the slot table is trinkets_data.rs, written by tools/trinkets_port.py).
+# The placeholder pictures are the content mod mods/trinkets.
+[mod]
+id = "trinkets_native"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "data"
+file = "crates/horizon-client/src/game.rs"
+name = "trinkets_data"
+source = "trinkets_data.rs"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "trinkets"
+source = "runtime.rs"
+
+# The Trinkets key, in the window: asks the server for the menu.
+[[injection]]
+id = "key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "key.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+# The key's message reaches the server: the menu opens.
+[[injection]]
+id = "net"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_net_from_client"
+helper = "net.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "player", ty = "u128", value = "player" },
+  { name = "channel", ty = "&str", value = "channel" },
+]
+
+# Clicks in the trinket menu (no other mod hears them).
+[[injection]]
+id = "clicked"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::native_hooks::Game<'_>::native_menu_clicked"
+helper = "clicked.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "uuid", ty = "u128", value = "uuid" },
+  { name = "window", ty = "i32", value = "window" },
+  { name = "slot", ty = "i32", value = "slot" },
+]
+
+[[injection]]
+id = "closed"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_menu_closed"
+helper = "closed.rs"
+bindings = [
+  { name = "uuid", ty = "u128", value = "uuid" },
+  { name = "window", ty = "i32", value = "window" },
+]
+
+# TrinketItem.use: a right click wears the trinket.
+[[injection]]
+id = "use"
+kind = "HEAD"
+cancellable = true
+priority = 150
+target = "horizon_client::game::native_hooks::Game<'_>::native_use_item"
+helper = "use.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "stack", ty = "&ItemStack", value = "stack" },
+  { name = "claimed", ty = "&mut bool", value = "claimed" },
+]
+
+# Player.dropInventory: the trinkets drop too (after universalgraves, which puts them in the grave).
+[[injection]]
+id = "death"
+kind = "HEAD"
+priority = 10
+target = "horizon_client::game::Game<'_>::drop_inventory"
+helper = "death.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "at", ty = "[f64; 3]", value = "at" },
+]
+
+# A worn Totem of Undying (Friends & Foes' charm slot) saves the player, after native/inventorytotem.
+[[injection]]
+id = "totem_ready"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::totem::Game<'_>::update_totem_ready"
+helper = "totem_ready.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+[[injection]]
+id = "totem"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::totem::Game<'_>::apply_totem"
+helper = "totem.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+# The trinket slots an item fits, in its tooltip.
+[[injection]]
+id = "tooltip"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tooltip"
+helper = "tooltip.rs"
+bindings = [
+  { name = "stack", ty = "&ItemStack", value = "stack" },
+  { name = "lines", ty = "&mut Vec<(Text, u32)>", value = "lines" },
+]

@@ -1,0 +1,18 @@
+{
+  "template": "minecraft:paper",
+  "max_stack_size": 1,
+  "components": {
+    "minecraft:lore": [
+      {
+        "text": "Sneak-use on a container to lock or unlock it.",
+        "color": "gray",
+        "italic": false
+      },
+      {
+        "text": "Hold the key to open a locked container.",
+        "color": "gray",
+        "italic": false
+      }
+    ]
+  }
+}

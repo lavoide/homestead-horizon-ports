@@ -1,0 +1,86 @@
+# grindenchantments: a mixin bundle. As Grind Enchantments 3.1.4 (mschae23) with Homestead's config:
+# - disenchant to book: an enchanted item and a book in the grindstone give an enchanted book
+#   with all of the item's enchantments (curses too); the item stays, unenchanted. Cost:
+#   ceil(0.3 * sum of the enchantments' minimum powers + 8) levels.
+# - move enchantments: an enchanted book with two or more enchantments and a book (or an
+#   enchanted book) move the first enchantment over. Cost: ceil(0.5 * level * (3, or 8 for a
+#   treasure enchantment) + 0.5) levels.
+# No experience comes out of these two; vanilla grinding is unchanged.
+[mod]
+id = "grindenchantments"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/stations.rs"
+name = "grindenchantments"
+source = "runtime.rs"
+
+# The grindstone's slots take books (canInsert).
+[[injection]]
+id = "accept-books"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::stations::grindstone_accepts"
+helper = "accepts.rs"
+bindings = [{ name = "stack", ty = "&ItemStack", value = "stack" }]
+
+# onUpdateResult.
+[[injection]]
+id = "result"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::stations::grindstone_result"
+helper = "result.rs"
+bindings = [
+  { name = "e", ty = "&Enchantments", value = "e" },
+  { name = "input", ty = "Option<&ItemStack>", value = "input" },
+  { name = "additional", ty = "Option<&ItemStack>", value = "additional" },
+]
+
+# canTakeResult: the levels to pay (creative pays nothing).
+[[injection]]
+id = "may-pickup"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::menu::Menu::may_pickup"
+helper = "pickup.rs"
+bindings = [
+  { name = "menu", ty = "&Menu", value = "self" },
+  { name = "env", ty = "&Env", value = "env" },
+  { name = "s", ty = "usize", value = "s" },
+]
+
+# onTakeResult: the levels, then the inputs (instead of vanilla's clearing and experience).
+[[injection]]
+id = "take"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::menu::Menu::on_take"
+helper = "take.rs"
+bindings = [
+  { name = "menu", ty = "&mut Menu", value = "&mut *self" },
+  { name = "env", ty = "&Env", value = "env" },
+  { name = "s", ty = "usize", value = "s" },
+]
+
+# GrindstoneScreen: "Enchantment Cost: N" (client_options.show_enchantment_cost).
+[[injection]]
+id = "cost-label"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::stations::Game<'_>::draw_station"
+helper = "label.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut HudBatch", value = "&mut *batch" },
+]
+
+[[module]]
+id = "label"
+file = "crates/horizon-client/src/game/stations.rs"
+name = "grindenchantments"
+source = "label_module.rs"

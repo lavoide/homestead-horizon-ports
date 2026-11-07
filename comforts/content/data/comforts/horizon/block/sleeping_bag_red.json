@@ -1,0 +1,33 @@
+{
+  "template": "minecraft:red_bed",
+  "properties": {
+    "hardness": 0.1,
+    "explosion_resistance": 0.1,
+    "sounds": "minecraft:white_wool"
+  },
+  "item": true,
+  "shapes": {
+    "default": [
+      [
+        0,
+        0,
+        0,
+        1,
+        0.1875,
+        1
+      ]
+    ]
+  },
+  "collision_shapes": {
+    "default": [
+      [
+        0,
+        0,
+        0,
+        1,
+        0.1875,
+        1
+      ]
+    ]
+  }
+}

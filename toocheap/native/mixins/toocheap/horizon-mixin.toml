@@ -1,0 +1,47 @@
+# toocheap: a mixin bundle. As Too Cheap 1.4.0 with Homestead's config (maxLevelCost
+# 2147483647, everything else vanilla): the anvil has no "Too Expensive!" cap at 40 levels.
+# Renaming alone still costs at most 39, as in vanilla.
+[mod]
+id = "toocheap"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/stations.rs"
+name = "toocheap"
+source = "runtime.rs"
+
+# anvil_result has closures, which MODIFY_CONSTANT and OVERWRITE refuse: a cancellable HEAD always breaks with
+# runtime.rs's copy without the cap.
+[[injection]]
+id = "no-cap"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::stations::anvil_result"
+helper = "anvil.rs"
+bindings = [
+  { name = "e", ty = "&Enchantments", value = "e" },
+  { name = "items", ty = "&Items", value = "items" },
+  { name = "input", ty = "Option<&ItemStack>", value = "input" },
+  { name = "addition", ty = "Option<&ItemStack>", value = "addition" },
+  { name = "name", ty = "Option<&str>", value = "name" },
+  { name = "hover_name", ty = "&str", value = "hover_name" },
+  { name = "creative", ty = "bool", value = "creative" },
+]
+
+# The anvil screen says "Too Expensive!" at 40+ (draw_station, full of closures). Its text comes
+# from Game::translate, which this answers with the vanilla cost line instead. The line stays
+# red; vanilla's own cost line is red too when the player can't pay.
+[[injection]]
+id = "cost-label"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::stations::Game<'_>::translate"
+helper = "label.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "self" },
+  { name = "key", ty = "&str", value = "key" },
+]

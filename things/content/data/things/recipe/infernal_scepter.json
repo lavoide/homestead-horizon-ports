@@ -1,0 +1,19 @@
+{
+  "key": {
+    "/": "minecraft:blaze_rod",
+    "F": "minecraft:lava_bucket",
+    "g": "minecraft:gold_ingot",
+    "i": "minecraft:iron_ingot",
+    "n": "minecraft:netherite_ingot"
+  },
+  "pattern": [
+    " gF",
+    "n/g",
+    "in "
+  ],
+  "result": {
+    "count": 1,
+    "id": "things:infernal_scepter"
+  },
+  "type": "minecraft:crafting_shaped"
+}

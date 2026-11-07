@@ -1,0 +1,60 @@
+{
+  "template": "minecraft:glass",
+  "properties": {
+    "hardness": 2.0,
+    "explosion_resistance": 2.0,
+    "sounds": "minecraft:waxed_copper_block"
+  },
+  "state_properties": {
+    "blocked": {
+      "type": "boolean"
+    },
+    "lit": {
+      "type": "boolean"
+    },
+    "stacked": {
+      "type": "boolean"
+    }
+  },
+  "shapes": {
+    "property": "stacked",
+    "values": {
+      "false": [
+        [
+          0.3125,
+          0.0,
+          0.3125,
+          0.6875,
+          0.25,
+          0.6875
+        ],
+        [
+          0.375,
+          0.25,
+          0.375,
+          0.625,
+          1.0,
+          0.625
+        ],
+        [
+          0.3125,
+          0.625,
+          0.3125,
+          0.6875,
+          0.875,
+          0.6875
+        ]
+      ],
+      "true": [
+        [
+          0.3125,
+          0.0,
+          0.3125,
+          0.6875,
+          1.0,
+          0.6875
+        ]
+      ]
+    }
+  }
+}

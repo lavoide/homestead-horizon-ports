@@ -1,0 +1,9 @@
+{
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "tokimistoolshed:abacus",
+  "result": {
+    "id": "minecraft:gold_nugget"
+  },
+  "type": "minecraft:smelting"
+}

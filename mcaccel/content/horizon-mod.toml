@@ -1,0 +1,8 @@
+# Minecraft Accelerated 1.0.0 (pumpkinsAccelerated, mari, CC0-1.0): carried with
+# tools/carry_jars.py and fixed up by tools/mcaccel_port.py. Rules: native/mcaccel.
+id = "mcaccel"
+name = "Minecraft Accelerated"
+version = "1.0.0"
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

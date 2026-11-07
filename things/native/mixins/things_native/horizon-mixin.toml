@@ -1,0 +1,129 @@
+# things: the rules half of Things 0.3.3 (glisco, MIT). The items are the content mod mods/things
+# (tools/things_port.py).
+# - api (trait mod): the trinkets (worn in native/trinkets' slots), the Item Magnet, the
+#   Infernal Scepter, the Container Key, the Recall Potion, the Placebo, the Luck of the Irish and
+#   the Shock Absorber;
+# - crafting: SockUpgradeRecipe and JumpySocksRecipe (special recipes, matched by code);
+# - game: the Bater Wucket (BucketItemMixin: it stays full);
+# - stations: the Hardening Catalyst (AnvilScreenHandlerMixin).
+[mod]
+id = "things_native"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[api]
+path = "api"
+
+[[module]]
+id = "recipes"
+file = "crates/horizon-client/src/crafting.rs"
+name = "things"
+source = "recipes_mod.rs"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "things"
+source = "runtime.rs"
+
+# The grid, for the sock recipes below.
+[[injection]]
+id = "recipes_grid"
+kind = "HEAD"
+priority = 205
+target = "horizon_client_lib::crafting::Recipes::find_with"
+helper = "recipes_grid.rs"
+bindings = [
+  { name = "cells", ty = "&[Option<ItemStack>]", value = "grid" },
+  { name = "width", ty = "usize", value = "size" },
+]
+
+# SockUpgradeRecipe and JumpySocksRecipe.
+[[injection]]
+id = "recipes_special"
+kind = "HEAD"
+cancellable = true
+priority = 105
+target = "horizon_client_lib::crafting::Recipes::find_with"
+helper = "recipes_special.rs"
+bindings = [{ name = "recipes", ty = "&Recipes", value = "&*self" }]
+
+# The potion of a sock upgrade leaves its bottle (Things sets the potion's recipe remainder).
+[[injection]]
+id = "recipes_remainders"
+kind = "RETURN"
+priority = 105
+target = "horizon_client_lib::crafting::Recipes::remainders"
+helper = "recipes_remainders.rs"
+bindings = [
+  { name = "value", ty = "Vec<Option<ItemStack>>", value = "$value" },
+  { name = "recipe", ty = "&str", value = "recipe" },
+  { name = "cells", ty = "&[Option<ItemStack>]", value = "grid" },
+  { name = "width", ty = "usize", value = "size" },
+]
+
+# BucketItemMixin and the Bater Wucket's cauldron behaviour: used as a water bucket, given back full.
+[[injection]]
+id = "wucket"
+kind = "HEAD"
+cancellable = true
+priority = 105
+target = "horizon_client::game::Game<'_>::use_tool"
+helper = "wucket.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "stack", ty = "&ItemStack", value = "stack" },
+  { name = "allow", ty = "bool", value = "allow_block_actions" },
+]
+
+# AnvilScreenHandlerMixin: a damageable item and the Hardening Catalyst make the item unbreakable
+# for 30 levels, renamed as the box says.
+[[injection]]
+id = "catalyst"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::stations::anvil_result"
+helper = "catalyst.rs"
+bindings = [
+  { name = "items", ty = "&Items", value = "items" },
+  { name = "input", ty = "Option<&ItemStack>", value = "input" },
+  { name = "addition", ty = "Option<&ItemStack>", value = "addition" },
+  { name = "name", ty = "Option<&str>", value = "name" },
+]
+
+# The worn trinkets' attribute modifiers (socks, Arm Extender, Enchanted Wax Gland).
+[[injection]]
+id = "modifiers"
+kind = "HEAD"
+priority = 105
+target = "horizon_client::game::native_hooks::Game<'_>::native_player_tick"
+helper = "modifiers.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+# RecallPotionItem.finishUsing: to the respawn point.
+[[injection]]
+id = "recall"
+kind = "HEAD"
+priority = 105
+target = "horizon_client::game::consume::Game<'_>::finish_consuming"
+helper = "recall.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "stack", ty = "&ItemStack", value = "stack" },
+]
+
+# BaseContainerBlockEntity.canOpen for the host (Horizon checks a lock only for guests), so the
+# Container Key's locks keep everyone without the key out.
+[[injection]]
+id = "locked"
+kind = "HEAD"
+cancellable = true
+priority = 105
+target = "horizon_client::game::Game<'_>::open_menu"
+helper = "locked.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "pos", ty = "[i32; 3]", value = "pos" },
+]

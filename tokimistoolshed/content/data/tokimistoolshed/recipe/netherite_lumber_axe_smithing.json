@@ -1,0 +1,9 @@
+{
+  "addition": "minecraft:netherite_ingot",
+  "base": "tokimistoolshed:diamond_lumber_axe",
+  "result": {
+    "id": "tokimistoolshed:netherite_lumber_axe"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

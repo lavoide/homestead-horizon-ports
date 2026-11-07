@@ -1,0 +1,40 @@
+{
+  "template": "minecraft:iron_helmet",
+  "components": {
+    "minecraft:max_damage": 455,
+    "minecraft:enchantable": {
+      "value": 12
+    },
+    "minecraft:repairable": {
+      "items": "obsidianequipmentrework:obsidian_ingot"
+    },
+    "minecraft:equippable": {
+      "asset_id": "obsidianequipmentrework:obsidian",
+      "equip_sound": "minecraft:item.armor.equip_iron",
+      "slot": "head"
+    },
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:armor",
+        "amount": 3,
+        "id": "minecraft:armor.helmet",
+        "operation": "add_value",
+        "slot": "head"
+      },
+      {
+        "type": "minecraft:armor_toughness",
+        "amount": 2.5,
+        "id": "minecraft:armor.helmet",
+        "operation": "add_value",
+        "slot": "head"
+      },
+      {
+        "type": "minecraft:knockback_resistance",
+        "amount": 0.05,
+        "id": "minecraft:armor.helmet",
+        "operation": "add_value",
+        "slot": "head"
+      }
+    ]
+  }
+}

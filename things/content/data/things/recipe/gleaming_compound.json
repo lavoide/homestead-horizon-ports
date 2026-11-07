@@ -1,0 +1,15 @@
+{
+  "key": {
+    "d": "minecraft:diamond",
+    "p": "things:gleaming_powder"
+  },
+  "pattern": [
+    " p ",
+    "pdp",
+    " p "
+  ],
+  "result": {
+    "id": "things:gleaming_compound"
+  },
+  "type": "minecraft:crafting_shaped"
+}

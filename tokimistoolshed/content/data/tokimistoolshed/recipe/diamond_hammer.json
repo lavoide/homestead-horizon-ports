@@ -1,0 +1,15 @@
+{
+  "key": {
+    "D": "minecraft:diamond",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "DDD",
+    "DSD",
+    " S "
+  ],
+  "result": {
+    "id": "tokimistoolshed:diamond_hammer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

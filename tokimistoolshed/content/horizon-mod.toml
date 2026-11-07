@@ -1,0 +1,8 @@
+# Tokimi's Toolshed 1.8 (Cozy Studios): carried with tools/carry_jars.py and fixed up by
+# tools/tokimistoolshed_port.py. Rules: native/tokimistoolshed.
+id = "tokimistoolshed"
+name = "Tokimi's Toolshed"
+version = "1.8"
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

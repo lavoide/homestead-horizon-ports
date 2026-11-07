@@ -1,0 +1,21 @@
+{
+  "template": "minecraft:paper",
+  "max_stack_size": 1,
+  "components": {
+    "minecraft:damage_resistant": {
+      "types": "#minecraft:is_fire"
+    },
+    "minecraft:lore": [
+      {
+        "text": "Grants permanent Fire Resistance",
+        "color": "gray",
+        "italic": false
+      },
+      {
+        "text": "Wear it in a trinket slot (G).",
+        "color": "gray",
+        "italic": false
+      }
+    ]
+  }
+}

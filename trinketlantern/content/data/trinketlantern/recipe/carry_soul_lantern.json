@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "i": "minecraft:iron_nugget",
+    "l": "minecraft:leather",
+    "t": "minecraft:soul_lantern"
+  },
+  "pattern": [
+    "l",
+    "t",
+    "i"
+  ],
+  "result": {
+    "id": "trinketlantern:carry_soul_lantern"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

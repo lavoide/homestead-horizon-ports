@@ -1,0 +1,148 @@
+{
+  "textures": {
+    "particle": "minecraft:block/light_gray_wool",
+    "cloth": "comforts:block/hammock/light_gray"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        1,
+        16
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.25,
+            0.25,
+            3.75,
+            4.0
+          ],
+          "texture": "#cloth"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.25,
+            7.5,
+            4.0
+          ],
+          "texture": "#cloth"
+        },
+        "north": {
+          "uv": [
+            3.75,
+            0.0,
+            0.25,
+            0.25
+          ],
+          "texture": "#cloth"
+        },
+        "south": {
+          "uv": [
+            3.75,
+            0.0,
+            7.25,
+            0.25
+          ],
+          "texture": "#cloth"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            0.25,
+            0.25,
+            4.0
+          ],
+          "texture": "#cloth",
+          "rotation": 90
+        },
+        "east": {
+          "uv": [
+            3.75,
+            0.25,
+            4.0,
+            4.0
+          ],
+          "texture": "#cloth",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        1
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            7.75,
+            0.25,
+            11.75,
+            0.5
+          ],
+          "texture": "#cloth"
+        },
+        "down": {
+          "uv": [
+            12.0,
+            0.25,
+            16.0,
+            0.5
+          ],
+          "texture": "#cloth"
+        },
+        "north": {
+          "uv": [
+            11.75,
+            0.0,
+            7.75,
+            0.25
+          ],
+          "texture": "#cloth"
+        },
+        "south": {
+          "uv": [
+            11.75,
+            0.0,
+            15.75,
+            0.25
+          ],
+          "texture": "#cloth"
+        },
+        "west": {
+          "uv": [
+            7.5,
+            0.25,
+            7.75,
+            0.5
+          ],
+          "texture": "#cloth",
+          "rotation": 90
+        },
+        "east": {
+          "uv": [
+            11.75,
+            0.25,
+            12.0,
+            0.5
+          ],
+          "texture": "#cloth",
+          "rotation": 270
+        }
+      }
+    }
+  ]
+}

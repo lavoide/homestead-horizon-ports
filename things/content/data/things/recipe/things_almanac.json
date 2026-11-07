@@ -1,0 +1,11 @@
+{
+  "ingredients": [
+    "minecraft:book",
+    "minecraft:apple"
+  ],
+  "result": {
+    "count": 1,
+    "id": "things:things_almanac"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

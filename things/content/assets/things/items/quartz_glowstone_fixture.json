@@ -1,0 +1,6 @@
+{
+  "model": {
+    "model": "things:item/quartz_glowstone_fixture",
+    "type": "minecraft:model"
+  }
+}

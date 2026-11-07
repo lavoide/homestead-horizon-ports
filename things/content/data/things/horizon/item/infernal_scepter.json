@@ -1,0 +1,20 @@
+{
+  "template": "minecraft:paper",
+  "max_stack_size": 1,
+  "components": {
+    "minecraft:max_damage": 64,
+    "minecraft:use_cooldown": {
+      "seconds": 1.0
+    },
+    "minecraft:damage_resistant": {
+      "types": "#minecraft:is_fire"
+    },
+    "minecraft:lore": [
+      {
+        "text": "Shoots fireballs, uses Fire Charges as ammunition",
+        "color": "gray",
+        "italic": false
+      }
+    ]
+  }
+}

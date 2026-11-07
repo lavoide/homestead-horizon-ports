@@ -1,0 +1,15 @@
+{
+  "key": {
+    "O": "obsidianequipmentrework:obsidian_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " OO",
+    " SO",
+    "S  "
+  ],
+  "result": {
+    "id": "tokimistoolshed:obsidian_excavator"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,16 @@
+{
+  "key": {
+    "g": "minecraft:gold_ingot",
+    "l": "minecraft:glass",
+    "p": "things:gleaming_powder"
+  },
+  "pattern": [
+    " g ",
+    "glg",
+    " gp"
+  ],
+  "result": {
+    "id": "things:monocle"
+  },
+  "type": "minecraft:crafting_shaped"
+}

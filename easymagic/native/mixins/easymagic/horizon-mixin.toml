@@ -1,0 +1,127 @@
+# easymagic: a mixin bundle. Easy Magic 8.0.1 (Fuzs) with Homestead's config
+# (easymagic-server.toml: max_enchanting_power 15, reroll_enchantments, lenient_bookshelves,
+# reroll_catalyst_cost 1, reroll_experience_points_cost 5, enchantment_hint SINGLE,
+# chiseled_bookshelf_enchanting_power FACING, dedicated_reroll_catalyst false):
+# - a re-roll button on the enchanting screen: 1 lapis and 5 experience points (free in
+#   creative) give the player a new enchantment seed, so new offers;
+# - the table keeps its item and lapis when the screen closes, and drops them when it's broken;
+# - a block between the table and a bookshelf only blocks it when it's a full block (torches,
+#   carpets, slabs don't);
+# - a chiseled bookshelf facing the table gives one power per three books.
+# max_enchanting_power 15 and the single hint are vanilla's already. Not ported: the item drawn
+# on the table, hoppers and comparators, the hint list option.
+[mod]
+id = "easymagic"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "client"
+file = "crates/horizon-client/src/game/stations.rs"
+name = "easymagic"
+source = "client.rs"
+
+[[module]]
+id = "server"
+file = "crates/horizon-client/src/game/lan_stations.rs"
+name = "easymagic"
+source = "server.rs"
+
+# ModEnchantmentScreen.renderRerollButton.
+[[injection]]
+id = "draw"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::stations::Game<'_>::draw_station"
+helper = "draw.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut HudBatch", value = "&mut *batch" },
+]
+
+# ModEnchantmentScreen.mouseClicked.
+[[injection]]
+id = "click"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::stations::Game<'_>::station_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "right", ty = "bool", value = "right" },
+]
+
+# getEnchantingPower and isValidBookShelf.
+[[injection]]
+id = "power"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::stations::Game<'_>::count_bookshelves"
+helper = "power.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "pos", ty = "[i32; 3]", value = "pos" },
+]
+
+# clickMenuButton(4).
+[[injection]]
+id = "reroll"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::lan_stations::Game<'_>::lan_station_button"
+helper = "reroll.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "host", ty = "&mut LanHost", value = "&mut *host" },
+  { name = "conn", ty = "u32", value = "conn" },
+  { name = "window", ty = "i32", value = "window" },
+  { name = "id", ty = "i32", value = "id" },
+]
+
+# The table's inventory: kept on close...
+[[injection]]
+id = "keep"
+kind = "HEAD"
+target = "horizon_client::game::lan_stations::Game<'_>::lan_station_closed"
+helper = "keep.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "host", ty = "&mut LanHost", value = "&mut *host" },
+  { name = "conn", ty = "u32", value = "conn" },
+  { name = "window", ty = "Option<i32>", value = "window" },
+]
+
+# ...back in the slots when the menu is first sent...
+[[injection]]
+id = "restore"
+kind = "HEAD"
+target = "horizon_client::game::lan_stations::Game<'_>::lan_send_station"
+helper = "restore.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "host", ty = "&mut LanHost", value = "&mut *host" },
+  { name = "conn", ty = "u32", value = "conn" },
+]
+
+# ...and dropped when the table is gone (checked once a tick from the guests' tick).
+[[injection]]
+id = "watch"
+kind = "HEAD"
+target = "horizon_client::game::lan_actions::Game<'_>::guest_pickups"
+helper = "watch.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+# The chiseled bookshelves' books on top of the count, whichever HEAD made it (Bebpm's box or
+# the lenient ring above): getEnchantingPower adds books / 3 to the shelves' power.
+[[injection]]
+id = "chiseled"
+kind = "RETURN"
+target = "horizon_client::game::stations::Game<'_>::count_bookshelves"
+helper = "chiseled.rs"
+bindings = [
+  { name = "value", ty = "i32", value = "$value" },
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "pos", ty = "[i32; 3]", value = "pos" },
+]

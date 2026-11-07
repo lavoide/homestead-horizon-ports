@@ -1,0 +1,9 @@
+{
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "tokimistoolshed:golden_lumber_axe",
+  "result": {
+    "id": "minecraft:gold_ingot"
+  },
+  "type": "minecraft:smelting"
+}

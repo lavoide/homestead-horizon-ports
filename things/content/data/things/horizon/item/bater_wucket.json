@@ -1,0 +1,14 @@
+{
+  "template": "minecraft:water_bucket",
+  "max_stack_size": 1,
+  "components": {
+    "minecraft:enchantment_glint_override": true,
+    "minecraft:lore": [
+      {
+        "text": "A water bucket that never empties",
+        "color": "gray",
+        "italic": false
+      }
+    ]
+  }
+}

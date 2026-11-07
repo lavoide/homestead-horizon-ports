@@ -1,0 +1,81 @@
+# universalgraves: a mixin bundle. Universal Graves 3.0.3 (Patbox), lite, with Homestead's
+# config (protection 900 s, no expiry, experience percent_points 100, no grave limit):
+# - a player who dies (keep_inventory off) leaves a grave instead of drops: a skeleton skull on
+#   the nearest free block within 8, holding every stack with its slot and the experience
+#   vanilla would drop; the player is told where;
+# - a right click on the grave by its owner, by anyone after 15 minutes, or in creative gives
+#   the stacks back to the slots they came from and the experience (quick pickup);
+# - breaking it (same rule) drops everything there; others are told the grave isn't theirs;
+# - a grave whose skull is gone otherwise (explosion, piston, command) drops its contents, and
+#   the owner hears of it.
+# Graves are saved with the level (a level attachment, universal_graves:graves).
+# Not ported: the grave screen, the grave model and its text, the death compass, /graves and
+# teleporting, unlock costs.
+[mod]
+id = "universalgraves"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "universalgraves"
+source = "runtime.rs"
+
+# Player.dropEquipment (GravesMod's death hook).
+[[injection]]
+id = "bury"
+kind = "HEAD"
+cancellable = true
+# Before native/trinkets' own death drop (priority 10): the grave takes the worn trinkets too.
+priority = 100
+target = "horizon_client::game::Game<'_>::drop_inventory"
+helper = "bury.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+# The death's experience into the grave.
+[[injection]]
+id = "xp"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::spawn_orbs"
+helper = "xp.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "value", ty = "u32", value = "value" },
+]
+
+# GraveBlock.onUse.
+[[injection]]
+id = "open"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::use_item"
+helper = "open.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+# GraveBlock.onBreak and the protection check.
+[[injection]]
+id = "break"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::break_block"
+helper = "break.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "pos", ty = "[i32; 3]", value = "pos" },
+]
+
+# Each guest's tick: graves whose skull is gone, then the messages waiting for that player.
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::lan_actions::Game<'_>::guest_dig_feedback"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "host", ty = "&mut LanHost", value = "&mut *host" },
+  { name = "conn", ty = "u32", value = "conn" },
+]

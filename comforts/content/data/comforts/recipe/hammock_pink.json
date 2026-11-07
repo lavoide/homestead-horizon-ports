@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "comforts:hammock",
+  "pattern": [
+    "sws",
+    "sas",
+    "sws"
+  ],
+  "key": {
+    "a": "minecraft:pink_wool",
+    "s": "minecraft:string",
+    "w": "minecraft:stick"
+  },
+  "result": {
+    "id": "comforts:hammock_pink"
+  }
+}

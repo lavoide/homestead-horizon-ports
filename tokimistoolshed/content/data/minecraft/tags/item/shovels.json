@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "tokimistoolshed:wooden_excavator",
+    "tokimistoolshed:stone_excavator",
+    "tokimistoolshed:iron_excavator",
+    "tokimistoolshed:golden_excavator",
+    "tokimistoolshed:diamond_excavator",
+    "tokimistoolshed:netherite_excavator",
+    {
+      "id": "tokimistoolshed:obsidian_excavator",
+      "required": false
+    }
+  ]
+}

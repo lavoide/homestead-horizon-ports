@@ -1,0 +1,9 @@
+{
+  "addition": "obsidianequipmentrework:obsidian_ingot",
+  "base": "minecraft:diamond_leggings",
+  "result": {
+    "id": "obsidianequipmentrework:obsidian_leggings"
+  },
+  "template": "obsidianequipmentrework:obsidian_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

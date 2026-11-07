@@ -1,0 +1,183 @@
+# comforts: a mixin bundle, the rules half of Comforts 6.4.0 (TheIllusiveC4, LGPL-3.0-or-later)
+# with Homestead's config (comforts-server.toml: autoUse, sleeping bags at NIGHT, hammocks by
+# DAY, both stop phantoms, no break chance, no effects). The blocks are the content mod
+# mods/comforts (bed templates with their own models), so placing, breaking, the bounce and the
+# nether explosion are a bed's already. What differs from a bed:
+# - neither sets the respawn point, and the messages are Comforts' own;
+# - a hammock is used between 500 and 11500 (day), and sleeping through the day wakes everyone
+#   at dusk; it only hangs between two ropes and nails three blocks apart, facing each other;
+# - a sleeping bag placed without sneaking is slept in at once (if sleeping is possible there,
+#   else it isn't placed), and taken up again when the player gets up.
+[mod]
+id = "comforts_native"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "recipes"
+file = "crates/horizon-client/src/crafting.rs"
+name = "comforts"
+source = "recipes_mod.rs"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "comforts"
+source = "runtime.rs"
+
+# BaseComfortsBlock.use / trySleep: a click on a bag or hammock (the bed class sends it here).
+[[injection]]
+id = "sleep"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::try_sleep"
+helper = "sleep.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "at", ty = "[i32; 3]", value = "pos" },
+]
+
+# HammockItem.useOn and SleepingBagItem.useOn, where ItemStack.useOn starts.
+[[injection]]
+id = "use_on"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::native_hooks::Game<'_>::native_use_item_on"
+helper = "use_on.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "item", ty = "&ItemStack", value = "stack" },
+  { name = "at", ty = "[i32; 3]", value = "pos" },
+  { name = "side", ty = "[i32; 3]", value = "face" },
+  { name = "taken", ty = "&mut bool", value = "&mut *claimed" },
+]
+
+# ComfortsEvents.onWakeUp: a bag put down to sleep in is taken up again.
+[[injection]]
+id = "leave"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_player_bed_leave"
+helper = "leave.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "who", ty = "u128", value = "player" },
+  { name = "head", ty = "[i32; 3]", value = "pos" },
+]
+
+# Each guest's sleep tick: bags to take up, and a hammock sleeper woken after the day.
+[[injection]]
+id = "guest_tick"
+kind = "HEAD"
+target = "horizon_client::game::lan_actions::Game<'_>::guest_sleep_tick"
+helper = "guest_tick.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "lan", ty = "&mut LanHost", value = "&mut *host" },
+  { name = "index", ty = "usize", value = "gi" },
+]
+
+# checkBedExists for a guest: our blocks count as beds.
+[[injection]]
+id = "guest_bed"
+kind = "MODIFY_VARIABLE"
+target = "horizon_client::game::lan_actions::Game<'_>::guest_sleep_tick"
+variable = { name = "bed", ordinal = 0, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "guest_bed.rs"
+bindings = [
+  { name = "value", ty = "bool", value = "$value" },
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "state", ty = "horizon_world::registry::BlockStateId", value = "$local:block:0" },
+]
+
+# ...and for the host's own player.
+[[injection]]
+id = "host_bed"
+kind = "MODIFY_VARIABLE"
+target = "horizon_client::game::Game<'_>::tick_sleep"
+variable = { name = "bed_gone", ordinal = 0, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "host_bed.rs"
+bindings = [
+  { name = "value", ty = "bool", value = "$value" },
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "state", ty = "horizon_world::registry::BlockStateId", value = "$local:bed:0" },
+]
+
+# setPosToBed for a guest who just lay down (the fourth `at` declared in leave_guest, after two loop patterns and the move check, the head's centre
+# 9/16 + 1/8 up): the bag's or hammock's height instead of a bed's.
+[[injection]]
+id = "guest_height"
+kind = "MODIFY_VARIABLE"
+target = "horizon_client::game::lan_actions::Game<'_>::leave_guest"
+variable = { name = "at", ordinal = 3, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "guest_height.rs"
+bindings = [
+  { name = "value", ty = "[f64; 3]", value = "$value" },
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+]
+
+# ComfortsEvents.getWakeTime: a day slept through in a hammock ends at dusk.
+[[injection]]
+id = "wake_time"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_sleep_finished_time"
+helper = "wake_time.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "now", ty = "i64", value = "current" },
+  { name = "wake", ty = "&mut i64", value = "&mut *new_time" },
+]
+
+# RopeAndNailBlock.dropHammock and HammockBlock.playerWillDestroy.
+[[injection]]
+id = "break"
+kind = "HEAD"
+target = "horizon_client::game::Game<'_>::break_block"
+helper = "break.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "at", ty = "[i32; 3]", value = "pos" },
+]
+
+# The window's own player lying in a bag or hammock: tick_remote_level puts them at a bed's
+# 9/16 every tick (it uses `?`, so no expression hook can go inside); right after it, in the
+# same client tick, the height is put right.
+[[injection]]
+id = "client_tick"
+kind = "HEAD"
+target = "horizon_client::game::remote_projectiles::Game<'_>::tick_own_rockets"
+helper = "client_tick.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+# Three wool in a row is also 26.3's own wool slab recipe (and VanillaBackport's in the Java
+# pack). Horizon tries vanilla's recipes before the mods', so the sleeping bag could never be
+# crafted; 26.3's RecipeManager goes by recipe id, where comforts: comes before minecraft:.
+# Comforts' recipes are tried first.
+# (Helpers can't name lifetimes, so the grid is copied aside by a first hook and the second,
+# with only `&Recipes`, gives back a name borrowed from it.)
+[[injection]]
+id = "recipes_grid"
+kind = "HEAD"
+priority = 200
+target = "horizon_client_lib::crafting::Recipes::find_with"
+helper = "recipes_grid.rs"
+bindings = [
+  { name = "cells", ty = "&[Option<ItemStack>]", value = "grid" },
+  { name = "width", ty = "usize", value = "size" },
+]
+
+[[injection]]
+id = "recipes_first"
+kind = "HEAD"
+cancellable = true
+priority = 100
+target = "horizon_client_lib::crafting::Recipes::find_with"
+helper = "recipes_first.rs"
+bindings = [{ name = "recipes", ty = "&Recipes", value = "&*self" }]

@@ -1,0 +1,15 @@
+{
+  "key": {
+    "M": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    " MM",
+    "M M",
+    " M "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tokimistoolshed:clippers"
+  },
+  "type": "minecraft:crafting_shaped"
+}

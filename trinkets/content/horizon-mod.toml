@@ -1,0 +1,8 @@
+# The empty-slot pictures of Trinkets 3.7.2 (Emi, MIT): one placeholder item per slot, shown
+# in the trinket menu (native/trinkets). Written by tools/trinkets_port.py.
+id = "trinkets"
+name = "Trinkets"
+version = "3.7.2"
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

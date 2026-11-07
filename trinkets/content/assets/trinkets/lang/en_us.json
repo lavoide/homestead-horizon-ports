@@ -1,0 +1,17 @@
+{
+  "item.trinkets.slot_head_face": "Face",
+  "item.trinkets.slot_head_hat": "Hat",
+  "item.trinkets.slot_chest_necklace": "Necklace",
+  "item.trinkets.slot_chest_back": "Back",
+  "item.trinkets.slot_chest_cape": "Cape",
+  "item.trinkets.slot_chest_charm": "Charm",
+  "item.trinkets.slot_hand_glove": "Glove",
+  "item.trinkets.slot_hand_ring": "Ring",
+  "item.trinkets.slot_offhand_ring": "Ring",
+  "item.trinkets.slot_legs_belt": "Belt",
+  "item.trinkets.slot_legs_lantern": "Wearable Lantern",
+  "item.trinkets.slot_legs_key": "Key",
+  "item.trinkets.slot_legs_quiver": "Quiver",
+  "item.trinkets.slot_feet_shoes": "Shoes",
+  "item.trinkets.slot_charm_charm": "Charm"
+}

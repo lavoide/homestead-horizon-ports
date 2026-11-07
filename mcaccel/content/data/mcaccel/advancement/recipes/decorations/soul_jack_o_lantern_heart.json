@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_carved_pumpkin_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:soul_torch"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:soul_jack_o_lantern_heart"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_carved_pumpkin_heart",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:soul_jack_o_lantern_heart"
+    ]
+  },
+  "sends_telemetry_event": false
+}

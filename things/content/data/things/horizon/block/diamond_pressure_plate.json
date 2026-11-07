@@ -1,0 +1,7 @@
+{
+  "template": "minecraft:stone_pressure_plate",
+  "properties": {
+    "sounds": "minecraft:iron_block",
+    "map_color": 31
+  }
+}

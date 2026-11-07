@@ -1,0 +1,9 @@
+{
+  "addition": "minecraft:netherite_ingot",
+  "base": "tokimistoolshed:diamond_scythe",
+  "result": {
+    "id": "tokimistoolshed:netherite_scythe"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

@@ -1,0 +1,16 @@
+# respectmytrims: a mixin bundle. As Respect My Trims 1.0.0 (tnoctua): a piece of armor with a
+# gold trim makes piglins treat the player as wearing gold (PiglinAi.isWearingSafeArmor).
+[mod]
+id = "respectmytrims"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[injection]]
+id = "gold-trim"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::piglins::Game<'_>::wearing_gold"
+helper = "trim.rs"
+bindings = [{ name = "game", ty = "&Game<'_>", value = "self" }]

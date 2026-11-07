@@ -1,0 +1,52 @@
+{
+  "template": "minecraft:glass",
+  "properties": {
+    "hardness": 2.0,
+    "explosion_resistance": 2.0,
+    "sounds": "minecraft:bricks"
+  },
+  "state_properties": {
+    "blocked": {
+      "type": "boolean"
+    },
+    "lit": {
+      "type": "boolean"
+    },
+    "stacked": {
+      "type": "boolean"
+    }
+  },
+  "shapes": {
+    "property": "stacked",
+    "values": {
+      "false": [
+        [
+          0.0625,
+          0.0,
+          0.0625,
+          0.9375,
+          0.6875,
+          0.9375
+        ],
+        [
+          0.0,
+          0.6875,
+          0.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "true": [
+        [
+          0.0625,
+          0.0,
+          0.0625,
+          0.9375,
+          1.0,
+          0.9375
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+accelerateddecay for Horizon 26.3 (version 0.1.0)
+
+A port of Accelerated Decay 3.0.1+mc1.20.1 by ErrorMikey.
+Original source: https://github.com/errormikey/accelerated-decay
+Original licence: GPL-3.0-only
+
+Ported to Horizon by lavoide: the rules are re-implemented as a Horizon native mod (Rust), and
+the content (items, blocks, textures, models, data) is carried over from the original jar.
+This port is distributed under the same licence as the original (GPL-3.0-only); the licence text is
+in LICENSE (the original's own file where its jar has one). It needs Horizon at commit
+3fb4c3138e0c5d8fdd2fdb555cf31368e8897497.

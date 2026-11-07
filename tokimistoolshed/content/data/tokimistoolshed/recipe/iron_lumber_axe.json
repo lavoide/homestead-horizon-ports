@@ -1,0 +1,15 @@
+{
+  "key": {
+    "M": "minecraft:iron_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    "MMS",
+    " S "
+  ],
+  "result": {
+    "id": "tokimistoolshed:iron_lumber_axe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+  "key": {
+    "#": "minecraft:iron_nugget",
+    "G": "things:gleaming_powder",
+    "R": "minecraft:rabbit_foot"
+  },
+  "pattern": [
+    " # ",
+    "#G#",
+    "#R#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "things:rabbit_foot_charm"
+  },
+  "type": "minecraft:crafting_shaped"
+}
