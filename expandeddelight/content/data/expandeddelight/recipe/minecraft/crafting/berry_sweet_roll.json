@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      {
+        "tag": "c:milk/milk"
+      },
+      {
+        "tag": "c:milk/milk_bottle"
+      }
+    ],
+    {
+      "item": "farmersdelight:wheat_dough"
+    },
+    {
+      "tag": "c:dusts/cinnamon"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ],
+  "result": {
+    "id": "expandeddelight:berry_sweet_roll"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "cookingtime": 600,
+  "experience": 0.55,
+  "ingredient": "expandeddelight:cheese_sandwich",
+  "result": {
+    "id": "expandeddelight:grilled_cheese"
+  },
+  "type": "minecraft:campfire_cooking"
+}

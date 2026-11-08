@@ -1,0 +1,29 @@
+{
+  "template": "minecraft:furnace",
+  "properties": {
+    "hardness": 1.0,
+    "explosion_resistance": 2.0,
+    "sounds": "minecraft:oak_planks",
+    "occludes": false
+  },
+  "shapes": {
+    "default": [
+      [
+        0.0625,
+        0.0,
+        0.0625,
+        0.9375,
+        0.375,
+        0.9375
+      ],
+      [
+        0.1875,
+        0.375,
+        0.1875,
+        0.8125,
+        1.0,
+        0.8125
+      ]
+    ]
+  }
+}

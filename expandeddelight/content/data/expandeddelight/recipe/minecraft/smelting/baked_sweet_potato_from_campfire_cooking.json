@@ -1,0 +1,9 @@
+{
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": "expandeddelight:sweet_potato",
+  "result": {
+    "id": "expandeddelight:baked_sweet_potato"
+  },
+  "type": "minecraft:campfire_cooking"
+}

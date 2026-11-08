@@ -1,4 +1,4 @@
-ends_delight for Horizon 26.3 (version 2.5+horizon.1)
+ends_delight for Horizon 26.3 (version 2.5+horizon.2)
 
 A port of End's Delight refabricated-1.20.1-2.5 by FoggyHillside.
 Original source: (no source address in its jar)

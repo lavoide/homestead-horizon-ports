@@ -1,0 +1,14 @@
+{
+  "key": {
+    "#": "expandeddelight:sweet_potato"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "expandeddelight:sweet_potato_crate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

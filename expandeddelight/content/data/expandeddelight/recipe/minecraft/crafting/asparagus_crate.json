@@ -1,0 +1,14 @@
+{
+  "key": {
+    "#": "expandeddelight:asparagus"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "expandeddelight:asparagus_crate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

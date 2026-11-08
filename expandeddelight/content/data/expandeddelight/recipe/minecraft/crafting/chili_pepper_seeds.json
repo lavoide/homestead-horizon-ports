@@ -1,0 +1,9 @@
+{
+  "ingredients": [
+    "expandeddelight:chili_pepper"
+  ],
+  "result": {
+    "id": "expandeddelight:chili_pepper_seeds"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

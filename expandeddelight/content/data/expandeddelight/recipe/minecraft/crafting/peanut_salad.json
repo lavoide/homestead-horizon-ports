@@ -1,0 +1,12 @@
+{
+  "ingredients": [
+    "#c:salad_ingredients",
+    "#c:crops/tomato",
+    "#c:crops/peanut",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "expandeddelight:peanut_salad"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

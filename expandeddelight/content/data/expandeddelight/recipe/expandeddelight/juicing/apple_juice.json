@@ -1,0 +1,10 @@
+{
+  "type": "expandeddelight:juicing",
+  "ingredients": [
+    "minecraft:apple",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "expandeddelight:apple_juice"
+  }
+}

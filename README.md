@@ -31,6 +31,7 @@ Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
 | [cratedelight](cratedelight/) | Storage crates and bags for crops, fish and other foods. | [Crate Delight](https://github.com/axperty/cratedelight) by Axperty | MIT |
 | [oceansdelight](oceansdelight/) | Squid, guardian and pufferfish dishes for Farmer's Delight (needs the Farmer's Delight port). | [Ocean's Delight](https://github.com/Scouter456/Oceans_Delight) by Scouter | MIT |
 | [ends_delight](ends_delight/) | End foods for Farmer's Delight: shulker, dragon and chorus dishes, End Stove, knives (needs the Farmer's Delight port). | [End's Delight]() by FoggyHillside | MIT |
+| [expandeddelight](expandeddelight/) | Asparagus, sweet potatoes, chili peppers, peanuts, cinnamon, salt, juices, the juicer and the mortar (needs the Farmer's Delight port). | [Expanded Delight](https://github.com/ianm1647/expandeddelight) by ianm1647 | MIT |
 | [yungsbridges](yungsbridges/) | Bridges over rivers. | [YUNG's Bridges](https://github.com/yungnickyoung/YUNGs-Bridges) by YUNGNICKYOUNG | LGPL-3.0-only |
 | [betterdays](betterdays/) | Slower or faster days and nights. | [BetterDays](https://github.com/wendall911/BetterDays) by wendall911 | LGPL-3.0-or-later |
 | [comforts](comforts/) | Sleeping bags and hammocks. | [Comforts](https://github.com/illusivesoulworks/comforts) by Illusive Soulworks | LGPL-3.0-or-later |
@@ -39,6 +40,7 @@ Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
 | [universalgraves](universalgraves/) | Your items wait in a grave where you died. | [Universal Graves](https://github.com/Patbox/UniversalGraves) by Patbox | LGPL-3.0-only |
 | [grindenchantments](grindenchantments/) | Grindstones move enchantments to books. | [Grind Enchantments](https://github.com/mschae23/grind-enchantments) by mschae23 | LGPL-3.0-or-later |
 | [respectmytrims](respectmytrims/) | Piglins respect gold armour trims. | [Respect My Trims](https://github.com/tnoctua/respectmytrims) by N (tnoctua) | LGPL-2.1-only |
+| [nethersdelight](nethersdelight/) | Nether foods for Farmer's Delight: stuffed hoglin, Blackstone Stove and furnaces, propelplants, machetes (needs the Farmer's Delight port). | [Nether's Delight Refabricated](https://github.com/DragonsPlusMinecraft/NethersDelightRefabricated) by RaymondBlaze | LGPL-2.1-only |
 | [blockrunner](blockrunner/) | Walk faster on path blocks. | [Block Runner](https://github.com/Fuzss/blockrunner) by Fuzs | MPL-2.0 |
 | [easymagic](easymagic/) | Enchanting tables keep their items and can re-roll. | [Easy Magic](https://github.com/Fuzss/easymagic) by Fuzs | MPL-2.0 |
 | [armorstatues](armorstatues/) | Sneak and use an armor stand with an empty hand to pose, style and move it. | [Armor Statues](https://github.com/Fuzss/armorstatues) by Fuzs | MPL-2.0 |

@@ -1,0 +1,6 @@
+{
+  "template": "minecraft:poppy",
+  "properties": {
+    "light": 8
+  }
+}

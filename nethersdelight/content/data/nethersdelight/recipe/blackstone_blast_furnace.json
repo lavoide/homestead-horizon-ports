@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "#c:ingots/iron",
+    "b": "nethersdelight:blackstone_furnace",
+    "s": "minecraft:polished_blackstone"
+  },
+  "pattern": [
+    "###",
+    "#b#",
+    "sss"
+  ],
+  "result": {
+    "id": "nethersdelight:blackstone_blast_furnace"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

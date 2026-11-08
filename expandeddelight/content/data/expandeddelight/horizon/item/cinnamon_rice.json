@@ -1,0 +1,16 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true
+    },
+    "minecraft:food": {
+      "nutrition": 7,
+      "saturation": 7.0
+    }
+  },
+  "crafting_remainder": "minecraft:bowl"
+}

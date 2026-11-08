@@ -1,0 +1,18 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "#c:foods/vegetables",
+    "#c:foods/pastas",
+    "#c:crops/tomato",
+    "#c:crops/onion",
+    "#c:foods/vegetables/chili_pepper"
+  ],
+  "result": {
+    "id": "expandeddelight:peperonata"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  }
+}

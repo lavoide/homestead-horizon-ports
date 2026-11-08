@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "#c:crops/rice",
+    "#c:dusts/cinnamon",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "expandeddelight:cinnamon_rice"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

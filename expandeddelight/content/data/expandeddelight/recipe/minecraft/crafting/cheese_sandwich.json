@@ -1,0 +1,10 @@
+{
+  "ingredients": [
+    "minecraft:bread",
+    "#c:cheese"
+  ],
+  "result": {
+    "id": "expandeddelight:cheese_sandwich"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

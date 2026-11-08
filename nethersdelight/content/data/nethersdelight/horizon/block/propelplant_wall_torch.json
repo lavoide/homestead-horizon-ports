@@ -1,0 +1,7 @@
+{
+  "template": "minecraft:wall_torch",
+  "properties": {
+    "light": 12
+  },
+  "item": false
+}

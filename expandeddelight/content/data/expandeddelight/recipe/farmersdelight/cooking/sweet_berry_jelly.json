@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "minecraft:sweet_berries",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "expandeddelight:sweet_berry_jelly"
+  },
+  "container": {
+    "id": "expandeddelight:glass_jar"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

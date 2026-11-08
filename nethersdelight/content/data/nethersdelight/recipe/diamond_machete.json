@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "m": "minecraft:diamond",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "  m",
+    " m ",
+    "s  "
+  ],
+  "result": {
+    "id": "nethersdelight:diamond_machete"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

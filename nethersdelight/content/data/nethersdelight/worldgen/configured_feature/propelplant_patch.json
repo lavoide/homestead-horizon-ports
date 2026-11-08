@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "weight": 1,
+        "data": {
+          "id": "nethersdelight:propelplant_cane",
+          "properties": {
+            "stem": "true",
+            "bud": "true",
+            "pearl": "false"
+          }
+        }
+      },
+      {
+        "weight": 1,
+        "data": {
+          "id": "nethersdelight:propelplant_cane",
+          "properties": {
+            "stem": "true",
+            "bud": "true",
+            "pearl": "true"
+          }
+        }
+      }
+    ]
+  }
+}

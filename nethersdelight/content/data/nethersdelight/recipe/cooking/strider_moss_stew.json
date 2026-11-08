@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "minecraft:warped_fungus",
+    "minecraft:crimson_fungus",
+    "minecraft:crimson_roots",
+    "minecraft:warped_fungus",
+    "#nethersdelight:raw_strider"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "nethersdelight:strider_moss_stew"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "#nethersdelight:raw_strider",
+    "minecraft:warped_fungus",
+    "minecraft:crimson_fungus",
+    "minecraft:warped_roots",
+    "minecraft:crimson_roots"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "nethersdelight:grilled_strider"
+  }
+}

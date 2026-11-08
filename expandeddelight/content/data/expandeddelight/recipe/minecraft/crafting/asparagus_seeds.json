@@ -1,0 +1,9 @@
+{
+  "ingredients": [
+    "expandeddelight:asparagus"
+  ],
+  "result": {
+    "id": "expandeddelight:asparagus_seeds"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

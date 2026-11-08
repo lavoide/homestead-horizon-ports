@@ -1,0 +1,13 @@
+{
+  "ingredients": [
+    "#c:salad_ingredients",
+    "#c:crops/onion",
+    "#c:crops/sweet_potato",
+    "#c:crops/cinnamon",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "expandeddelight:sweet_potato_salad"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

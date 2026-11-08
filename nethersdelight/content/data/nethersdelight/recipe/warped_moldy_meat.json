@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:warped_roots",
+    "minecraft:warped_roots",
+    "nethersdelight:hoglin_sirloin",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "nethersdelight:warped_moldy_meat"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

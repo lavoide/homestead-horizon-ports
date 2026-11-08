@@ -1,0 +1,32 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "farmersdelight:comfort",
+              "duration": 2400,
+              "amplifier": 0
+            }
+          ]
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 8,
+      "saturation": 9.6
+    },
+    "minecraft:use_remainder": {
+      "id": "minecraft:bowl"
+    }
+  },
+  "crafting_remainder": "minecraft:bowl",
+  "max_stack_size": 16
+}

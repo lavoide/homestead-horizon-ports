@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "b": "minecraft:blaze_rod",
+    "p": "nethersdelight:propelpearl",
+    "s": "#nethersdelight:raw_strider"
+  },
+  "pattern": [
+    "ps",
+    "b "
+  ],
+  "result": {
+    "id": "nethersdelight:nether_skewer"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

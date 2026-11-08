@@ -1,0 +1,22 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "nethersdelight:hoglin_hide",
+    "c": "minecraft:crimson_roots",
+    "f": "minecraft:crimson_fungus",
+    "h": "farmersdelight:ham",
+    "l": "nethersdelight:hoglin_loin",
+    "s": "farmersdelight:nether_salad",
+    "w": "minecraft:warped_roots"
+  },
+  "pattern": [
+    "wfc",
+    "l#l",
+    "hsh"
+  ],
+  "result": {
+    "id": "nethersdelight:raw_stuffed_hoglin"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

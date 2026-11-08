@@ -1,0 +1,14 @@
+{
+  "key": {
+    "c": "minecraft:wheat",
+    "w": "minecraft:sugar"
+  },
+  "pattern": [
+    "cwc"
+  ],
+  "result": {
+    "count": 8,
+    "id": "expandeddelight:sugar_cookie"
+  },
+  "type": "minecraft:crafting_shaped"
+}

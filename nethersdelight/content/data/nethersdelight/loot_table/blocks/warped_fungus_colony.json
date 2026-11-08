@@ -1,0 +1,125 @@
+{
+  "modifier": [
+    {
+      "type": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "entries": [
+        {
+          "children": [
+            {
+              "condition": {
+                "block": "nethersdelight:warped_fungus_colony",
+                "properties": {
+                  "age": "0"
+                },
+                "type": "minecraft:block_state_property"
+              },
+              "modifier": [
+                {
+                  "count": 2,
+                  "type": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:warped_fungus",
+              "type": "minecraft:item"
+            },
+            {
+              "condition": {
+                "block": "nethersdelight:warped_fungus_colony",
+                "properties": {
+                  "age": "1"
+                },
+                "type": "minecraft:block_state_property"
+              },
+              "modifier": [
+                {
+                  "count": 3,
+                  "type": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:warped_fungus",
+              "type": "minecraft:item"
+            },
+            {
+              "condition": {
+                "block": "nethersdelight:warped_fungus_colony",
+                "properties": {
+                  "age": "2"
+                },
+                "type": "minecraft:block_state_property"
+              },
+              "modifier": [
+                {
+                  "count": 4,
+                  "type": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:warped_fungus",
+              "type": "minecraft:item"
+            },
+            {
+              "condition": {
+                "terms": [
+                  {
+                    "block": "nethersdelight:warped_fungus_colony",
+                    "properties": {
+                      "age": "3"
+                    },
+                    "type": "minecraft:block_state_property"
+                  },
+                  {
+                    "term": {
+                      "predicate": {
+                        "items": "#forge:shears"
+                      },
+                      "type": "minecraft:match_tool"
+                    },
+                    "type": "minecraft:inverted"
+                  }
+                ],
+                "type": "minecraft:all_of"
+              },
+              "modifier": [
+                {
+                  "count": 5,
+                  "type": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:warped_fungus",
+              "type": "minecraft:item"
+            },
+            {
+              "condition": {
+                "terms": [
+                  {
+                    "block": "nethersdelight:warped_fungus_colony",
+                    "properties": {
+                      "age": "3"
+                    },
+                    "type": "minecraft:block_state_property"
+                  },
+                  {
+                    "predicate": {
+                      "items": "#forge:shears"
+                    },
+                    "type": "minecraft:match_tool"
+                  }
+                ],
+                "type": "minecraft:all_of"
+              },
+              "name": "nethersdelight:warped_fungus_colony",
+              "type": "minecraft:item"
+            }
+          ],
+          "type": "minecraft:alternatives"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1.0
+    }
+  ],
+  "type": "minecraft:block"
+}

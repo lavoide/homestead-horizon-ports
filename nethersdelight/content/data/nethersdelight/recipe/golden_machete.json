@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "m": "minecraft:gold_ingot",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "  m",
+    " m ",
+    "s  "
+  ],
+  "result": {
+    "id": "nethersdelight:golden_machete"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

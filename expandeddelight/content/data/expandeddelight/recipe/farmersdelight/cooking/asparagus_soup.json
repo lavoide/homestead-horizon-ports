@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "minecraft:water_bucket",
+    "#c:foods/vegetables/asparagus",
+    "#c:salad_ingredients"
+  ],
+  "result": {
+    "id": "expandeddelight:asparagus_soup"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

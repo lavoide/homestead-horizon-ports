@@ -1,0 +1,41 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:fire_resistance",
+              "duration": 200,
+              "amplifier": 0
+            }
+          ]
+        },
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:poison",
+              "duration": 200,
+              "amplifier": 0
+            }
+          ],
+          "probability": 0.35
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 2,
+      "saturation": 3.0
+    },
+    "minecraft:damage_resistant": {
+      "types": "#minecraft:is_fire"
+    }
+  }
+}

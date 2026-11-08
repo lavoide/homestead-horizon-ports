@@ -30,7 +30,7 @@ fn short(name: &str) -> Option<&str> {
     name.strip_prefix(NS).or_else(|| match name {
         // The add-ons' blocks that work as Farmer's Delight's do (Ocean's Delight, End's Delight):
         // the End Stove is a stove; the others keep their full names.
-        "ends_delight:end_stove" => Some("stove"),
+        "ends_delight:end_stove" | ND_STOVE => Some("stove"),
         _ if ADDON_BLOCKS.contains(&name) => Some(name),
         _ => None,
     })
@@ -43,9 +43,53 @@ const ADDON_BLOCKS: &[&str] = &[
     "ends_delight:grilled_shulker_block",
     DRAGON_LEG,
     SUCCULENT,
+    STUFFED_HOGLIN,
+    PROPELPLANT,
+    CRIMSON_COLONY,
+    WARPED_COLONY,
+    SOUL_COMPOST,
+    RICH_SOUL_SOIL,
+    MIMICARNATION,
+    "nethersdelight:propelplant_torch",
+    JUICER,
+    MORTAR,
+    CINNAMON_LOG,
+    CINNAMON_SAPLING,
+    "nethersdelight:blackstone_furnace",
+    "nethersdelight:nether_brick_smoker",
+    "nethersdelight:blackstone_blast_furnace",
 ];
 const DRAGON_LEG: &str = "ends_delight:dragon_leg_with_sauce_block";
 const SUCCULENT: &str = "ends_delight:chorus_succulent";
+const ND_STOVE: &str = "nethersdelight:blackstone_stove";
+const STUFFED_HOGLIN: &str = "nethersdelight:stuffed_hoglin";
+const PROPELPLANT: &str = "nethersdelight:propelplant_cane";
+const CRIMSON_COLONY: &str = "nethersdelight:crimson_fungus_colony";
+const WARPED_COLONY: &str = "nethersdelight:warped_fungus_colony";
+const SOUL_COMPOST: &str = "nethersdelight:soul_compost";
+const RICH_SOUL_SOIL: &str = "nethersdelight:rich_soul_soil";
+const MIMICARNATION: &str = "nethersdelight:mimicarnation";
+const JUICER: &str = "expandeddelight:juicer";
+const MORTAR: &str = "expandeddelight:mortar_and_pestle";
+const CINNAMON_LOG: &str = "expandeddelight:cinnamon_log";
+const CINNAMON_SAPLING: &str = "expandeddelight:cinnamon_sapling";
+
+/// Nether's Delight's furnaces (`AbstractFurnaceBlockEntity`): vanilla's furnace cooking on a
+/// block entity of this module, as Horizon keeps its own furnaces to vanilla's blocks.
+fn nd_furnace(n: &str) -> Option<horizon_client::containers::FurnaceKind> {
+    use horizon_client::containers::FurnaceKind as K;
+    Some(match n {
+        "nethersdelight:blackstone_furnace" => K::Furnace,
+        "nethersdelight:nether_brick_smoker" => K::Smoker,
+        "nethersdelight:blackstone_blast_furnace" => K::BlastFurnace,
+        _ => return None,
+    })
+}
+const ND_FURNACE_MENU: &str = "nethersdelight:furnace";
+/// The two-block feasts (a bed's head and foot sharing the servings).
+fn two_part(n: &str) -> bool {
+    n == DRAGON_LEG || n == STUFFED_HOGLIN
+}
 
 /// Direction by name, as (x, z) steps; `None` for up and down.
 fn step(dir: &str) -> (i32, i32) {
@@ -168,6 +212,8 @@ fn stack_of(id: &str, count: u32) -> ItemStack {
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub(crate) enum Kind {
+    Furnace,
+    Juicer,
     Stove,
     Pot,
     Skillet,
@@ -178,12 +224,16 @@ pub(crate) enum Kind {
 
 pub(crate) fn kind_of_block(block: &str) -> Option<Kind> {
     let n = short(block)?;
+    if nd_furnace(n).is_some() {
+        return Some(Kind::Furnace);
+    }
     Some(match n {
         "stove" => Kind::Stove,
         "cooking_pot" => Kind::Pot,
         "skillet" => Kind::Skillet,
         "cutting_board" => Kind::Board,
         "basket" => Kind::Basket,
+        JUICER => Kind::Juicer,
         _ if n.ends_with("_cabinet") => Kind::Cabinet,
         _ => return None,
     })
@@ -195,6 +245,8 @@ fn entity_id(k: Kind) -> &'static str {
         Kind::Skillet => "farmersdelight:skillet",
         Kind::Board => "farmersdelight:cutting_board",
         Kind::Basket => "farmersdelight:basket",
+        Kind::Juicer => JUICER,
+        Kind::Furnace => ND_FURNACE_MENU,
         Kind::Cabinet => "farmersdelight:cabinet",
     }
 }
@@ -205,6 +257,8 @@ fn kind_of_entity(id: &str) -> Option<Kind> {
         "farmersdelight:skillet" => Kind::Skillet,
         "farmersdelight:cutting_board" => Kind::Board,
         "farmersdelight:basket" => Kind::Basket,
+        JUICER => Kind::Juicer,
+        ND_FURNACE_MENU => Kind::Furnace,
         "farmersdelight:cabinet" => Kind::Cabinet,
         _ => return None,
     })
@@ -221,7 +275,7 @@ pub(crate) fn block_entity(block: &str, entity: &mut Option<(String, Compound)>)
 
 /// `EntityBlock.getTicker`.
 pub(crate) fn ticks(block: &str) -> bool {
-    matches!(kind_of_block(block), Some(Kind::Stove | Kind::Pot | Kind::Skillet | Kind::Basket))
+    matches!(kind_of_block(block), Some(Kind::Stove | Kind::Pot | Kind::Skillet | Kind::Basket | Kind::Juicer | Kind::Furnace))
 }
 
 pub(crate) const POT_MENU: &str = "farmersdelight:cooking_pot";
@@ -266,6 +320,23 @@ pub(crate) fn container(block: &str) -> Option<ModContainer> {
             }
         }
         Kind::Basket | Kind::Cabinet => all(27),
+        // AbstractFurnaceBlockEntity: the input from the top, fuel from the sides, the result
+        // (and an emptied bucket) below.
+        Kind::Furnace => ModContainer {
+            slots: 3,
+            faces: [vec![2, 1], vec![0], vec![1], vec![1], vec![1], vec![1]],
+            inputs: vec![0, 1],
+            outputs: vec![2],
+            menu: Some(ND_FURNACE_MENU.into()),
+        },
+        // JuicerBlockEntity: the fruit and sugar from the top, bottles from the sides, juice below.
+        Kind::Juicer => ModContainer {
+            slots: 5,
+            faces: [vec![4], vec![0, 1], vec![2], vec![2], vec![2], vec![2]],
+            inputs: vec![0, 1, 2],
+            outputs: vec![4],
+            menu: Some(JUICER.into()),
+        },
     })
 }
 
@@ -401,7 +472,7 @@ fn heated(game: &Game<'_>, p: [i32; 3], direct: bool) -> bool {
     let source = |game: &Game<'_>, q: [i32; 3]| -> Option<bool> {
         let name = name_at(game, q);
         // End's Delight puts its End Stove in the tag; here it is a stove (`short`).
-        (block_tag(game, "farmersdelight:heat_sources", &name) || short(&name) == Some("stove"))
+        (block_tag(game, "farmersdelight:heat_sources", &name) || short(&name) == Some("stove") || nd_furnace(&name).is_some())
             .then(|| prop(game, q, "lit").is_none_or(|v| v == "true"))
     };
     let below = [p[0], p[1] - 1, p[2]];
@@ -440,6 +511,8 @@ pub(crate) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         Kind::Pot => pot_tick(game, pos, entity),
         Kind::Skillet => skillet_tick(game, pos, entity),
         Kind::Basket => basket_tick(game, pos, entity),
+        Kind::Juicer => juicer_tick(game, pos, entity),
+        Kind::Furnace => furnace_tick(game, pos, entity),
         _ => {}
     }
 }
@@ -702,6 +775,133 @@ fn pot_tick(game: &mut Game<'_>, pos: [i32; 3], e: &mut ModBlockEntity) {
     let _ = changed;
 }
 
+/// `AbstractFurnaceBlockEntity.serverTick` on the module's block entity, through Horizon's own
+/// furnace (`FurnaceCooking.tick`), and the block's `lit` following it.
+fn furnace_tick(game: &mut Game<'_>, pos: [i32; 3], e: &mut ModBlockEntity) {
+    use horizon_client::furnace::FurnaceCooking;
+    let Some(kind) = nd_furnace(&name_at(game, pos)) else { return };
+    sized(&mut e.items, 3);
+    let mut f = horizon_client::containers::Furnace {
+        kind,
+        items: [e.items[0].take(), e.items[1].take(), e.items[2].take()],
+        lit_remaining: nbt_int(&e.nbt, "lit_time_remaining"),
+        lit_total: nbt_int(&e.nbt, "lit_total_time"),
+        cooking_timer: nbt_int(&e.nbt, "cooking_time_spent"),
+        cooking_total: nbt_int(&e.nbt, "cooking_total_time"),
+        speed: 1.0,
+        recipes_used: std::collections::HashMap::new(),
+    };
+    let mut drops = Vec::new();
+    let lit = f.tick(game.recipes(), game.items(), game.res.providers(), &mut drops);
+    let [a, b, c] = f.items;
+    e.items[0] = a;
+    e.items[1] = b;
+    e.items[2] = c;
+    put(&mut e.nbt, "lit_time_remaining", Tag::Int(f.lit_remaining));
+    put(&mut e.nbt, "lit_total_time", Tag::Int(f.lit_total));
+    put(&mut e.nbt, "cooking_time_spent", Tag::Int(f.cooking_timer));
+    put(&mut e.nbt, "cooking_total_time", Tag::Int(f.cooking_total));
+    let data = vec![f.lit_remaining, f.lit_total, f.cooking_timer, f.cooking_total];
+    if e.data != data {
+        e.data = data;
+    }
+    if let Some(lit) = lit
+        && prop(game, pos, "lit").is_some_and(|v| v != lit.to_string())
+    {
+        set_props(game, pos, &[("lit", if lit { "true" } else { "false" })]);
+    }
+}
+
+struct JuiceRecipe {
+    ingredients: Vec<horizon_client::crafting::Ingredient>,
+    result: ItemStack,
+}
+thread_local! {
+    static JUICE_RECIPES: std::cell::RefCell<(usize, usize, Arc<Vec<JuiceRecipe>>)> = std::cell::RefCell::new((0, 0, Arc::new(Vec::new())));
+}
+fn juice_recipes(game: &Game<'_>) -> Arc<Vec<JuiceRecipe>> {
+    let list = game.native_recipes_of_type("expandeddelight:juicing");
+    let tag = (list.as_ptr() as usize, list.len());
+    if let Some(r) = JUICE_RECIPES.with(|c| {
+        let c = c.borrow();
+        ((c.0, c.1) == tag).then(|| Arc::clone(&c.2))
+    }) {
+        return r;
+    }
+    let mut out = Vec::new();
+    for r in list {
+        let j = &r.json;
+        let Some(result) = horizon_client::crafting::recipe_result(&j["result"]) else { continue };
+        let Some(ingredients) = j["ingredients"]
+            .as_array()
+            .and_then(|a| a.iter().map(|i| game.native_recipe_ingredient(i)).collect::<Option<Vec<_>>>())
+        else {
+            continue;
+        };
+        if ingredients.len() == 2 {
+            out.push(JuiceRecipe { ingredients, result });
+        }
+    }
+    let out = Arc::new(out);
+    JUICE_RECIPES.with(|c| *c.borrow_mut() = (tag.0, tag.1, Arc::clone(&out)));
+    out
+}
+
+/// `JuicerBlockEntity.tick`: 200 ticks per juice (the fruit in slot 0, its partner in slot 1), into
+/// slot 3, then bottled from slot 2 into slot 4.
+fn juicer_tick(game: &mut Game<'_>, _pos: [i32; 3], e: &mut ModBlockEntity) {
+    const MAX: i32 = 200;
+    sized(&mut e.items, 5);
+    let mut progress = nbt_int(&e.nbt, "juicer.progress");
+    let recipes = juice_recipes(game);
+    let found = match (&e.items[0], &e.items[1]) {
+        (Some(a), Some(b)) => recipes.iter().find(|r| r.ingredients[0].test(a) && r.ingredients[1].test(b)),
+        _ => None,
+    };
+    let fits = |r: &JuiceRecipe, slot: &Option<ItemStack>| {
+        slot.as_ref().is_none_or(|s| s.item == r.result.item && s.count < max_stack(game, &s.item))
+    };
+    match found.filter(|r| fits(r, &e.items[3])) {
+        Some(r) => {
+            progress += 1;
+            if progress > MAX {
+                for i in 0..2 {
+                    if let Some(s) = &mut e.items[i] {
+                        s.count -= 1;
+                        if s.count == 0 {
+                            e.items[i] = None;
+                        }
+                    }
+                }
+                match &mut e.items[3] {
+                    Some(s) => s.count += 1,
+                    slot => *slot = Some(ItemStack { count: 1, ..r.result.clone() }),
+                }
+                progress = 0;
+            }
+        }
+        None => progress = 0,
+    }
+    // useStoredBottleOnJuice
+    if let (Some(juice), Some(bottle)) = (e.items[3].clone(), e.items[2].clone())
+        && &*bottle.item == "minecraft:glass_bottle"
+    {
+        let max = max_stack(game, &juice.item);
+        let have = e.items[4].as_ref().map_or(0, |o| o.count);
+        if e.items[4].as_ref().is_none_or(|o| o.item == juice.item) && have < max {
+            let n = juice.count.min(bottle.count).min(max - have);
+            e.items[4] = Some(ItemStack { count: have + n, ..juice.clone() });
+            e.items[3] = (juice.count > n).then(|| ItemStack { count: juice.count - n, ..juice });
+            e.items[2] = (bottle.count > n).then(|| ItemStack { count: bottle.count - n, ..bottle });
+        }
+    }
+    put(&mut e.nbt, "juicer.progress", Tag::Int(progress));
+    let data = vec![progress, MAX];
+    if e.data != data {
+        e.data = data;
+    }
+}
+
 /// `SkilletBlock.getSkilletCookingTime`.
 fn skillet_time(original: u32) -> i32 {
     let original = if original > 0 { original as i32 } else { 600 };
@@ -917,6 +1117,31 @@ pub(crate) fn submit(game: &Game<'_>, pos: [i32; 3], state: BlockStateId, entity
 // ---------------------------------------------------------------------------------------------
 
 pub(crate) fn screen(block: &str) -> Option<horizon_client::mod_api::NativeScreen> {
+    // AbstractFurnaceMenu: input, fuel, result.
+    if kind_of_block(block) == Some(Kind::Furnace) {
+        return Some(horizon_client::mod_api::NativeScreen {
+            width: 176.0,
+            height: 166.0,
+            slots: vec![Some([56.0, 17.0]), Some([56.0, 53.0]), Some([116.0, 35.0])],
+            inventory_y: 84.0,
+            inventory_x: 8.0,
+            own_labels: false,
+            own_background: true,
+        });
+    }
+    // JuicerScreenHandler: the fruit, its partner, bottles, (the juice, kept out of reach:
+    // LockedSlot) and the bottled juice.
+    if kind_of_block(block) == Some(Kind::Juicer) {
+        return Some(horizon_client::mod_api::NativeScreen {
+            width: 176.0,
+            height: 166.0,
+            slots: vec![Some([48.0, 25.0]), Some([48.0, 43.0]), Some([80.0, 60.0]), None, Some([116.0, 60.0])],
+            inventory_y: 84.0,
+            inventory_x: 8.0,
+            own_labels: false,
+            own_background: true,
+        });
+    }
     if kind_of_block(block) != Some(Kind::Pot) {
         return None;
     }
@@ -941,6 +1166,40 @@ pub(crate) fn screen(block: &str) -> Option<horizon_client::mod_api::NativeScree
 }
 
 pub(crate) fn screen_draw(game: &Game<'_>, block: &str, data: &[i32], batch: &mut HudBatch, origin: [f32; 2]) {
+    // AbstractFurnaceScreen.renderBg: the flame (lit time left) and the arrow (cooking).
+    if let Some(kind) = nd_furnace(block) {
+        let [ox, oy] = origin;
+        let name = match kind {
+            horizon_client::containers::FurnaceKind::Smoker => "smoker",
+            horizon_client::containers::FurnaceKind::BlastFurnace => "blast_furnace",
+            _ => "furnace",
+        };
+        game.native_sprite(batch, &format!("gui/container/{name}"), [0.0, 0.0, 176.0, 166.0], [ox, oy, 176.0, 166.0]);
+        let get = |i: usize| data.get(i).copied().unwrap_or(0);
+        let (lit, lit_total, cook, cook_total) = (get(0), get(1), get(2), get(3));
+        if lit > 0 {
+            let total = if lit_total == 0 { 200 } else { lit_total };
+            let h = (lit as f32 / total as f32 * 13.0).clamp(0.0, 13.0).ceil() + 1.0;
+            game.native_sprite(batch, "gui/sprites/container/furnace/lit_progress", [0.0, 14.0 - h, 14.0, h], [ox + 56.0, oy + 36.0 + 14.0 - h, 14.0, h]);
+        }
+        if cook > 0 && cook_total > 0 {
+            let w = (cook as f32 / cook_total as f32 * 24.0).clamp(0.0, 24.0).ceil();
+            game.native_sprite(batch, "gui/sprites/container/furnace/burn_progress", [0.0, 0.0, w, 16.0], [ox + 79.0, oy + 34.0, w, 16.0]);
+        }
+        return;
+    }
+    // JuicerScreen.renderBg: the arrow, 22 pixels at full progress.
+    if kind_of_block(block) == Some(Kind::Juicer) {
+        let [ox, oy] = origin;
+        let tex = "expandeddelight:gui/juicer_gui";
+        game.native_sprite(batch, tex, [0.0, 0.0, 176.0, 166.0], [ox, oy, 176.0, 166.0]);
+        let (p, max) = (data.first().copied().unwrap_or(0), data.get(1).copied().unwrap_or(0));
+        let w = if p != 0 && max != 0 { p * 22 / max } else { 0 };
+        if w > 0 {
+            game.native_sprite(batch, tex, [177.0, 0.0, w as f32, 17.0], [ox + 79.0, oy + 35.0, w as f32, 17.0]);
+        }
+        return;
+    }
     if kind_of_block(block) != Some(Kind::Pot) {
         return;
     }
@@ -1009,7 +1268,7 @@ pub(crate) fn right_click(game: &mut Game<'_>, at: [i32; 3], _side: [i32; 3]) ->
     let held = game.held().cloned();
     // Blocks whose template would act on its own (a furnace's menu, a cake's bite) take every
     // click their Java block would not use.
-    let template_acts = n == "stove" || is_pie(n) || feast(n).is_some();
+    let template_acts = n == "stove" || is_pie(n) || feast(n).is_some() || n == STUFFED_HOGLIN;
     if !main {
         return template_acts;
     }
@@ -1025,6 +1284,16 @@ pub(crate) fn right_click(game: &mut Game<'_>, at: [i32; 3], _side: [i32; 3]) ->
     match n {
         "stove" => {
             stove_use(game, at, held.as_ref());
+            true
+        }
+        CRIMSON_COLONY | WARPED_COLONY => colony_use(game, at, n, held.as_ref()),
+        MORTAR => {
+            mortar_use(game, at, held.as_ref());
+            true
+        }
+        PROPELPLANT => propelplant_use(game, at),
+        STUFFED_HOGLIN => {
+            hoglin_use(game, at, held.as_ref());
             true
         }
         "cooking_pot" => pot_use(game, at, held.as_ref(), sneak),
@@ -1051,8 +1320,18 @@ fn stove_use(game: &mut Game<'_>, at: [i32; 3], held: Option<&ItemStack>) {
     if let Some(h) = held {
         let item = &*h.item;
         if lit {
+            // BlackstoneStoveBlock.use: soul sand or soil makes the fire a soul fire.
+            if (item == "minecraft:soul_sand" || item == "minecraft:soul_soil") && prop(game, at, "soul").as_deref() == Some("false") {
+                play(game, "minecraft:entity.generic.extinguish_fire", c, 1.0, 1.0);
+                set_props(game, at, &[("soul", "true")]);
+                play(game, "minecraft:entity.generic.explode", c, 0.2, 2.6);
+                play(game, "minecraft:particle.soul_escape", c, 1.5, 2.6);
+                use_one(game);
+                return;
+            }
             if item_tag(game, "minecraft:shovels", item) {
                 set_props(game, at, &[("lit", "false")]);
+                set_props(game, at, &[("soul", "false")]);
                 play(game, "minecraft:block.fire.extinguish", c, 0.5, 2.6);
                 game.damage_held(1);
                 return;
@@ -1060,6 +1339,7 @@ fn stove_use(game: &mut Game<'_>, at: [i32; 3], held: Option<&ItemStack>) {
             if item == "minecraft:water_bucket" {
                 play(game, "minecraft:entity.generic.extinguish_fire", c, 1.0, 1.0);
                 set_props(game, at, &[("lit", "false")]);
+                set_props(game, at, &[("soul", "false")]);
                 play(game, "minecraft:block.fire.extinguish", c, 0.5, 2.6);
                 if !game.creative {
                     *game.held_mut() = Some(stack_of("minecraft:bucket", 1));
@@ -1420,7 +1700,12 @@ fn colony_use(game: &mut Game<'_>, at: [i32; 3], n: &str, held: Option<&ItemStac
     if age == 0 || !held.is_some_and(|h| &*h.item == "minecraft:shears") {
         return false;
     }
-    let mushroom = if n.starts_with("brown") { "minecraft:brown_mushroom" } else { "minecraft:red_mushroom" };
+    let mushroom = match n {
+        CRIMSON_COLONY => "minecraft:crimson_fungus",
+        WARPED_COLONY => "minecraft:warped_fungus",
+        _ if n.starts_with("brown") => "minecraft:brown_mushroom",
+        _ => "minecraft:red_mushroom",
+    };
     pop(game, at, stack_of(mushroom, 1));
     play(game, "minecraft:entity.mooshroom.shear", centre(at), 1.0, 1.0);
     if let Some(s) = with_props(game, at, &[("age", &(age - 1).to_string())]) {
@@ -1503,7 +1788,7 @@ fn feast_use(game: &mut Game<'_>, at: [i32; 3], n: &str, held: Option<&ItemStack
     let Some((serving, leftovers)) = feast(n) else { return };
     let c = centre(at);
     let servings: i32 = prop(game, at, "servings").and_then(|v| v.parse().ok()).unwrap_or(0);
-    let pair = (n == DRAGON_LEG).then(|| dragon_leg_pair(game, at)).flatten();
+    let pair = two_part(n).then(|| pair_of(game, at)).flatten();
     if servings == 0 {
         play(game, "minecraft:block.wood.break", c, 0.8, 0.8);
         let _ = game.destroy_block_dropping(at);
@@ -1535,13 +1820,91 @@ fn feast_use(game: &mut Game<'_>, at: [i32; 3], n: &str, held: Option<&ItemStack
     play(game, "minecraft:item.armor.equip_generic", c, 1.0, 1.0);
 }
 
-/// `DragonLegBlock.getDirectionTowardsOtherPart`: the other half, when it is there.
-fn dragon_leg_pair(game: &Game<'_>, at: [i32; 3]) -> Option<[i32; 3]> {
+/// `DragonLegBlock.getDirectionTowardsOtherPart`, `StuffedHoglinBlock.getDirectionToOther`: the
+/// other half, when it is there.
+fn pair_of(game: &Game<'_>, at: [i32; 3]) -> Option<[i32; 3]> {
+    let name = name_at(game, at);
     let facing = prop(game, at, "facing")?;
     let (dx, dz) = step(&facing);
     let k = if prop(game, at, "part").as_deref() == Some("head") { 1 } else { -1 };
     let q = [at[0] + dx * k, at[1], at[2] + dz * k];
-    (&*name_at(game, q) == DRAGON_LEG && prop(game, q, "part") != prop(game, at, "part")).then_some(q)
+    (name_at(game, q) == name && prop(game, q, "part") != prop(game, at, "part")).then_some(q)
+}
+
+/// `StuffedHoglinBlock.use`: a knife cuts the ears (servings 11 and 10), then a bowl takes the
+/// snout, four of ham and four of roast; both halves count down together.
+fn hoglin_use(game: &mut Game<'_>, at: [i32; 3], held: Option<&ItemStack>) {
+    let servings: i32 = prop(game, at, "servings").and_then(|v| v.parse().ok()).unwrap_or(0);
+    let pair = pair_of(game, at);
+    let c = centre(at);
+    let set_both = |game: &mut Game<'_>, v: i32| {
+        set_props(game, at, &[("servings", &v.to_string())]);
+        if let Some(q) = pair {
+            set_props(game, q, &[("servings", &v.to_string())]);
+        }
+    };
+    if servings > 9 {
+        if held.is_some_and(|h| is_knife(game, &h.item)) {
+            set_both(game, servings - 1);
+            spawn(game, stack_of("nethersdelight:hoglin_ear", 1), [f64::from(at[0]), f64::from(at[1]), f64::from(at[2])], [0.0, 0.2, 0.0]);
+            play(game, "farmersdelight:block.cutting_board.knife", c, 0.8, 0.8);
+        } else {
+            tell(game, horizon_client::text::Text::translate("nethersdelight.block.feast.use_knife", &[]));
+        }
+        return;
+    }
+    let bowl = held.is_some_and(|h| &*h.item == "minecraft:bowl");
+    if bowl && servings > 0 {
+        let serving = match servings {
+            9 => "nethersdelight:plate_of_stuffed_hoglin_snout",
+            5..=8 => "nethersdelight:plate_of_stuffed_hoglin_ham",
+            _ => "nethersdelight:plate_of_stuffed_hoglin_roast",
+        };
+        set_both(game, servings - 1);
+        use_one(game);
+        give_or_drop(game, stack_of(serving, 1));
+        play(game, "minecraft:item.armor.equip_generic", c, 1.0, 1.0);
+        return;
+    }
+    if servings == 0 {
+        play(game, "minecraft:block.wood.break", c, 1.0, 1.0);
+        let _ = game.destroy_block_dropping(at);
+        if let Some(q) = pair {
+            remove_block(game, q);
+        }
+    } else {
+        let bowl = horizon_client::text::Text::translate("item.minecraft.bowl", &[]);
+        tell(game, horizon_client::text::Text::translate("farmersdelight.block.feast.use_container", &[bowl]));
+    }
+}
+
+/// `MortarPestleBlock.use`: sugar cane, raw cinnamon or rock salt ground into two.
+fn mortar_use(game: &mut Game<'_>, at: [i32; 3], held: Option<&ItemStack>) {
+    let out = match held.map(|h| &*h.item) {
+        Some("minecraft:sugar_cane") => "minecraft:sugar",
+        Some("expandeddelight:raw_cinnamon") => "expandeddelight:ground_cinnamon",
+        Some("expandeddelight:salt_rock") => "expandeddelight:ground_salt",
+        _ => {
+            tell(game, horizon_client::text::Text::translate("block.expandeddelight.mortar_and_pestle.pass", &[]));
+            return;
+        }
+    };
+    use_one(game);
+    pop(game, at, stack_of(out, 2));
+    play(game, "minecraft:ui.stonecutter.take_result", centre(at), 1.0, 1.0);
+}
+
+/// `PropelplantCaneBlock.harvestPearls`: 1-2 propelpearls from a cane with its pearl.
+fn propelplant_use(game: &mut Game<'_>, at: [i32; 3]) -> bool {
+    if prop(game, at, "pearl").as_deref() != Some("true") {
+        return false;
+    }
+    let n = 1 + game.world.random.next_int_bound(2).unwrap_or(0) as u32;
+    pop(game, at, stack_of("nethersdelight:propelpearl", n));
+    let pitch = 0.8 + game.world.random.next_float() * 0.4;
+    play(game, "minecraft:block.sweet_berry_bush.pick_berries", centre(at), 1.0, pitch);
+    set_props(game, at, &[("pearl", "false")]);
+    true
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -1554,6 +1917,11 @@ fn seed_crop(item: &str) -> Option<&'static str> {
         "farmersdelight:cabbage_seeds" => "farmersdelight:cabbages",
         "farmersdelight:tomato_seeds" => "farmersdelight:budding_tomatoes",
         "farmersdelight:onion" => "farmersdelight:onions",
+        // Expanded Delight's ItemNameBlockItems.
+        "expandeddelight:asparagus_seeds" => "expandeddelight:asparagus_crop",
+        "expandeddelight:chili_pepper_seeds" => "expandeddelight:chili_pepper_crop",
+        "expandeddelight:sweet_potato" => "expandeddelight:sweet_potatoes_crop",
+        "expandeddelight:peanut" => "expandeddelight:peanut_crop",
         _ => return None,
     })
 }
@@ -1573,6 +1941,34 @@ pub(crate) fn use_on(game: &mut Game<'_>, item: &ItemStack, at: [i32; 3], side: 
             play(game, "minecraft:block.fungus.place", centre(at), 1.0, 0.8);
             return true;
         }
+    }
+    // StandingAndWallBlockItem: the propelplant torch on a wall's side is its own wall torch (the
+    // torch template's item would place vanilla's).
+    if &*item.item == "nethersdelight:propelplant_torch" && side[1] == 0 {
+        let dir = match (side[0], side[2]) {
+            (0, -1) => "north",
+            (0, 1) => "south",
+            (-1, 0) => "west",
+            _ => "east",
+        };
+        let spot = [at[0] + side[0], at[1], at[2] + side[2]];
+        if game.res.facts().get(state_at(game, spot)).replaceable
+            && game.res.facts().get(state_at(game, at)).full_collision
+            && set_default(game, spot, "nethersdelight:propelplant_wall_torch", &[("facing", dir)])
+        {
+            play(game, "minecraft:block.wood.place", centre(spot), 1.0, 0.8);
+            use_one(game);
+        }
+        return true;
+    }
+    // CinnamonLogBlock.use: an axe strips it into an oak log's stripped form, with 2 raw cinnamon.
+    if &*name == CINNAMON_LOG && item_tag(game, "minecraft:axes", &item.item) {
+        let axis = prop(game, at, "axis").unwrap_or_else(|| "y".into());
+        game.damage_held(1);
+        pop(game, at, stack_of("expandeddelight:raw_cinnamon", 2));
+        play(game, "minecraft:item.axe.strip", centre(at), 1.0, 1.0);
+        set_default(game, at, "minecraft:stripped_oak_log", &[("axis", &axis)]);
+        return true;
     }
     // RichSoilBlock.getToolModifiedState: a hoe tills it, with air above.
     if &*name == "farmersdelight:rich_soil" && item_tag(game, "minecraft:hoes", &item.item) && side != [0, -1, 0] {
@@ -1627,12 +2023,19 @@ pub(crate) fn use_on(game: &mut Game<'_>, item: &ItemStack, at: [i32; 3], side: 
 pub(crate) fn placed(game: &mut Game<'_>, pos: [i32; 3], state: BlockStateId) {
     let name = game.res.facts().get(state).name.clone();
     match short(&name) {
-        Some(DRAGON_LEG) if prop(game, pos, "part").as_deref() == Some("head") => {
+        Some(n @ (DRAGON_LEG | STUFFED_HOGLIN)) if prop(game, pos, "part").as_deref() == Some("head") => {
             let facing = prop(game, pos, "facing").unwrap_or_else(|| "north".into());
             let (dx, dz) = step(&facing);
             let foot = [pos[0] + dx, pos[1], pos[2] + dz];
             if game.res.facts().get(state_at(game, foot)).replaceable {
-                set_default(game, foot, DRAGON_LEG, &[("facing", &facing), ("part", "foot")]);
+                set_default(game, foot, n, &[("facing", &facing), ("part", "foot")]);
+            }
+        }
+        // PropelplantCaneBlock.updateShape: the cane below is no longer the top (no bud, no pearl).
+        Some(PROPELPLANT) => {
+            let below = [pos[0], pos[1] - 1, pos[2]];
+            if &*name_at(game, below) == PROPELPLANT {
+                set_props(game, below, &[("bud", "false"), ("pearl", "false")]);
             }
         }
         Some("full_tatami_mat") => {
@@ -1704,6 +2107,13 @@ pub(crate) fn consume_effect(game: &mut Game<'_>, kind: &str) {
         }
         // MelonJuiceItem
         "farmersdelight:heal" => game.apply_effect_action(EffectAction::Heal(2.0)),
+        // MagmaGelatinItem, PropelpearlItem: setSecondsOnFire.
+        "nethersdelight:ignite_60" | "nethersdelight:ignite_4" => {
+            let secs: i32 = kind.rsplit('_').next().and_then(|v| v.parse().ok()).unwrap_or(0);
+            if let Some(p) = game.player.as_mut() {
+                p.fire_ticks = p.fire_ticks.max(secs * 20);
+            }
+        }
         // PopsicleItem
         "farmersdelight:extinguish" => {
             if let Some(p) = game.player.as_mut() {
@@ -1745,6 +2155,19 @@ pub(crate) fn player_tick(game: &mut Game<'_>) {
             f.exhaustion = (f.exhaustion - f.exhaustion.min(4.0)).max(0.0);
         }
     }
+    // PropelplantCaneBlock.entityInside: walking (not crouching) into a cane sets it off.
+    if let Some(p) = game.player.as_ref()
+        && !game.creative
+        && !sneaking(game)
+    {
+        let feet = [p.position.x.floor() as i32, p.position.y.floor() as i32, p.position.z.floor() as i32];
+        let head = [feet[0], feet[1] + 1, feet[2]];
+        if let Some(q) = [feet, head].into_iter().find(|q| &*name_at(game, *q) == PROPELPLANT) {
+            remove_block(game, q);
+            let _ = game.server_explode(centre(q), 1.0, explosion::BlockInteraction::Keep, false);
+            return;
+        }
+    }
     // StoveBlock.stepOn: standing on a lit stove burns.
     let Some(p) = game.player.as_ref() else { return };
     if game.creative || !p.ground.on_ground {
@@ -1754,7 +2177,9 @@ pub(crate) fn player_tick(game: &mut Game<'_>) {
     if short(&name_at(game, under)) == Some("stove") && prop(game, under, "lit").as_deref() == Some("true") {
         let frost = game.armor[3].as_ref().is_some_and(|s| s.extra.as_deref().is_some_and(|x| format!("{x:?}").contains("frost_walker")));
         if !frost {
-            game.apply_effect_action(EffectAction::Hurt("minecraft:hot_floor", 1.0));
+            // BlackstoneStoveBlock.stepOn: a soul fire burns for 2.
+            let soul = prop(game, under, "soul").as_deref() == Some("true");
+            game.apply_effect_action(EffectAction::Hurt("minecraft:hot_floor", if soul { 2.0 } else { 1.0 }));
         }
     }
 }
@@ -2020,12 +2445,13 @@ pub(crate) fn random_tick(level: &mut GameLevel<'_>, ticks: &mut Ticks, pos: Blo
             }
             true
         }
-        // MushroomColonyBlock.tick (its random tick)
-        "brown_mushroom_colony" | "red_mushroom_colony" => {
+        // MushroomColonyBlock.tick (its random tick); FungusColonyBlock.tick.
+        "brown_mushroom_colony" | "red_mushroom_colony" | CRIMSON_COLONY | WARPED_COLONY => {
             let age = lprop_int(b, state, "age");
             let ground = level.block_state(off(pos, 0, -1, 0));
+            let tag = if n.starts_with("nethersdelight:") { "nethersdelight:fungus_colony_growable_on" } else { "farmersdelight:mushroom_colony_growable_on" };
             if age < 3
-                && in_block_tag(level, "farmersdelight:mushroom_colony_growable_on", ground)
+                && in_block_tag(level, tag, ground)
                 && lnext_int(level, 4) == 0
                 && let Some(s) = lwith_int(b, state, "age", age + 1)
             {
@@ -2033,7 +2459,159 @@ pub(crate) fn random_tick(level: &mut GameLevel<'_>, ticks: &mut Ticks, pos: Blo
             }
             true
         }
+        // SoulCompostBlock.randomTick: soul fire and fungi near it, lava, the soul sand valley;
+        // in an ultrawarm dimension only.
+        SOUL_COMPOST => {
+            let mut chance = 0.0f32;
+            let mut lava = false;
+            for dx in -1..=1 {
+                for dy in -1..=1 {
+                    for dz in -1..=1 {
+                        let s = level.block_state(off(pos, dx, dy, dz));
+                        if in_block_tag(level, "nethersdelight:soul_compost_activators", s)
+                            || in_block_tag(level, "nethersdelight:soul_compost_flames", s)
+                        {
+                            chance += 0.02;
+                        }
+                        if b.fluid(s).kind().same_family(horizon_world::fluid::FluidKind::Lava) {
+                            lava = true;
+                        }
+                    }
+                }
+            }
+            let valley = level.biome_name(pos).is_some_and(|n| n == "minecraft:soul_sand_valley");
+            chance += if lava { 0.1 } else { 0.0 };
+            chance += if valley { 0.3 } else { 0.0 };
+            if level.random().next_float() <= chance && level.dimension() == LevelDimension::Nether {
+                let stage = lprop_int(b, state, "composting");
+                let next = if stage == 3 { ldefault(b, RICH_SOUL_SOIL) } else { lwith_int(b, state, "composting", stage + 1) };
+                if let Some(s) = next {
+                    set(level, ticks, pos, s, 3);
+                }
+            }
+            true
+        }
+        // SaplingBlock.randomTick with CinnamonSaplingGenerator.
+        CINNAMON_SAPLING => {
+            if brightness(level, off(pos, 0, 1, 0)) >= 9 && lnext_int(level, 7) == 0 {
+                advance_cinnamon(level, ticks, pos, state);
+            }
+            true
+        }
+        // RichSoulSoilBlock.randomTick (Homestead's richSoilBoostChance 0.8).
+        RICH_SOUL_SOIL => {
+            let above = off(pos, 0, 1, 0);
+            let below = off(pos, 0, -1, 0);
+            let up_state = level.block_state(above);
+            let up = lname(b, up_state).to_owned();
+            let down = lname(b, level.block_state(below)).to_owned();
+            let colony = match up.as_str() {
+                "minecraft:crimson_fungus" => Some(CRIMSON_COLONY),
+                "minecraft:warped_fungus" => Some(WARPED_COLONY),
+                _ => None,
+            };
+            if let Some(c) = colony.and_then(|c| ldefault(b, c)) {
+                set(level, ticks, above, c, 3);
+                return true;
+            }
+            if b.is_air(up_state) && brightness(level, above) < 1 && lnext_int(level, 50) == 0 {
+                if let Some(m) = ldefault(b, MIMICARNATION) {
+                    set(level, ticks, above, m, 3);
+                }
+                return true;
+            }
+            if matches!(up.as_str(), "minecraft:twisting_vines" | "minecraft:twisting_vines_plant")
+                && level.random().next_float() <= RICH_SOIL_BOOST * 0.3
+            {
+                b.grow_crop(level, ticks, above);
+                return true;
+            }
+            if matches!(down.as_str(), "minecraft:weeping_vines" | "minecraft:weeping_vines_plant")
+                && level.random().next_float() <= RICH_SOIL_BOOST * 0.3
+            {
+                b.grow_crop(level, ticks, below);
+                return true;
+            }
+            if up == "minecraft:nether_wart" && level.random().next_float() <= RICH_SOIL_BOOST * 0.8 {
+                let age = lprop_int(b, up_state, "age");
+                if age < 3
+                    && let Some(s) = lwith_int(b, up_state, "age", age + 1)
+                {
+                    set(level, ticks, above, s, 3);
+                }
+            }
+            if up == PROPELPLANT && level.random().next_float() <= RICH_SOIL_BOOST {
+                let mut top = above;
+                while lname(b, level.block_state(off(top, 0, 1, 0))) == PROPELPLANT {
+                    top = off(top, 0, 1, 0);
+                }
+                let ts = level.block_state(top);
+                if !lprop_bool(b, ts, "pearl")
+                    && let Some(s) = lwith_bool(b, ts, "pearl", true)
+                {
+                    set(level, ticks, top, s, 3);
+                }
+            }
+            true
+        }
+        // PropelplantCaneBlock.randomTick: the top cane grows a pearl (1 in 8) and grows up
+        // (1 in 12), at most 3 high.
+        PROPELPLANT => {
+            let above = off(pos, 0, 1, 0);
+            let bud = lname(b, level.block_state(above)) != PROPELPLANT;
+            let mut state = state;
+            if lprop_bool(b, state, "bud") != bud
+                && let Some(s) = lwith_bool(b, state, "bud", bud)
+            {
+                state = s;
+                set(level, ticks, pos, s, 2);
+            }
+            if !bud {
+                return true;
+            }
+            if lnext_int(level, 8) == 0
+                && !lprop_bool(b, state, "pearl")
+                && let Some(s) = lwith_bool(b, state, "pearl", true)
+            {
+                state = s;
+                set(level, ticks, pos, s, 2);
+            }
+            if b.is_air(level.block_state(above)) && lnext_int(level, 12) == 0 {
+                let tall = lname(b, level.block_state(off(pos, 0, -1, 0))) == PROPELPLANT
+                    && lname(b, level.block_state(off(pos, 0, -2, 0))) == PROPELPLANT;
+                if tall {
+                    return true;
+                }
+                let pearl = lprop_bool(b, state, "pearl");
+                if let Some(s) = lwith_bool(b, state, "bud", false).and_then(|s| lwith_bool(b, s, "pearl", false)) {
+                    set(level, ticks, pos, s, 2);
+                }
+                if let Some(t) = ldefault(b, PROPELPLANT)
+                    .and_then(|d| lwith_bool(b, d, "bud", true))
+                    .and_then(|d| lwith_bool(b, d, "pearl", pearl))
+                {
+                    set(level, ticks, above, t, 2);
+                }
+            }
+            true
+        }
         _ => false,
+    }
+}
+
+/// `SaplingBlock.advanceTree`: the first stage, then the cinnamon tree in its place.
+fn advance_cinnamon(level: &mut GameLevel<'_>, ticks: &mut Ticks, pos: BlockPos, state: BlockStateId) {
+    let b = level.behaviours;
+    if lprop_int(b, state, "stage") == 0 {
+        if let Some(s) = lwith_int(b, state, "stage", 1) {
+            set(level, ticks, pos, s, 4);
+        }
+        return;
+    }
+    let Some(air) = ldefault(b, "minecraft:air") else { return };
+    set(level, ticks, pos, air, 4);
+    if b.place_feature(level, ticks, "expandeddelight:cinnamon_tree", pos) != Some(true) {
+        set(level, ticks, pos, state, 4);
     }
 }
 
@@ -2078,14 +2656,27 @@ pub(crate) fn bonemeal_valid(level: &GameLevel<'_>, pos: BlockPos, state: BlockS
     let b = level.behaviours;
     let n = short(lname(b, state))?;
     Some(match n {
-        "budding_tomatoes" | SUCCULENT => true,
-        "tomatoes" | "rice_panicles" | "brown_mushroom_colony" | "red_mushroom_colony" => lprop_int(b, state, "age") < 3,
+        "budding_tomatoes" | SUCCULENT | CINNAMON_SAPLING => true,
+        "tomatoes" | "rice_panicles" | "brown_mushroom_colony" | "red_mushroom_colony" | CRIMSON_COLONY | WARPED_COLONY => {
+            lprop_int(b, state, "age") < 3
+        }
+        // PropelplantCaneBlock.isValidBonemealTarget: the top cane, without its pearl.
+        PROPELPLANT => lprop_bool(b, state, "bud") && !lprop_bool(b, state, "pearl"),
         "rice" => {
             let up = level.block_state(off(pos, 0, 1, 0));
             lname(b, up) != "farmersdelight:rice_panicles" || lprop_int(b, up, "age") < 3
         }
         _ => return None,
     })
+}
+
+/// `isBonemealSuccess`: always for the crops, 45% for the cinnamon sapling (`SaplingBlock`).
+pub(crate) fn bonemeal_success(level: &mut GameLevel<'_>, pos: BlockPos, state: BlockStateId) -> Option<bool> {
+    bonemeal_valid(level, pos, state)?;
+    if lname(level.behaviours, state) == CINNAMON_SAPLING {
+        return Some(f64::from(level.random().next_float()) < 0.45);
+    }
+    Some(true)
 }
 
 /// `performBonemeal`.
@@ -2106,6 +2697,7 @@ pub(crate) fn bonemeal_perform(level: &mut GameLevel<'_>, ticks: &mut Ticks, pos
                 set(level, ticks, pos, s, 3);
             }
         }
+        CINNAMON_SAPLING => advance_cinnamon(level, ticks, pos, state),
         // ChorusSucculentBlock.performBonemeal: three on end stone.
         SUCCULENT => {
             if lname(b, level.block_state(off(pos, 0, -1, 0))) == "minecraft:end_stone"
@@ -2129,7 +2721,12 @@ pub(crate) fn bonemeal_perform(level: &mut GameLevel<'_>, ticks: &mut Ticks, pos
                 set(level, ticks, pos, s, 3);
             }
         }
-        "brown_mushroom_colony" | "red_mushroom_colony" => {
+        PROPELPLANT => {
+            if let Some(s) = lwith_bool(b, state, "pearl", true) {
+                set(level, ticks, pos, s, 2);
+            }
+        }
+        "brown_mushroom_colony" | "red_mushroom_colony" | CRIMSON_COLONY | WARPED_COLONY => {
             let grown = (age + lbetween(level, 1, 2)).min(3);
             if let Some(s) = lwith_int(b, state, "age", grown) {
                 set(level, ticks, pos, s, 2);
@@ -2164,6 +2761,28 @@ pub(crate) fn bonemeal_perform(level: &mut GameLevel<'_>, ticks: &mut Ticks, pos
     }
 }
 
+/// `PropelplantCaneBlock.mayPlaceOn`: nylium, netherrack, rich soul soil.
+fn propelplant_ground(level: &GameLevel<'_>, ground: BlockStateId) -> bool {
+    let g = lname(level.behaviours, ground);
+    in_block_tag(level, "minecraft:nylium", ground) || g == "minecraft:netherrack" || g == RICH_SOUL_SOIL
+}
+/// `FungusColonyBlock.mayPlaceOn`: nylium, mycelium, soul soil, dirt, farmland, or (as a mushroom
+/// colony) any solid floor.
+fn fungus_ground(level: &GameLevel<'_>, ground: BlockStateId) -> bool {
+    let g = lname(level.behaviours, ground);
+    in_block_tag(level, "minecraft:nylium", ground)
+        || in_block_tag(level, "minecraft:dirt", ground)
+        || matches!(g, "minecraft:mycelium" | "minecraft:soul_soil" | "minecraft:farmland" | RICH_SOUL_SOIL)
+        || level.behaviours.is_solid(ground)
+}
+/// `MimicarnationBlock.mayPlaceOn`: a flower's ground, netherrack and the soul soils.
+fn mimicarnation_ground(level: &GameLevel<'_>, ground: BlockStateId) -> bool {
+    let g = lname(level.behaviours, ground);
+    in_block_tag(level, "minecraft:dirt", ground)
+        || g == "minecraft:farmland"
+        || matches!(g, "minecraft:netherrack" | "minecraft:soul_sand" | "minecraft:soul_soil" | RICH_SOUL_SOIL | SOUL_COMPOST)
+}
+
 /// `canSurvive` where the template's rule isn't Farmer's Delight's.
 pub(crate) fn can_survive(level: &GameLevel<'_>, pos: BlockPos, state: BlockStateId) -> Option<bool> {
     let b = level.behaviours;
@@ -2175,6 +2794,12 @@ pub(crate) fn can_survive(level: &GameLevel<'_>, pos: BlockPos, state: BlockStat
         "rice_panicles" => Some(lname(b, below) == "farmersdelight:rice" && light),
         // ChorusSucculentBlock.mayPlaceOn: a floor with a top face.
         SUCCULENT => Some(b.is_solid(below)),
+        // PropelplantCaneBlock.canSurvive: on a cane without its pearl, or on its ground.
+        PROPELPLANT => Some(
+            (lname(b, below) == PROPELPLANT && !lprop_bool(b, below, "pearl")) || propelplant_ground(level, below),
+        ),
+        CRIMSON_COLONY | WARPED_COLONY => Some(fungus_ground(level, below)),
+        MIMICARNATION => Some(mimicarnation_ground(level, below)),
         "brown_mushroom_colony" | "red_mushroom_colony" => {
             let g = lname(b, below);
             Some(
@@ -2194,6 +2819,9 @@ pub(crate) fn may_place_on(level: &GameLevel<'_>, state: BlockStateId, ground: B
     match short(lname(b, state))? {
         "rice_panicles" => Some(lname(b, ground) == "farmersdelight:rice"),
         SUCCULENT => Some(b.is_solid(ground)),
+        PROPELPLANT => Some(lname(b, ground) == PROPELPLANT || propelplant_ground(level, ground)),
+        CRIMSON_COLONY | WARPED_COLONY => Some(fungus_ground(level, ground)),
+        MIMICARNATION => Some(mimicarnation_ground(level, ground)),
         "brown_mushroom_colony" | "red_mushroom_colony" => Some(b.is_solid(ground)),
         "tomatoes" | "budding_tomatoes" => {
             let g = lname(b, ground);
@@ -2240,6 +2868,7 @@ pub(crate) fn placement(
             facing(state, hor).and_then(|s| lwith_text(b, s, "part", "foot"))
         }
         "half_tatami_mat" => facing(state, hor),
+        JUICER | MORTAR => facing(state, opposite(hor)),
         // DragonLegBlock.getStateForPlacement: the head here, the foot one step on.
         DRAGON_LEG => {
             let (dx, dz) = step(hor);
@@ -2255,7 +2884,35 @@ pub(crate) fn placement(
             }
             Some(state)
         }
-        "brown_mushroom_colony" | "red_mushroom_colony" => lwith_int(b, state, "age", 3),
+        "brown_mushroom_colony" | "red_mushroom_colony" | CRIMSON_COLONY | WARPED_COLONY => lwith_int(b, state, "age", 3),
+        // StandingAndWallBlockItem (Direction.DOWN): on a wall's side, the wall torch.
+        "nethersdelight:propelplant_torch" => {
+            if matches!(face, "north" | "south" | "west" | "east") {
+                let wall = ldefault(b, "nethersdelight:propelplant_wall_torch").and_then(|w| lwith_text(b, w, "facing", face));
+                if let Some(w) = wall {
+                    let back = { let (dx, dz) = step(face); off(context.pos, -dx, 0, -dz) };
+                    if b.is_solid(level.block_state(back)) {
+                        return Some(Some(w));
+                    }
+                }
+            }
+            Some(state)
+        }
+        // StuffedHoglinBlock.getStateForPlacement: the head here, the foot one step on.
+        STUFFED_HOGLIN => {
+            let (dx, dz) = step(hor);
+            let pair = level.block_state(off(context.pos, dx, 0, dz));
+            if !b.is_air(pair) && !level.facts.get(pair).replaceable {
+                return Some(None);
+            }
+            facing(state, hor).and_then(|s| lwith_text(b, s, "part", "head"))
+        }
+        // PropelplantCaneBlock.getStateForPlacement: a stem on the ground, a bud on top.
+        PROPELPLANT => {
+            let below = lname(b, level.block_state(off(context.pos, 0, -1, 0))) == PROPELPLANT;
+            let above = lname(b, level.block_state(off(context.pos, 0, 1, 0))) == PROPELPLANT;
+            lwith_bool(b, state, "stem", !below).and_then(|s| lwith_bool(b, s, "bud", !above))
+        }
         _ if n.ends_with("_cabinet") => facing(state, opposite(hor)),
         _ if is_pie(n) => facing(state, hor),
         _ if feast(n).is_some() => facing(state, opposite(hor)),

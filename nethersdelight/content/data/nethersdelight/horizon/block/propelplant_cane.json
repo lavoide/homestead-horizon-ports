@@ -1,0 +1,35 @@
+{
+  "template": "minecraft:poppy",
+  "properties": {
+    "hardness": 0.1,
+    "explosion_resistance": 0.0,
+    "sounds": "minecraft:short_grass",
+    "random_ticks": true
+  },
+  "state_properties": {
+    "pearl": {
+      "type": "boolean"
+    },
+    "stem": {
+      "type": "boolean"
+    },
+    "bud": {
+      "type": "boolean"
+    },
+    "cut": {
+      "type": "boolean"
+    }
+  },
+  "shapes": {
+    "default": [
+      [
+        0.125,
+        0.0,
+        0.125,
+        0.875,
+        1.0,
+        0.875
+      ]
+    ]
+  }
+}

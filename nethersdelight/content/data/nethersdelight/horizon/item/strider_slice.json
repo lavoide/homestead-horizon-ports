@@ -1,0 +1,30 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:fire_resistance",
+              "duration": 400,
+              "amplifier": 0
+            }
+          ]
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 4,
+      "saturation": 5.6
+    },
+    "minecraft:damage_resistant": {
+      "types": "#minecraft:is_fire"
+    }
+  }
+}

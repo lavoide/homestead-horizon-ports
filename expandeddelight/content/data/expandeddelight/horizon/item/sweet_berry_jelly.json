@@ -1,0 +1,29 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:health_boost",
+              "duration": 400,
+              "amplifier": 0
+            }
+          ]
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 3,
+      "saturation": 3.6
+    }
+  },
+  "max_stack_size": 16,
+  "crafting_remainder": "expandeddelight:glass_jar"
+}

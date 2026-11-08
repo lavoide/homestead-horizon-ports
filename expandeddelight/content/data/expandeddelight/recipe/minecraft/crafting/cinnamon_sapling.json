@@ -1,0 +1,10 @@
+{
+  "ingredients": [
+    "minecraft:oak_sapling",
+    "expandeddelight:raw_cinnamon"
+  ],
+  "result": {
+    "id": "expandeddelight:cinnamon_sapling"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

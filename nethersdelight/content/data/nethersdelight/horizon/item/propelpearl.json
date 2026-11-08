@@ -1,0 +1,20 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "nethersdelight:ignite_4"
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 2,
+      "saturation": 2.0
+    }
+  }
+}

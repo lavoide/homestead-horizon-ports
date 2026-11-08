@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "minecraft:blackstone"
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "id": "nethersdelight:blackstone_furnace"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

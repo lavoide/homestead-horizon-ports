@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "key": {
+    "c": "nethersdelight:propelplant_cane",
+    "p": "nethersdelight:propelpearl"
+  },
+  "pattern": [
+    "p",
+    "c"
+  ],
+  "result": {
+    "id": "nethersdelight:propelplant_torch"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

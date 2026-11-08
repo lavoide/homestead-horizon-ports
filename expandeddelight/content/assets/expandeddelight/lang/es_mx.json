@@ -1,0 +1,86 @@
+{
+  "item.expandeddelight.asparagus": "Espárrago",
+  "item.expandeddelight.asparagus_seeds": "Semillas de espárragos",
+  "item.expandeddelight.asparagus_soup": "Sopa de espárragos",
+  "item.expandeddelight.asparagus_soup_creamy": "Sopa cremosa de espárragos",
+  "item.expandeddelight.asparagus_and_bacon_cheesy": "Espárragos y tocino con queso",
+
+  "item.expandeddelight.sweet_potato": "Batata",
+  "item.expandeddelight.baked_sweet_potato": "Batata al horno",
+  "item.expandeddelight.sweet_potato_salad": "Ensalada de batata",
+
+  "item.expandeddelight.chili_pepper": "Chile",
+  "item.expandeddelight.chili_pepper_seeds": "Semillas de chile",
+  "item.expandeddelight.peperonata": "Peperonata",
+
+  "item.expandeddelight.peanut": "Maní",
+  "item.expandeddelight.peanut_butter": "Mantequilla de maní",
+  "item.expandeddelight.peanut_butter_sandwich": "Sándwich de mantequilla de maní",
+  "item.expandeddelight.peanut_butter_honey_sandwich": "Sándwich de mantequilla de maní y miel",
+  "item.expandeddelight.peanut_salad": "Ensalada de maní",
+  "item.expandeddelight.peanut_honey_soup": "Sopa de maní y miel",
+  "item.expandeddelight.sweet_berry_jelly_sandwich": "Sándwich de mantequilla de maní y jalea de bayas dulces",
+  "item.expandeddelight.glow_berry_jelly_sandwich": "Sándwich de mantequilla de maní y jalea de bayas brillantes",
+
+  "item.expandeddelight.glass_jar": "Frasco de vidrio",
+  "item.expandeddelight.raw_cinnamon": "Rama de canela",
+  "item.expandeddelight.ground_cinnamon": "Canela",
+  "item.expandeddelight.salt_rock": "Roca de sal",
+  "item.expandeddelight.ground_salt": "Sal",
+
+  "item.expandeddelight.cheese_wheel": "Rueda de queso",
+  "item.expandeddelight.cheese_slice": "Rebanada de queso",
+  "item.expandeddelight.cheese_sandwich": "Sándwich de queso",
+  "item.expandeddelight.grilled_cheese": "Sándwich de queso a la parrilla",
+  "item.expandeddelight.mac_and_cheese": "Macarrones con queso",
+  "item.expandeddelight.sweet_roll": "Pan dulce",
+  "item.expandeddelight.berry_sweet_roll": "Pan dulce de bayas",
+  "item.expandeddelight.glow_berry_sweet_roll": "Pan dulce de bayas brillantes",
+  "item.expandeddelight.cinnamon_rice": "Arroz con canela",
+  "item.expandeddelight.cinnamon_apples": "Manzanas con canela",
+  "item.expandeddelight.chocolate_cookie": "Galleta de chocolate",
+  "item.expandeddelight.sugar_cookie": "Galleta de azúcar",
+  "item.expandeddelight.snickerdoodle": "Snickerdoodle",
+
+  "item.expandeddelight.apple_juice": "Jugo de manzana",
+  "item.expandeddelight.sweet_berry_juice": "Jugo de bayas dulces",
+  "item.expandeddelight.glow_berry_juice": "Jugo de bayas brillantes",
+
+  "item.expandeddelight.sweet_berry_jelly": "Jalea de bayas dulces",
+  "item.expandeddelight.glow_berry_jelly": "Jalea de bayas brillantes",
+
+  "item.expandeddelight.mortar_and_pestle_item": "Mortero",
+
+  "item.expandeddelight.juicer_item": "Exprimidor",
+
+  "block.expandeddelight.asparagus_crate": "Caja de espárragos",
+  "block.expandeddelight.wild_asparagus": "Espárragos silvestres",
+  "block.expandeddelight.asparagus_crop": "Espárrago",
+
+  "block.expandeddelight.sweet_potato_crate": "Caja de batatas",
+  "block.expandeddelight.wild_sweet_potatoes": "Batatas silvestres",
+  "block.expandeddelight.sweet_potatoes_crop": "Batata",
+
+  "block.expandeddelight.chili_pepper_crate": "Caja de chiles",
+  "block.expandeddelight.wild_chili_pepper": "Chiles silvestre",
+  "block.expandeddelight.chili_pepper_crop": "Chile",
+
+  "block.expandeddelight.wild_peanuts": "Maníes silvestres",
+  "block.expandeddelight.peanut_crop": "Maníes",
+
+  "block.expandeddelight.cinnamon_sapling": "Retoño de canela",
+  "block.expandeddelight.cinnamon_log": "Tronco de canela",
+  "block.expandeddelight.salt_ore": "Mineral de sal",
+  "block.expandeddelight.deepslate_salt_ore": "Mineral de sal de pizarra profunda",
+
+  "block.expandeddelight.juicer": "Exprimidor",
+
+  "block.expandeddelight.mortar_and_pestle": "Mortero",
+  "block.expandeddelight.mortar_and_pestle.pass": "Eso no es algo que puedas triturar...",
+
+  "container.expandeddelight.juicer": "Exprimidor",
+
+  "itemGroup.expandeddelight.group": "Expanded Delight",
+
+  "expandeddelight.rei.juicing": "Exprimiendo"
+}

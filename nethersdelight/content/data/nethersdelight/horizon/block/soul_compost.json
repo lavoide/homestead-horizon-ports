@@ -1,0 +1,20 @@
+{
+  "template": "minecraft:soul_soil",
+  "properties": {
+    "hardness": 1.2,
+    "explosion_resistance": 1.2,
+    "sounds": "minecraft:wheat",
+    "random_ticks": true
+  },
+  "state_properties": {
+    "composting": {
+      "type": "enum",
+      "values": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  }
+}

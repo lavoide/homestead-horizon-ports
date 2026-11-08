@@ -1,0 +1,9 @@
+{
+  "template": "minecraft:blast_furnace",
+  "properties": {
+    "hardness": 3.5,
+    "explosion_resistance": 6.0,
+    "sounds": "minecraft:polished_blackstone",
+    "requires_tool": true
+  }
+}

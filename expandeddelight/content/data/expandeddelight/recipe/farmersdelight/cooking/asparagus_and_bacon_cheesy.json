@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "#c:foods/raw_meats/raw_bacon",
+    "#c:foods/vegetables/asparagus",
+    "#c:crops/onion",
+    "#c:cheese"
+  ],
+  "result": {
+    "id": "expandeddelight:asparagus_and_bacon_cheesy"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

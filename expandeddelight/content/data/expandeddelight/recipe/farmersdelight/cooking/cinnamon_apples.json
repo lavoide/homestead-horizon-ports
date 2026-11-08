@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "minecraft:water_bucket",
+    "minecraft:apple",
+    "#c:dusts/cinnamon",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "expandeddelight:cinnamon_apples"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

@@ -1,0 +1,19 @@
+{
+  "category": "misc",
+  "key": {
+    "g": "minecraft:gold_nugget",
+    "h": "nethersdelight:hoglin_hide",
+    "p": "#minecraft:planks",
+    "w": "#minecraft:wool"
+  },
+  "pattern": [
+    "php",
+    "pwp",
+    "ggg"
+  ],
+  "result": {
+    "id": "nethersdelight:hoglin_trophy"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

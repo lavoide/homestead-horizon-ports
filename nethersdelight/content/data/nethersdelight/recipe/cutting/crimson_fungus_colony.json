@@ -1,0 +1,13 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "nethersdelight:crimson_fungus_colony"
+  ],
+  "result": [
+    {
+      "count": 5,
+      "id": "minecraft:crimson_fungus"
+    }
+  ],
+  "tool": "#c:tools/knives"
+}

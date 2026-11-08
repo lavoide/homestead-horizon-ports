@@ -1,0 +1,15 @@
+{
+  "key": {
+    "b": "minecraft:barrel",
+    "i": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "iii",
+    " b ",
+    "iii"
+  ],
+  "result": {
+    "id": "expandeddelight:juicer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

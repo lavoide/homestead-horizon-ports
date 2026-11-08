@@ -1,0 +1,14 @@
+{
+  "key": {
+    "#": "expandeddelight:chili_pepper"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "expandeddelight:chili_pepper_crate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

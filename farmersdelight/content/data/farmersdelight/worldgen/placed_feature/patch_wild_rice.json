@@ -60,9 +60,7 @@
           },
           {
             "type": "minecraft:would_survive",
-            "state": {
-              "Name": "farmersdelight:wild_rice"
-            }
+            "state": "farmersdelight:wild_rice"
           }
         ]
       }

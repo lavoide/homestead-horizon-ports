@@ -1,0 +1,8 @@
+{
+  "template": "minecraft:ladder",
+  "properties": {
+    "hardness": 0.8,
+    "explosion_resistance": 0.8,
+    "sounds": "minecraft:pink_wool"
+  }
+}

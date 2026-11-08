@@ -1,0 +1,11 @@
+{
+  "ingredients": [
+    "minecraft:bread",
+    "expandeddelight:peanut_butter",
+    "expandeddelight:glow_berry_jelly"
+  ],
+  "result": {
+    "id": "expandeddelight:glow_berry_jelly_sandwich"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

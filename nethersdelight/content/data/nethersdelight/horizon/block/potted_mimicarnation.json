@@ -1,0 +1,7 @@
+{
+  "template": "minecraft:potted_poppy",
+  "properties": {
+    "light": 8
+  },
+  "item": false
+}

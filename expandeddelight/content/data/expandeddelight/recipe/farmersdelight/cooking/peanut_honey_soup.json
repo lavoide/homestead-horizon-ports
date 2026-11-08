@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    [
+      "#c:milk/milk",
+      "#c:milk/milk_bottle"
+    ],
+    "#c:crops/peanut",
+    "#c:crops/peanut",
+    "minecraft:honey_bottle"
+  ],
+  "result": {
+    "id": "expandeddelight:peanut_honey_soup"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

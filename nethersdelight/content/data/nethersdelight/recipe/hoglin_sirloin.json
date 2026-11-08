@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": "nethersdelight:hoglin_loin",
+  "result": {
+    "id": "nethersdelight:hoglin_sirloin"
+  },
+  "type": "minecraft:smelting"
+}

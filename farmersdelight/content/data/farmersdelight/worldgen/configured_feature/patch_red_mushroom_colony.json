@@ -1,12 +1,9 @@
 {
   "type": "minecraft:simple_block",
   "to_place": {
-    "type": "minecraft:simple_state_provider",
-    "state": {
-      "Name": "farmersdelight:red_mushroom_colony",
-      "Properties": {
-        "age": "3"
-      }
+    "id": "farmersdelight:red_mushroom_colony",
+    "properties": {
+      "age": "3"
     }
   }
 }

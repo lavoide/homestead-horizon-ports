@@ -1,0 +1,14 @@
+{
+  "key": {
+    "c": "minecraft:wheat",
+    "w": "#c:dusts/cinnamon"
+  },
+  "pattern": [
+    "cwc"
+  ],
+  "result": {
+    "count": 8,
+    "id": "expandeddelight:snickerdoodle"
+  },
+  "type": "minecraft:crafting_shaped"
+}

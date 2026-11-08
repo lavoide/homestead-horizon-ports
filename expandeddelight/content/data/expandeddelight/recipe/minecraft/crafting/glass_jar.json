@@ -1,0 +1,16 @@
+{
+  "key": {
+    "g": "minecraft:glass",
+    "p": "minecraft:paper"
+  },
+  "pattern": [
+    "g g",
+    "gpg",
+    " g "
+  ],
+  "result": {
+    "count": 3,
+    "id": "expandeddelight:glass_jar"
+  },
+  "type": "minecraft:crafting_shaped"
+}

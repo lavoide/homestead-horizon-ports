@@ -1,0 +1,35 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:item.honey_bottle.drink",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:fire_resistance",
+              "duration": 1200,
+              "amplifier": 0
+            }
+          ]
+        },
+        {
+          "type": "nethersdelight:ignite_60"
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 1,
+      "saturation": 12.0
+    },
+    "minecraft:use_remainder": {
+      "id": "minecraft:bucket"
+    }
+  },
+  "crafting_remainder": "minecraft:bucket",
+  "max_stack_size": 1
+}

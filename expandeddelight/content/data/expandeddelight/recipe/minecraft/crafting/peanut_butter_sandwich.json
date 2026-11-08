@@ -1,0 +1,10 @@
+{
+  "ingredients": [
+    "minecraft:bread",
+    "expandeddelight:peanut_butter"
+  ],
+  "result": {
+    "id": "expandeddelight:peanut_butter_sandwich"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    [
+      "#c:milk/milk",
+      "#c:milk/milk_bottle"
+    ],
+    "#c:cheese",
+    "#c:foods/pastas",
+    "#c:salt_dusts"
+  ],
+  "result": {
+    "id": "expandeddelight:mac_and_cheese"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

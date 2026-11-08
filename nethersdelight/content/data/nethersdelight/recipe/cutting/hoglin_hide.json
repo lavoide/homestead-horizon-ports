@@ -1,0 +1,13 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "nethersdelight:hoglin_hide"
+  ],
+  "result": [
+    {
+      "count": 4,
+      "id": "minecraft:leather"
+    }
+  ],
+  "tool": "#c:tools/knives"
+}

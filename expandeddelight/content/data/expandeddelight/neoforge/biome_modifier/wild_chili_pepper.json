@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:desert",
+  "features": "expandeddelight:wild_chili_pepper_placed",
+  "step": "vegetal_decoration"
+}

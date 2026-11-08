@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    [
+      "#c:milk/milk",
+      "#c:milk/milk_bottle"
+    ],
+    "#c:foods/vegetables/asparagus",
+    "#c:salad_ingredients"
+  ],
+  "result": {
+    "id": "expandeddelight:asparagus_soup_creamy"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

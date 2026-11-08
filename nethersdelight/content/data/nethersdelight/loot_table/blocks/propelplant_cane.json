@@ -1,0 +1,58 @@
+{
+  "pools": [
+    {
+      "condition": {
+        "terms": [
+          {
+            "block": "nethersdelight:propelplant_cane",
+            "properties": {
+              "cut": "true"
+            },
+            "type": "minecraft:block_state_property"
+          },
+          {
+            "predicate": {
+              "items": "#farmersdelight:tools/knives"
+            },
+            "type": "minecraft:match_tool"
+          }
+        ],
+        "type": "minecraft:any_of"
+      },
+      "entries": [
+        {
+          "name": "nethersdelight:propelplant_cane",
+          "type": "minecraft:item"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "condition": {
+        "block": "nethersdelight:propelplant_cane",
+        "properties": {
+          "pearl": "true"
+        },
+        "type": "minecraft:block_state_property"
+      },
+      "entries": [
+        {
+          "name": "nethersdelight:propelpearl",
+          "type": "minecraft:item"
+        }
+      ],
+      "modifier": [
+        {
+          "count": {
+            "max": 2.0,
+            "min": 1.0,
+            "type": "minecraft:uniform"
+          },
+          "type": "minecraft:set_count"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "type": "minecraft:block"
+}
