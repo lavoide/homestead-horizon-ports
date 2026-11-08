@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "-": "minecraft:stick",
+    "i": "minecraft:ice",
+    "m": "minecraft:melon_slice"
+  },
+  "pattern": [
+    " mm",
+    "imm",
+    "-i "
+  ],
+  "result": {
+    "id": "farmersdelight:melon_popsicle"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

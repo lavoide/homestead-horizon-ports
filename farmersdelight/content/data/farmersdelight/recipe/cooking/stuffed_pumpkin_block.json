@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "id": "minecraft:pumpkin"
+  },
+  "cookingtime": 400,
+  "experience": 2.0,
+  "ingredients": [
+    "#c:crops/rice",
+    "#c:crops/onion",
+    "minecraft:brown_mushroom",
+    "minecraft:potato",
+    "#c:foods/berries",
+    "#c:foods/vegetables"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "farmersdelight:stuffed_pumpkin_block"
+  }
+}

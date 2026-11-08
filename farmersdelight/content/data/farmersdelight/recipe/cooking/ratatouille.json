@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "#c:crops/tomato",
+    "#c:crops/onion",
+    "minecraft:beetroot",
+    "#c:foods/vegetables"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "farmersdelight:ratatouille"
+  }
+}

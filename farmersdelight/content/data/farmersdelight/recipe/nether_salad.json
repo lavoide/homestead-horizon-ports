@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:crimson_fungus",
+    "minecraft:warped_fungus",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "farmersdelight:nether_salad"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

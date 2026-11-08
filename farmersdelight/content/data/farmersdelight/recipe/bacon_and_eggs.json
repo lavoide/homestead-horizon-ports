@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "farmersdelight:cooked_bacon",
+    "farmersdelight:cooked_bacon",
+    "minecraft:bowl",
+    "#c:foods/cooked_meats/cooked_eggs",
+    "#c:foods/cooked_meats/cooked_eggs"
+  ],
+  "result": {
+    "id": "farmersdelight:bacon_and_eggs"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

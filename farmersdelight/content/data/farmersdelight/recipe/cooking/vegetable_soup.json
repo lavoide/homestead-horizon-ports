@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "minecraft:carrot",
+    "minecraft:potato",
+    "minecraft:beetroot",
+    "#c:salad_ingredients"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "farmersdelight:vegetable_soup"
+  }
+}

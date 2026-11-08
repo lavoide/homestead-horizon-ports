@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#c:iron_ingots",
+    "/": "minecraft:brick"
+  },
+  "pattern": [
+    " ##",
+    " ##",
+    "/  "
+  ],
+  "result": {
+    "id": "farmersdelight:skillet"
+  },
+  "show_notification": true
+}

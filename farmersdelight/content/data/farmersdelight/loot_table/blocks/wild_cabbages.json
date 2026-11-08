@@ -1,0 +1,71 @@
+{
+  "pools": [
+    {
+      "entries": [
+        {
+          "condition": {
+            "terms": [
+              {
+                "chance": 0.2,
+                "type": "minecraft:random_chance"
+              },
+              {
+                "term": {
+                  "predicate": {
+                    "tag": "c:shears"
+                  },
+                  "type": "minecraft:match_tool"
+                },
+                "type": "minecraft:inverted"
+              }
+            ],
+            "type": "minecraft:all_of"
+          },
+          "name": "farmersdelight:cabbage",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "children": [
+            {
+              "condition": {
+                "predicate": {
+                  "tag": "c:shears"
+                },
+                "type": "minecraft:match_tool"
+              },
+              "name": "farmersdelight:wild_cabbages",
+              "type": "minecraft:item"
+            },
+            {
+              "modifier": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  },
+                  "type": "minecraft:apply_bonus"
+                },
+                {
+                  "type": "minecraft:explosion_decay"
+                }
+              ],
+              "name": "farmersdelight:cabbage_seeds",
+              "type": "minecraft:item"
+            }
+          ],
+          "type": "minecraft:alternatives"
+        }
+      ],
+      "name": "pool2",
+      "rolls": 1
+    }
+  ],
+  "type": "minecraft:block"
+}

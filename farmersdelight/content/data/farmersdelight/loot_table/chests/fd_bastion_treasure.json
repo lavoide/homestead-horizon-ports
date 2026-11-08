@@ -1,0 +1,34 @@
+{
+  "pools": [
+    {
+      "entries": [
+        {
+          "modifier": [
+            {
+              "damage": {
+                "max": 1.0,
+                "min": 0.8,
+                "type": "minecraft:uniform"
+              },
+              "type": "minecraft:set_damage"
+            },
+            {
+              "type": "minecraft:enchant_randomly"
+            }
+          ],
+          "name": "farmersdelight:diamond_knife",
+          "type": "minecraft:item"
+        },
+        {
+          "name": "farmersdelight:diamond_knife",
+          "type": "minecraft:item"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 6
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "farmersdelight:pumpkin_slice"
+  ],
+  "result": {
+    "id": "minecraft:pumpkin_seeds"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

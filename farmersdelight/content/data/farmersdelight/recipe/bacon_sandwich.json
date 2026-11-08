@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "#c:foods/breads",
+    "#c:foods/cooked_meats/cooked_bacon",
+    "#c:salad_ingredients",
+    "#c:crops/tomato"
+  ],
+  "result": {
+    "id": "farmersdelight:bacon_sandwich"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

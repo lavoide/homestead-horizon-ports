@@ -1,0 +1,25 @@
+{
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "condition": {
+            "block": "farmersdelight:full_tatami_mat",
+            "properties": {
+              "part": "head"
+            },
+            "type": "minecraft:block_state_property"
+          },
+          "name": "farmersdelight:full_tatami_mat",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1
+    }
+  ],
+  "type": "minecraft:block"
+}

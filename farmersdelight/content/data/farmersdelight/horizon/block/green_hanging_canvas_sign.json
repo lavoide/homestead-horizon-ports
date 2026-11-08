@@ -1,0 +1,5 @@
+{
+  "template": "minecraft:oak_hanging_sign",
+  "wood_type": "farmersdelight:canvas_green",
+  "wall_block": "farmersdelight:green_wall_hanging_canvas_sign"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredients": [
+    "#c:bones",
+    [
+      "minecraft:glow_berries",
+      "#c:mushrooms",
+      "minecraft:hanging_roots",
+      "minecraft:glow_lichen"
+    ]
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "farmersdelight:bone_broth"
+  }
+}

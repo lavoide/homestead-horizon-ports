@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_hanging_sign",
+  "textures": {
+    "all": "farmersdelight:block/hanging_canvas_sign_orange",
+    "particle": "minecraft:block/orange_wool"
+  }
+}

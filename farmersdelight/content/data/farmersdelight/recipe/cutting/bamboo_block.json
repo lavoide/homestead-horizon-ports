@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "minecraft:bamboo_block"
+  ],
+  "result": [
+    {
+      "id": "minecraft:stripped_bamboo_block"
+    },
+    {
+      "id": "farmersdelight:straw"
+    }
+  ],
+  "sound": "minecraft:item.axe.strip",
+  "tool": {
+    "fabric:type": "farmersdelight:tool_action",
+    "action": "axe_strip"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "minecraft:leather_helmet"
+  ],
+  "result": [
+    {
+      "id": "minecraft:leather"
+    }
+  ],
+  "tool": "#c:shears"
+}

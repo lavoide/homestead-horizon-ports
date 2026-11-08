@@ -1,0 +1,29 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 0.8,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:speed",
+              "duration": 600,
+              "amplifier": 0,
+              "show_particles": false,
+              "show_icon": true
+            }
+          ]
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 3,
+      "saturation": 1.8
+    }
+  }
+}

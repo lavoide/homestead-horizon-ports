@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "group": "fd_cabinet",
+  "key": {
+    "D": "minecraft:spruce_trapdoor",
+    "_": "minecraft:spruce_slab"
+  },
+  "pattern": [
+    "___",
+    "D D",
+    "___"
+  ],
+  "result": {
+    "id": "farmersdelight:spruce_cabinet"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

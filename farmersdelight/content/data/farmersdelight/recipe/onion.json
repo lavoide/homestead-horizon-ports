@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "farmersdelight:onion_crate"
+  ],
+  "result": {
+    "count": 9,
+    "id": "farmersdelight:onion"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

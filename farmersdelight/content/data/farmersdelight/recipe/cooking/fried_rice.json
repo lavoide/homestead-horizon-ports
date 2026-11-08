@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "#c:crops/rice",
+    "#c:eggs",
+    "minecraft:carrot",
+    "#c:crops/onion"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "farmersdelight:fried_rice"
+  }
+}

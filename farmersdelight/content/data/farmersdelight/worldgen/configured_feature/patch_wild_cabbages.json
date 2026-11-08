@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:random_selector",
+  "features": [
+    {
+      "chance": 0.5,
+      "feature": {
+        "feature": "farmersdelight:wild_cabbages_crop",
+        "placement": [
+          {
+            "type": "minecraft:block_predicate_filter",
+            "predicate": {
+              "predicates": [
+                {
+                  "blocks": "minecraft:air",
+                  "type": "minecraft:matching_blocks"
+                },
+                {
+                  "offset": [
+                    0,
+                    -1,
+                    0
+                  ],
+                  "tag": "minecraft:sand",
+                  "type": "minecraft:matching_block_tag"
+                }
+              ],
+              "type": "minecraft:all_of"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "default": {
+    "feature": "farmersdelight:wild_cabbages_beside",
+    "placement": [
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "predicates": [
+            {
+              "blocks": "minecraft:air",
+              "type": "minecraft:matching_blocks"
+            },
+            {
+              "offset": [
+                0,
+                -1,
+                0
+              ],
+              "tag": "minecraft:sand",
+              "type": "minecraft:matching_block_tag"
+            }
+          ],
+          "type": "minecraft:all_of"
+        }
+      }
+    ]
+  }
+}

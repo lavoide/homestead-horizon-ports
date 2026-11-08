@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "farmersdelight:rice_panicle"
+  ],
+  "result": [
+    {
+      "id": "farmersdelight:rice"
+    },
+    {
+      "id": "farmersdelight:straw"
+    }
+  ],
+  "tool": "#c:tools/knives"
+}

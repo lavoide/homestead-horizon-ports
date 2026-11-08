@@ -1,0 +1,13 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "minecraft:cake"
+  ],
+  "result": [
+    {
+      "count": 7,
+      "id": "farmersdelight:cake_slice"
+    }
+  ],
+  "tool": "#c:tools/knives"
+}

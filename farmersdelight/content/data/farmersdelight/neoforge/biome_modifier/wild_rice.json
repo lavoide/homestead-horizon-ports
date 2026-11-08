@@ -1,0 +1,14 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:bamboo_jungle",
+    "minecraft:beach",
+    "minecraft:jungle",
+    "minecraft:mangrove_swamp",
+    "minecraft:river",
+    "minecraft:sparse_jungle",
+    "minecraft:swamp"
+  ],
+  "features": "farmersdelight:patch_wild_rice",
+  "step": "vegetal_decoration"
+}

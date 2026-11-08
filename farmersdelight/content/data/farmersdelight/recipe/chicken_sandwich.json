@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "#c:foods/breads",
+    "#c:foods/cooked_meats/cooked_chicken",
+    "#c:salad_ingredients",
+    "minecraft:carrot"
+  ],
+  "result": {
+    "id": "farmersdelight:chicken_sandwich"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

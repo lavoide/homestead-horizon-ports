@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "minecraft:rotten_flesh",
+    "minecraft:bone_meal",
+    "#farmersdelight:wolf_prey",
+    "#c:crops/rice"
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "farmersdelight:dog_food"
+  }
+}

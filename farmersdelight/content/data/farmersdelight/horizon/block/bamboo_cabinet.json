@@ -1,0 +1,6 @@
+{
+  "template": "minecraft:barrel",
+  "properties": {
+    "sounds": "minecraft:bamboo_planks"
+  }
+}

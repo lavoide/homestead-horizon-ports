@@ -1,0 +1,56 @@
+{
+  "template": "minecraft:furnace",
+  "properties": {
+    "hardness": 0.5,
+    "explosion_resistance": 6.0,
+    "sounds": "minecraft:lantern",
+    "requires_tool": false,
+    "occludes": false
+  },
+  "state_properties": {
+    "support": {
+      "type": "enum",
+      "values": [
+        "none",
+        "handle",
+        "tray"
+      ]
+    }
+  },
+  "shapes": {
+    "property": "support",
+    "values": {
+      "tray": [
+        [
+          0.125,
+          0.0,
+          0.125,
+          0.875,
+          0.625,
+          0.875
+        ],
+        [
+          0.0,
+          -0.0625,
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "default": [
+      [
+        0.125,
+        0.0,
+        0.125,
+        0.875,
+        0.625,
+        0.875
+      ]
+    ]
+  },
+  "components": {
+    "minecraft:max_stack_size": 1
+  }
+}

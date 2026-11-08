@@ -1,0 +1,12 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "#c:foods/doughs"
+  ],
+  "result": [
+    {
+      "id": "farmersdelight:raw_pasta"
+    }
+  ],
+  "tool": "#c:tools/knives"
+}

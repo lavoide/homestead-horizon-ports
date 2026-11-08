@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "farmersdelight:rice_bale"
+  ],
+  "result": {
+    "count": 9,
+    "id": "farmersdelight:rice_panicle"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

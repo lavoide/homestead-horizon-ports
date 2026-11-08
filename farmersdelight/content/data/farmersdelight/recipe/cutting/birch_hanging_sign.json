@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "minecraft:birch_hanging_sign"
+  ],
+  "result": [
+    {
+      "id": "minecraft:birch_planks"
+    }
+  ],
+  "tool": {
+    "fabric:type": "farmersdelight:tool_action",
+    "action": "axe_dig"
+  }
+}

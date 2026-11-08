@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "fd_canvas_sign",
+  "ingredients": [
+    "#farmersdelight:canvas_signs",
+    "#c:dyes/brown"
+  ],
+  "result": {
+    "id": "farmersdelight:brown_canvas_sign"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

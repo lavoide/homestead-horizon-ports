@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "minecraft:oak_door"
+  ],
+  "result": [
+    {
+      "id": "minecraft:oak_planks"
+    }
+  ],
+  "tool": {
+    "fabric:type": "farmersdelight:tool_action",
+    "action": "axe_dig"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "farmersdelight:main/use_cutting_board",
+  "criteria": {
+    "obtain_netherite_knife": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersdelight:netherite_knife"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "farmersdelight.advancement.obtain_netherite_knife.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "nbt": "{Damage:0}",
+      "id": "farmersdelight:netherite_knife"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "farmersdelight.advancement.obtain_netherite_knife"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_netherite_knife"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "#c:milks",
+    "minecraft:sugar",
+    "minecraft:cocoa_beans",
+    "minecraft:cocoa_beans"
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "id": "farmersdelight:hot_cocoa"
+  }
+}

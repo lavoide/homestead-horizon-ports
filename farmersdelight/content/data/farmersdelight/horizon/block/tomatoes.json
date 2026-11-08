@@ -1,0 +1,29 @@
+{
+  "template": "minecraft:beetroots",
+  "item": false,
+  "properties": {
+    "hardness": 0.0,
+    "explosion_resistance": 0.0,
+    "sounds": "minecraft:wheat"
+  },
+  "state_properties": {
+    "ropelogged": {
+      "type": "boolean"
+    }
+  },
+  "shapes": {
+    "default": [
+      [
+        0.125,
+        0.0,
+        0.125,
+        0.875,
+        1.0,
+        0.875
+      ]
+    ]
+  },
+  "collision_shapes": {
+    "default": []
+  }
+}

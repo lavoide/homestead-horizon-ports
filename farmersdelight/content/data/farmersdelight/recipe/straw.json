@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "farmersdelight:straw_bale"
+  ],
+  "result": {
+    "count": 9,
+    "id": "farmersdelight:straw"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

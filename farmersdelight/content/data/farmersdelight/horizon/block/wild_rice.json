@@ -1,0 +1,23 @@
+{
+  "template": "minecraft:small_dripleaf",
+  "properties": {
+    "hardness": 0.0,
+    "explosion_resistance": 0.0,
+    "sounds": "minecraft:short_grass"
+  },
+  "shapes": {
+    "default": [
+      [
+        0.125,
+        0.0,
+        0.125,
+        0.875,
+        1.0,
+        0.875
+      ]
+    ]
+  },
+  "collision_shapes": {
+    "default": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "modifier": [
+    {
+      "type": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "entries": [
+        {
+          "children": [
+            {
+              "condition": {
+                "block": "farmersdelight:cabbages",
+                "properties": {
+                  "age": "7"
+                },
+                "type": "minecraft:block_state_property"
+              },
+              "name": "farmersdelight:cabbage",
+              "type": "minecraft:item"
+            },
+            {
+              "name": "farmersdelight:cabbage_seeds",
+              "type": "minecraft:item"
+            }
+          ],
+          "type": "minecraft:alternatives"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1.0
+    },
+    {
+      "condition": {
+        "block": "farmersdelight:cabbages",
+        "properties": {
+          "age": "7"
+        },
+        "type": "minecraft:block_state_property"
+      },
+      "entries": [
+        {
+          "modifier": [
+            {
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.5714286
+              },
+              "type": "minecraft:apply_bonus"
+            }
+          ],
+          "name": "farmersdelight:cabbage_seeds",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool2",
+      "rolls": 1.0
+    }
+  ],
+  "type": "minecraft:block"
+}

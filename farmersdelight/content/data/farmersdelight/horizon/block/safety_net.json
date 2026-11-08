@@ -1,0 +1,21 @@
+{
+  "template": "minecraft:oak_planks",
+  "properties": {
+    "hardness": 0.2,
+    "explosion_resistance": 0.2,
+    "sounds": "minecraft:white_wool",
+    "occludes": false
+  },
+  "shapes": {
+    "default": [
+      [
+        0.0,
+        0.4375,
+        0.0,
+        1.0,
+        0.5625,
+        1.0
+      ]
+    ]
+  }
+}

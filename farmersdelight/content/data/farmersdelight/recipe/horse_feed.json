@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "ingredients": [
+    [
+      "minecraft:hay_block",
+      "farmersdelight:rice_bale"
+    ],
+    "minecraft:apple",
+    "minecraft:apple",
+    "minecraft:golden_carrot"
+  ],
+  "result": {
+    "id": "farmersdelight:horse_feed"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

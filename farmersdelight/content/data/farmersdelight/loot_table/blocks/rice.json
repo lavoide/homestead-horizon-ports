@@ -1,0 +1,20 @@
+{
+  "modifier": [
+    {
+      "type": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "entries": [
+        {
+          "name": "farmersdelight:rice",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1.0
+    }
+  ],
+  "type": "minecraft:block"
+}

@@ -1,0 +1,20 @@
+{
+  "category": "misc",
+  "group": "cake",
+  "key": {
+    "e": "#c:eggs",
+    "m": "#c:milks",
+    "s": "minecraft:sugar",
+    "w": "minecraft:wheat"
+  },
+  "pattern": [
+    "mmm",
+    "ses",
+    "www"
+  ],
+  "result": {
+    "id": "minecraft:cake"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

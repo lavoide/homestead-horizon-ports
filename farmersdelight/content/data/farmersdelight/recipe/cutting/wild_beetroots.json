@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "farmersdelight:wild_beetroots"
+  ],
+  "result": [
+    {
+      "id": "minecraft:beetroot_seeds"
+    },
+    {
+      "id": "minecraft:red_dye"
+    }
+  ],
+  "tool": "#c:tools/knives"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "#c:foods/doughs",
+    "#c:crops/cabbage",
+    "#c:crops/onion",
+    [
+      "#c:foods/raw_meats/raw_chicken",
+      "#c:foods/raw_meats/raw_pork",
+      "#c:foods/raw_meats/raw_beef",
+      "minecraft:brown_mushroom"
+    ]
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 2,
+    "id": "farmersdelight:dumplings"
+  }
+}

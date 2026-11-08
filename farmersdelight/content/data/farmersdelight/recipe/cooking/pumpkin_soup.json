@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "farmersdelight:pumpkin_slice",
+    "#c:salad_ingredients",
+    "#c:foods/raw_meats/raw_pork",
+    "#c:milks"
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "farmersdelight:pumpkin_soup"
+  }
+}

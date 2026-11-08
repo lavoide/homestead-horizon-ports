@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "#c:foods/breads",
+    "#c:foods/cooked_meats/cooked_mutton",
+    "#c:salad_ingredients",
+    "#c:crops/onion"
+  ],
+  "result": {
+    "id": "farmersdelight:mutton_wrap"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

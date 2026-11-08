@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "farmersdelight:canvas",
+    "b": "minecraft:bamboo"
+  },
+  "pattern": [
+    "b b",
+    "# #",
+    "b#b"
+  ],
+  "result": {
+    "id": "farmersdelight:basket"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:baked_potato",
+    "#c:foods/cooked_meats/cooked_beef",
+    "#c:milks"
+  ],
+  "result": {
+    "id": "farmersdelight:stuffed_potato"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

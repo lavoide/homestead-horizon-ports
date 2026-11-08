@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:paper",
+    "farmersdelight:canvas"
+  ],
+  "result": {
+    "id": "minecraft:book"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

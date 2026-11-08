@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_sign",
+  "textures": {
+    "all": "farmersdelight:block/canvas_sign_white",
+    "particle": "minecraft:block/white_wool"
+  }
+}

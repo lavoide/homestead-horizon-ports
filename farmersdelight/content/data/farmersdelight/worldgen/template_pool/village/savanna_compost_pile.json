@@ -1,0 +1,14 @@
+{
+  "horizon:add_to": "minecraft:village/savanna/houses",
+  "elements": [
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "farmersdelight:village/houses/savanna_compost_pile",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

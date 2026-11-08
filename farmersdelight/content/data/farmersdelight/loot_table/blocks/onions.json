@@ -1,0 +1,48 @@
+{
+  "modifier": [
+    {
+      "type": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "entries": [
+        {
+          "name": "farmersdelight:onion",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1.0
+    },
+    {
+      "condition": {
+        "block": "farmersdelight:onions",
+        "properties": {
+          "age": "7"
+        },
+        "type": "minecraft:block_state_property"
+      },
+      "entries": [
+        {
+          "modifier": [
+            {
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.5714286
+              },
+              "type": "minecraft:apply_bonus"
+            }
+          ],
+          "name": "farmersdelight:onion",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool2",
+      "rolls": 1.0
+    }
+  ],
+  "type": "minecraft:block"
+}

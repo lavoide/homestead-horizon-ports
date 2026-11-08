@@ -1,0 +1,72 @@
+{
+  "type": "minecraft:random_selector",
+  "features": [
+    {
+      "chance": 0.5,
+      "feature": {
+        "feature": "farmersdelight:wild_tomatoes_crop",
+        "placement": [
+          {
+            "type": "minecraft:block_predicate_filter",
+            "predicate": {
+              "predicates": [
+                {
+                  "blocks": "minecraft:air",
+                  "type": "minecraft:matching_blocks"
+                },
+                {
+                  "blocks": [
+                    "minecraft:dirt",
+                    "minecraft:grass_block",
+                    "minecraft:coarse_dirt",
+                    "minecraft:sand",
+                    "minecraft:red_sand"
+                  ],
+                  "offset": [
+                    0,
+                    -1,
+                    0
+                  ],
+                  "type": "minecraft:matching_blocks"
+                }
+              ],
+              "type": "minecraft:all_of"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "default": {
+    "feature": "farmersdelight:wild_tomatoes_beside",
+    "placement": [
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "predicates": [
+            {
+              "blocks": "minecraft:air",
+              "type": "minecraft:matching_blocks"
+            },
+            {
+              "blocks": [
+                "minecraft:dirt",
+                "minecraft:grass_block",
+                "minecraft:coarse_dirt",
+                "minecraft:sand",
+                "minecraft:red_sand"
+              ],
+              "offset": [
+                0,
+                -1,
+                0
+              ],
+              "type": "minecraft:matching_blocks"
+            }
+          ],
+          "type": "minecraft:all_of"
+        }
+      }
+    ]
+  }
+}

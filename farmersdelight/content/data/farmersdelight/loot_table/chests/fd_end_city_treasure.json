@@ -1,0 +1,43 @@
+{
+  "pools": [
+    {
+      "entries": [
+        {
+          "modifier": [
+            {
+              "levels": {
+                "max": 39.0,
+                "min": 20.0,
+                "type": "minecraft:uniform"
+              },
+              "treasure": true,
+              "type": "minecraft:enchant_with_levels"
+            }
+          ],
+          "name": "farmersdelight:diamond_knife",
+          "type": "minecraft:item"
+        },
+        {
+          "modifier": [
+            {
+              "levels": {
+                "max": 39.0,
+                "min": 20.0,
+                "type": "minecraft:uniform"
+              },
+              "treasure": true,
+              "type": "minecraft:enchant_with_levels"
+            }
+          ],
+          "name": "farmersdelight:iron_knife",
+          "type": "minecraft:item"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 6
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "farmersdelight:cabbage"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "farmersdelight:cabbage_crate"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

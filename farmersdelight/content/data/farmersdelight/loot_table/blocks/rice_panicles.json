@@ -1,0 +1,54 @@
+{
+  "modifier": [
+    {
+      "type": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "entries": [
+        {
+          "children": [
+            {
+              "condition": {
+                "terms": [
+                  {
+                    "block": "farmersdelight:rice_panicles",
+                    "properties": {
+                      "age": "3"
+                    },
+                    "type": "minecraft:block_state_property"
+                  },
+                  {
+                    "predicate": {
+                      "tag": "farmersdelight:tools/knives"
+                    },
+                    "type": "minecraft:match_tool"
+                  }
+                ],
+                "type": "minecraft:all_of"
+              },
+              "name": "farmersdelight:rice",
+              "type": "minecraft:item"
+            },
+            {
+              "condition": {
+                "block": "farmersdelight:rice_panicles",
+                "properties": {
+                  "age": "3"
+                },
+                "type": "minecraft:block_state_property"
+              },
+              "name": "farmersdelight:rice_panicle",
+              "type": "minecraft:item"
+            }
+          ],
+          "type": "minecraft:alternatives"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1.0
+    }
+  ],
+  "type": "minecraft:block"
+}

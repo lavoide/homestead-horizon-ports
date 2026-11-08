@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:apple",
+    "minecraft:melon_slice",
+    "minecraft:melon_slice",
+    "#c:foods/berries",
+    "#c:foods/berries",
+    "farmersdelight:pumpkin_slice",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "farmersdelight:fruit_salad"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

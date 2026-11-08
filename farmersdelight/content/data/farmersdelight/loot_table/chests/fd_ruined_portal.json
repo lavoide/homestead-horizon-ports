@@ -1,0 +1,22 @@
+{
+  "pools": [
+    {
+      "entries": [
+        {
+          "modifier": [
+            {
+              "type": "minecraft:enchant_randomly"
+            }
+          ],
+          "name": "farmersdelight:golden_knife",
+          "type": "minecraft:item"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 3
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

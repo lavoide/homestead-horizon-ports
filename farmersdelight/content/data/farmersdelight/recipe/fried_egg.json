@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": "minecraft:egg",
+  "result": {
+    "id": "farmersdelight:fried_egg"
+  },
+  "type": "minecraft:smelting"
+}

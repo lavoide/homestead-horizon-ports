@@ -1,0 +1,19 @@
+{
+  "template": "minecraft:hay_block",
+  "state_properties": {
+    "facing": {
+      "type": "enum",
+      "values": [
+        "down",
+        "up",
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    }
+  },
+  "default_state": {
+    "facing": "up"
+  }
+}

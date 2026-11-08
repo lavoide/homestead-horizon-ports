@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "#c:salad_ingredients",
+    "#c:crops/tomato",
+    "minecraft:beetroot",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "farmersdelight:mixed_salad"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

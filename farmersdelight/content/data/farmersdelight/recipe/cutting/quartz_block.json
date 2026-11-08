@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "minecraft:quartz_block"
+  ],
+  "result": [
+    {
+      "count": 4,
+      "id": "minecraft:quartz"
+    }
+  ],
+  "tool": {
+    "fabric:type": "farmersdelight:tool_action",
+    "action": "pickaxe_dig"
+  }
+}

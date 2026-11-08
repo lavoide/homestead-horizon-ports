@@ -1,0 +1,83 @@
+{
+  "pools": [
+    {
+      "entries": [
+        {
+          "modifier": [
+            {
+              "damage": {
+                "max": 0.8,
+                "min": 0.15,
+                "type": "minecraft:uniform"
+              },
+              "type": "minecraft:set_damage"
+            },
+            {
+              "type": "minecraft:enchant_randomly"
+            }
+          ],
+          "name": "farmersdelight:diamond_knife",
+          "type": "minecraft:item"
+        },
+        {
+          "modifier": [
+            {
+              "type": "minecraft:enchant_randomly"
+            }
+          ],
+          "name": "farmersdelight:golden_knife",
+          "type": "minecraft:item",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 2
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "modifier": [
+            {
+              "count": {
+                "max": 5.0,
+                "min": 2.0,
+                "type": "minecraft:uniform"
+              },
+              "type": "minecraft:set_count"
+            }
+          ],
+          "name": "farmersdelight:ham",
+          "type": "minecraft:item",
+          "weight": 4
+        },
+        {
+          "modifier": [
+            {
+              "count": {
+                "max": 5.0,
+                "min": 2.0,
+                "type": "minecraft:uniform"
+              },
+              "type": "minecraft:set_count"
+            }
+          ],
+          "name": "farmersdelight:smoked_ham",
+          "type": "minecraft:item",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 2
+        }
+      ],
+      "rolls": {
+        "max": 2.0,
+        "min": 1.0,
+        "type": "minecraft:uniform"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "key": {
+    "M": "#c:milks",
+    "w": "minecraft:wheat"
+  },
+  "pattern": [
+    "wMw",
+    " w "
+  ],
+  "result": {
+    "id": "farmersdelight:pie_crust"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

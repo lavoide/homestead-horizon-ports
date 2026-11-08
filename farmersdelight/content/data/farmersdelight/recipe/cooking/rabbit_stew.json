@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "minecraft:baked_potato",
+    "minecraft:rabbit",
+    "minecraft:carrot",
+    [
+      "minecraft:brown_mushroom",
+      "minecraft:red_mushroom"
+    ]
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "minecraft:rabbit_stew"
+  }
+}

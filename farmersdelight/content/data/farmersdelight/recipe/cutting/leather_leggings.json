@@ -1,0 +1,12 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "minecraft:leather_leggings"
+  ],
+  "result": [
+    {
+      "id": "minecraft:leather"
+    }
+  ],
+  "tool": "#c:shears"
+}

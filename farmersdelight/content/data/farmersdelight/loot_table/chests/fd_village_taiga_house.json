@@ -1,0 +1,41 @@
+{
+  "pools": [
+    {
+      "entries": [
+        {
+          "modifier": [
+            {
+              "count": {
+                "max": 3.0,
+                "min": 1.0,
+                "type": "minecraft:uniform"
+              },
+              "type": "minecraft:set_count"
+            }
+          ],
+          "name": "farmersdelight:cabbage_seeds",
+          "type": "minecraft:item"
+        },
+        {
+          "modifier": [
+            {
+              "count": {
+                "max": 3.0,
+                "min": 1.0,
+                "type": "minecraft:uniform"
+              },
+              "type": "minecraft:set_count"
+            }
+          ],
+          "name": "farmersdelight:rice",
+          "type": "minecraft:item"
+        }
+      ],
+      "rolls": {
+        "max": 3.0,
+        "min": 1.0,
+        "type": "minecraft:uniform"
+      }
+    }
+  ]
+}

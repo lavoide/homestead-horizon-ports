@@ -1,0 +1,10 @@
+{
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": "farmersdelight:golden_knife",
+  "result": {
+    "id": "minecraft:gold_nugget"
+  },
+  "type": "minecraft:blasting"
+}

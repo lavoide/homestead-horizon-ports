@@ -1,0 +1,22 @@
+{
+  "template": "minecraft:white_wool",
+  "state_properties": {
+    "facing": {
+      "type": "enum",
+      "values": [
+        "down",
+        "up",
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "paired": {
+      "type": "boolean"
+    }
+  },
+  "default_state": {
+    "facing": "down"
+  }
+}

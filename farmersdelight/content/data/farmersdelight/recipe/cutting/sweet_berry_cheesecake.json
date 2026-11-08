@@ -1,0 +1,13 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "farmersdelight:sweet_berry_cheesecake"
+  ],
+  "result": [
+    {
+      "count": 4,
+      "id": "farmersdelight:sweet_berry_cheesecake_slice"
+    }
+  ],
+  "tool": "#c:tools/knives"
+}

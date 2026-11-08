@@ -1,0 +1,18 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom",
+    "#c:crops/rice",
+    [
+      "minecraft:carrot",
+      "minecraft:potato"
+    ]
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "farmersdelight:mushroom_rice"
+  }
+}

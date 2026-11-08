@@ -1,0 +1,9 @@
+# Farmer's Delight Refabricated 2.4.1 (vectorwing, MehVahdJukaar, MerchantPug; MIT), ported by tools/farmersdelight_port.py.
+id = "farmersdelight"
+name = "Farmer's Delight"
+version = "2.4.1+horizon.1"
+description = "Cooking, farming and food: stoves, cooking pots, skillets, cutting boards, crops and meals."
+authors = ["vectorwing", "MehVahdJukaar", "MerchantPug"]
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

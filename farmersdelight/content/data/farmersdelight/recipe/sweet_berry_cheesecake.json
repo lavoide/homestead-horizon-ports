@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "fd_sweet_berry_cheesecake",
+  "key": {
+    "O": "farmersdelight:pie_crust",
+    "m": "#c:milks",
+    "s": "minecraft:sweet_berries"
+  },
+  "pattern": [
+    "sss",
+    "sss",
+    "mOm"
+  ],
+  "result": {
+    "id": "farmersdelight:sweet_berry_cheesecake"
+  },
+  "show_notification": true
+}

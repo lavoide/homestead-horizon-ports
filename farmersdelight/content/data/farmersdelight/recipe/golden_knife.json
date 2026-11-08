@@ -1,0 +1,16 @@
+{
+  "category": "equipment",
+  "key": {
+    "m": "minecraft:gold_ingot",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "m",
+    "s"
+  ],
+  "result": {
+    "id": "farmersdelight:golden_knife"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

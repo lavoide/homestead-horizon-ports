@@ -1,0 +1,107 @@
+{
+  "pools": [
+    {
+      "condition": {
+        "terms": [
+          {
+            "block": "farmersdelight:wild_rice",
+            "properties": {
+              "half": "lower"
+            },
+            "type": "minecraft:block_state_property"
+          },
+          {
+            "offsetY": 1,
+            "predicate": {
+              "block": {
+                "block": "farmersdelight:wild_rice",
+                "state": {
+                  "half": "upper"
+                }
+              }
+            },
+            "type": "minecraft:location_check"
+          }
+        ],
+        "type": "minecraft:all_of"
+      },
+      "entries": [
+        {
+          "children": [
+            {
+              "condition": {
+                "predicate": {
+                  "tag": "c:shears"
+                },
+                "type": "minecraft:match_tool"
+              },
+              "name": "farmersdelight:wild_rice",
+              "type": "minecraft:item"
+            },
+            {
+              "condition": {
+                "type": "minecraft:survives_explosion"
+              },
+              "name": "farmersdelight:rice",
+              "type": "minecraft:item"
+            }
+          ],
+          "type": "minecraft:alternatives"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "condition": {
+        "terms": [
+          {
+            "block": "farmersdelight:wild_rice",
+            "properties": {
+              "half": "upper"
+            },
+            "type": "minecraft:block_state_property"
+          },
+          {
+            "offsetY": -1,
+            "predicate": {
+              "block": {
+                "block": "farmersdelight:wild_rice",
+                "state": {
+                  "half": "lower"
+                }
+              }
+            },
+            "type": "minecraft:location_check"
+          }
+        ],
+        "type": "minecraft:all_of"
+      },
+      "entries": [
+        {
+          "children": [
+            {
+              "condition": {
+                "predicate": {
+                  "tag": "c:shears"
+                },
+                "type": "minecraft:match_tool"
+              },
+              "name": "farmersdelight:wild_rice",
+              "type": "minecraft:item"
+            },
+            {
+              "condition": {
+                "type": "minecraft:survives_explosion"
+              },
+              "name": "farmersdelight:rice",
+              "type": "minecraft:item"
+            }
+          ],
+          "type": "minecraft:alternatives"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "type": "minecraft:block"
+}

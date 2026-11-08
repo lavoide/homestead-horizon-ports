@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "#c:foods/breads",
+    "#c:foods/cooked_meats/cooked_eggs",
+    "#c:foods/cooked_meats/cooked_eggs"
+  ],
+  "result": {
+    "id": "farmersdelight:egg_sandwich"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

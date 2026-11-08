@@ -1,0 +1,16 @@
+{
+  "category": "equipment",
+  "key": {
+    "m": "#c:iron_ingots",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "m",
+    "s"
+  ],
+  "result": {
+    "id": "farmersdelight:iron_knife"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

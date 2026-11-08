@@ -1,0 +1,16 @@
+{
+  "category": "equipment",
+  "key": {
+    "m": "minecraft:flint",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "m",
+    "s"
+  ],
+  "result": {
+    "id": "farmersdelight:flint_knife"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

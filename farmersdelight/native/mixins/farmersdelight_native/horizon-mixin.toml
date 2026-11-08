@@ -1,0 +1,274 @@
+# farmersdelight: the Java half of Farmer's Delight 2.4.1+refabricated (vectorwing,
+# MehVahdJukaar, MerchantPug; MIT) for the content mod mods/farmersdelight
+# (tools/farmersdelight_port.py), with Homestead's farmersdelight-common.toml. All of it is the
+# game module `runtime.rs` (crate::game::farmersdelight), reached by HEAD injections on Horizon's
+# native hooks: the machines' block entities, ticks, slots, drawing and the cooking pot's screen;
+# the blocks' right clicks; seeds, rope and tilling; the crops' and soils' random ticks, bone
+# meal, survival and placement; the foods' effects.
+[mod]
+id = "farmersdelight_native"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "farmersdelight"
+source = "runtime.rs"
+
+[[injection]]
+id = "block_entity"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_block_entity"
+helper = "block_entity.rs"
+bindings = [
+  { name = "block", ty = "&str", value = "block" },
+  { name = "entity", ty = "&mut Option<(String, Compound)>", value = "&mut *entity" },
+]
+
+[[injection]]
+id = "ticks"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_block_entity_ticks"
+helper = "ticks.rs"
+bindings = [
+  { name = "block", ty = "&str", value = "block" },
+  { name = "ticks", ty = "&mut bool", value = "&mut *ticks" },
+]
+
+[[injection]]
+id = "container"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_block_entity_container"
+helper = "container.rs"
+bindings = [
+  { name = "block", ty = "&str", value = "block" },
+  { name = "container", ty = "&mut Option<ModContainer>", value = "&mut *container" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_block_entity_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "pos", ty = "[i32; 3]", value = "pos" },
+  { name = "entity", ty = "&mut ModBlockEntity", value = "&mut *entity" },
+]
+
+[[injection]]
+id = "update_tag"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_block_entity_update_tag"
+helper = "update_tag.rs"
+bindings = [
+  { name = "entity", ty = "&ModBlockEntity", value = "entity" },
+  { name = "tag", ty = "&mut Option<Compound>", value = "&mut *tag" },
+]
+
+[[injection]]
+id = "submit"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_block_entity_submit"
+helper = "submit.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "pos", ty = "[i32; 3]", value = "pos" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+  { name = "entity", ty = "&ModBlockEntity", value = "entity" },
+  { name = "draw", ty = "&mut BlockEntityDraw", value = "&mut *draw" },
+]
+
+[[injection]]
+id = "screen"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_screen"
+helper = "screen.rs"
+bindings = [
+  { name = "block", ty = "&str", value = "block" },
+  { name = "screen", ty = "&mut Option<NativeScreen>", value = "&mut *screen" },
+]
+
+[[injection]]
+id = "screen_draw"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_screen_draw"
+helper = "screen_draw.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "block", ty = "&str", value = "block" },
+  { name = "data", ty = "&[i32]", value = "data" },
+  { name = "batch", ty = "&mut HudBatch", value = "&mut *batch" },
+  { name = "origin", ty = "[f32; 2]", value = "origin" },
+]
+
+[[injection]]
+id = "viewers"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mod_container_viewers"
+helper = "viewers.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "pos", ty = "[i32; 3]", value = "pos" },
+  { name = "viewers", ty = "u32", value = "viewers" },
+  { name = "previous", ty = "u32", value = "previous" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::native_hooks::Game<'_>::native_right_click_block"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "at", ty = "[i32; 3]", value = "pos" },
+  { name = "side", ty = "[i32; 3]", value = "face" },
+  { name = "taken", ty = "&mut bool", value = "&mut *canceled" },
+]
+
+[[injection]]
+id = "use_on"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::native_hooks::Game<'_>::native_use_item_on"
+helper = "use_on.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "item", ty = "&ItemStack", value = "stack" },
+  { name = "at", ty = "[i32; 3]", value = "pos" },
+  { name = "side", ty = "[i32; 3]", value = "face" },
+  { name = "taken", ty = "&mut bool", value = "&mut *claimed" },
+]
+
+[[injection]]
+id = "placed"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_place_block"
+helper = "placed.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "pos", ty = "[i32; 3]", value = "pos" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+]
+
+[[injection]]
+id = "consume"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_consume_effect"
+helper = "consume.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+  { name = "kind", ty = "&str", value = "kind" },
+]
+
+[[injection]]
+id = "player_tick"
+kind = "HEAD"
+target = "horizon_client::game::potions::Game<'_>::tick_mob_effects"
+helper = "player_tick.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "random_tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_random_tick"
+helper = "random_tick.rs"
+bindings = [
+  { name = "level", ty = "&mut GameLevel<'_>", value = "self" },
+  { name = "ticks", ty = "&mut Ticks", value = "ticks" },
+  { name = "pos", ty = "BlockPos", value = "pos" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+  { name = "handled", ty = "&mut bool", value = "handled" },
+]
+
+[[injection]]
+id = "tick_block"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_tick_block"
+helper = "tick_block.rs"
+bindings = [
+  { name = "level", ty = "&mut GameLevel<'_>", value = "self" },
+  { name = "ticks", ty = "&mut Ticks", value = "ticks" },
+  { name = "pos", ty = "BlockPos", value = "pos" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+  { name = "handled", ty = "&mut bool", value = "handled" },
+]
+
+[[injection]]
+id = "bm_valid"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_is_valid_bonemeal_target"
+helper = "bm_valid.rs"
+bindings = [
+  { name = "level", ty = "&GameLevel<'_>", value = "self" },
+  { name = "pos", ty = "BlockPos", value = "pos" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+  { name = "valid", ty = "&mut Option<bool>", value = "valid" },
+]
+
+[[injection]]
+id = "bm_success"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_is_bonemeal_success"
+helper = "bm_success.rs"
+bindings = [
+  { name = "level", ty = "&mut GameLevel<'_>", value = "self" },
+  { name = "pos", ty = "BlockPos", value = "pos" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+  { name = "success", ty = "&mut bool", value = "success" },
+]
+
+[[injection]]
+id = "bm_perform"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_perform_bonemeal"
+helper = "bm_perform.rs"
+bindings = [
+  { name = "level", ty = "&mut GameLevel<'_>", value = "self" },
+  { name = "ticks", ty = "&mut Ticks", value = "ticks" },
+  { name = "pos", ty = "BlockPos", value = "pos" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+]
+
+[[injection]]
+id = "survive"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_can_survive"
+helper = "survive.rs"
+bindings = [
+  { name = "level", ty = "&GameLevel<'_>", value = "self" },
+  { name = "pos", ty = "BlockPos", value = "pos" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+  { name = "survives", ty = "&mut Option<bool>", value = "survives" },
+]
+
+[[injection]]
+id = "may_place"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_may_place_on"
+helper = "may_place.rs"
+bindings = [
+  { name = "level", ty = "&GameLevel<'_>", value = "self" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+  { name = "ground", ty = "BlockStateId", value = "ground" },
+  { name = "may", ty = "&mut Option<bool>", value = "may" },
+]
+
+[[injection]]
+id = "placement"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_state_for_placement"
+helper = "placement.rs"
+bindings = [
+  { name = "level", ty = "&GameLevel<'_>", value = "self" },
+  { name = "state", ty = "BlockStateId", value = "state" },
+  { name = "context", ty = "&PlacementContext", value = "context" },
+  { name = "fluid", ty = "FluidState", value = "fluid" },
+  { name = "answer", ty = "&mut Option<Option<BlockStateId>>", value = "answer" },
+]

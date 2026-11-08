@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#c:is_wet/overworld",
+    "minecraft:swamp",
+    "minecraft:jungle",
+    "minecraft:sparse_jungle",
+    "minecraft:beach",
+    "minecraft:bamboo_jungle",
+    "minecraft:lush_caves",
+    "minecraft:mangrove_swamp"
+  ]
+}

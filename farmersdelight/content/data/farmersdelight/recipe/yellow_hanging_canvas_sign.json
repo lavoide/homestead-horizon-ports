@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "fd_hanging_canvas_sign",
+  "ingredients": [
+    "#farmersdelight:hanging_canvas_signs",
+    "#c:dyes/yellow"
+  ],
+  "result": {
+    "id": "farmersdelight:yellow_hanging_canvas_sign"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "farmersdelight:tomato"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "farmersdelight:tomato_crate"
+  },
+  "show_notification": true,
+  "type": "minecraft:crafting_shaped"
+}

@@ -27,6 +27,7 @@ Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
 | [bridgingmod](bridgingmod/) | Right-click past an edge to bridge blocks out, Bedrock style. | [Bridging Mod](https://github.com/CloudG360/BridgingMod) by CG360 | MIT |
 | [mousewheelie](mousewheelie/) | Scroll items between inventories, sort with the middle button, pick the right tool. | [Mouse Wheelie](https://github.com/Siphalor/mouse-wheelie) by Siphalor | Apache-2.0 |
 | [emojiful](emojiful/) | :short_name: in chat shows the emoji (Twemoji), with completions as you type. | [Emojiful](https://github.com/InnovativeOnlineIndustries/Emojiful) by HorizonStudio | MIT |
+| [farmersdelight](farmersdelight/) | Farmer's Delight: stove, cooking pot, skillet, cutting board, crops, rich soil and 170 foods. | [Farmer's Delight](https://github.com/MehVahdJukaar/FarmersDelight) by MehVahdJukaar, MerchantPug | MIT |
 | [yungsbridges](yungsbridges/) | Bridges over rivers. | [YUNG's Bridges](https://github.com/yungnickyoung/YUNGs-Bridges) by YUNGNICKYOUNG | LGPL-3.0-only |
 | [betterdays](betterdays/) | Slower or faster days and nights. | [BetterDays](https://github.com/wendall911/BetterDays) by wendall911 | LGPL-3.0-or-later |
 | [comforts](comforts/) | Sleeping bags and hammocks. | [Comforts](https://github.com/illusivesoulworks/comforts) by Illusive Soulworks | LGPL-3.0-or-later |
