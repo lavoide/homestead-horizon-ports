@@ -1,0 +1,95 @@
+# mousewheelie: Mouse Wheelie 1.16.3 (Siphalor, Apache-2.0) for Horizon, with Homestead's config.
+# In the inventory and the chest-like screens (chests, barrels, ender chests, shulker boxes, hoppers,
+# dispensers), furnaces and crafting tables:
+# - The wheel over a slot moves its items towards where the wheel turns (directional scrolling): up
+#   from the inventory into the container, down from the container into the inventory (in the
+#   inventory screen, hotbar <-> main inventory). One item; Shift the whole stack; Ctrl every stack
+#   of the item; Space moves the matching kinds (deposit) or tops up partial stacks (restock). The
+#   wheel up on armour in the inventory screen puts it on.
+# - Ctrl+click moves every stack of the item, Ctrl+Shift+click everything in that part; Alt+click
+#   drops the stack (Alt+Ctrl every stack of the item, Alt+Ctrl+Shift the whole part); Space+click
+#   deposits. Dragging with Alt, Shift or Ctrl held does the same on each slot crossed.
+# - The middle button sorts the part under the cursor: creative order, Shift by quantity, Ctrl by
+#   name. The hotbar is its own part.
+# - Pick block while holding a tool or weapon picks the best tool for the block (or a weapon for an
+#   entity) from the inventory.
+#
+# Everything is ordinary slot clicks (the game's own `tweak_click`), so it runs on any server.
+[mod]
+id = "mousewheelie"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "mousewheelie"
+source = "runtime.rs"
+
+[[injection]]
+id = "scroll"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::tweaks::Game<'_>::tweak_scroll"
+helper = "scroll.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "delta", ty = "f32", value = "delta" },
+  { name = "slot", ty = "Option<usize>", value = "slot" },
+]
+
+[[injection]]
+id = "press"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::inventory_press"
+helper = "press.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "right", ty = "bool", value = "right" },
+]
+
+[[injection]]
+id = "release"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::inventory_mouse_release"
+helper = "release.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "right", ty = "bool", value = "right" },
+]
+
+[[injection]]
+id = "drag"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::inventory_drag_move"
+helper = "drag.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+]
+
+[[injection]]
+id = "sort"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::tweaks::Game<'_>::sort_mouse_press"
+helper = "sort.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "button", ty = "MouseButton", value = "button" },
+]
+
+[[injection]]
+id = "pick"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::native_hooks::Game<'_>::native_interaction"
+helper = "pick.rs"
+bindings = [
+  { name = "game", ty = "&mut Game<'_>", value = "self" },
+  { name = "button", ty = "i32", value = "button" },
+]
