@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "111",
+    "234",
+    "505"
+  ],
+  "key": {
+    "0": "farmersdelight:pie_crust",
+    "1": "minecraft:wheat",
+    "2": "minecraft:poppy",
+    "3": [
+      "minecraft:chorus_fruit",
+      "ends_delight:chorus_fruit_grain"
+    ],
+    "4": "ends_delight:dried_chorus_flower",
+    "5": "minecraft:sugar"
+  },
+  "result": {
+    "id": "ends_delight:chorus_fruit_pie"
+  }
+}

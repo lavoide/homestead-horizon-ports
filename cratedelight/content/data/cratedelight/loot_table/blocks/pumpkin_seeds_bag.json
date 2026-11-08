@@ -1,0 +1,18 @@
+{
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "name": "cratedelight:pumpkin_seeds_bag",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1
+    }
+  ],
+  "type": "minecraft:block"
+}

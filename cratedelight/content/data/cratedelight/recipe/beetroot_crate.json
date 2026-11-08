@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": [
+          "farmersdelight"
+        ]
+      }
+    }
+  ],
+  "key": {
+    "#": "minecraft:beetroot"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cratedelight:beetroot_crate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

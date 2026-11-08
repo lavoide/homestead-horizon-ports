@@ -1,0 +1,24 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "#c:shulker_meat",
+    "ends_delight:dried_endermite_meat",
+    "ends_delight:chorus_sauce",
+    [
+      "minecraft:warped_fungus",
+      "minecraft:crimson_fungus",
+      "minecraft:brown_mushroom",
+      "minecraft:red_mushroom"
+    ],
+    [
+      "#ends_delight:dough",
+      "farmersdelight:raw_pasta"
+    ]
+  ],
+  "result": {
+    "count": 2,
+    "id": "ends_delight:ender_noodle"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

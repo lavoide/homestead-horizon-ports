@@ -1,0 +1,10 @@
+{
+  "ingredients": [
+    "minecraft:stick",
+    "oceansdelight:tentacles"
+  ],
+  "result": {
+    "id": "oceansdelight:tentacle_on_a_stick"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

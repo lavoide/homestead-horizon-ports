@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "ends_delight:dragon_leg"
+  ],
+  "tool": "#c:tools/knives",
+  "result": [
+    {
+      "id": "ends_delight:raw_dragon_meat"
+    },
+    {
+      "count": 6,
+      "id": "minecraft:bone_meal"
+    }
+  ]
+}

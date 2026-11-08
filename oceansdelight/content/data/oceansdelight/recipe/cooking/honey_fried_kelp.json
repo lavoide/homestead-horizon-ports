@@ -1,0 +1,12 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredients": [
+    "minecraft:dried_kelp",
+    "minecraft:honey_bottle"
+  ],
+  "result": {
+    "id": "oceansdelight:honey_fried_kelp"
+  }
+}

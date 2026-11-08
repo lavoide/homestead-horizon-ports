@@ -1,0 +1,25 @@
+{
+  "pools": [
+    {
+      "condition": {
+        "entity": "attacker",
+        "predicate": {
+          "minecraft:equipment": {
+            "mainhand": {
+              "items": "#c:tools/knives"
+            }
+          }
+        },
+        "type": "minecraft:entity_properties"
+      },
+      "entries": [
+        {
+          "name": "oceansdelight:elder_guardian_slab",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:chorus_fruit",
+    "ends_delight:chorus_succulent",
+    "minecraft:crimson_fungus",
+    "minecraft:warped_fungus",
+    "#c:crops/cabbage",
+    "#c:crops/tomato",
+    "minecraft:shulker_shell"
+  ],
+  "result": {
+    "id": "ends_delight:assorted_salad"
+  }
+}

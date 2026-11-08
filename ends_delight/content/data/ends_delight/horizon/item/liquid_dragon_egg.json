@@ -1,0 +1,58 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:regeneration",
+              "duration": 1200,
+              "amplifier": 0
+            }
+          ]
+        },
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:strength",
+              "duration": 1200,
+              "amplifier": 0
+            }
+          ]
+        },
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:resistance",
+              "duration": 1200,
+              "amplifier": 0
+            }
+          ]
+        },
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:blindness",
+              "duration": 400,
+              "amplifier": 0
+            }
+          ]
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 14,
+      "saturation": 14.0,
+      "can_always_eat": true
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:wheat",
+    "minecraft:wheat",
+    "ends_delight:chorus_fruit_grain"
+  ],
+  "result": {
+    "count": 8,
+    "id": "ends_delight:chorus_cookie"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted_state_provider",
+    "entries": [
+      {
+        "weight": 1,
+        "data": {
+          "Name": "ends_delight:chorus_succulent",
+          "Properties": {
+            "succulent": "1"
+          }
+        }
+      },
+      {
+        "weight": 1,
+        "data": {
+          "Name": "ends_delight:chorus_succulent",
+          "Properties": {
+            "succulent": "2"
+          }
+        }
+      },
+      {
+        "weight": 1,
+        "data": {
+          "Name": "ends_delight:chorus_succulent",
+          "Properties": {
+            "succulent": "3"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+# Ocean's Delight 1.0.2 (Scouter; MIT), ported by tools/delight_addons.py from oceansdelight-fdrf-fabric-1.0.2-1.20.jar.
+id = "oceansdelight"
+name = "Ocean's Delight"
+version = "1.0.2+horizon.1"
+description = "Squid, guardian and pufferfish dishes for Farmer's Delight."
+authors = ["Scouter"]
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

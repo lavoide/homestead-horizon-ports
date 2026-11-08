@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "cratedelight:apple_crate"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:apple"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,10 @@
+{
+  "ingredients": [
+    "minecraft:seagrass",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "oceansdelight:seagrass_salad"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

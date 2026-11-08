@@ -1,0 +1,12 @@
+{
+  "ingredients": [
+    "#c:salad_ingredients/cabbage",
+    "#c:crops/onion",
+    "#c:crops/tomato",
+    "oceansdelight:cooked_elder_guardian_slice"
+  ],
+  "result": {
+    "id": "oceansdelight:cabbage_wrapped_elder_guardian"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

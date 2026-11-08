@@ -1,0 +1,13 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "#c:shulker_meat",
+    "ends_delight:dried_chorus_flower",
+    "ends_delight:chorus_succulent"
+  ],
+  "result": {
+    "id": "ends_delight:shulker_soup"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

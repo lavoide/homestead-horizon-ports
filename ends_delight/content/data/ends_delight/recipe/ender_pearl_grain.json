@@ -1,0 +1,13 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "minecraft:ender_pearl"
+  ],
+  "tool": "#c:tools/knives",
+  "result": [
+    {
+      "count": 4,
+      "id": "ends_delight:ender_pearl_grain"
+    }
+  ]
+}

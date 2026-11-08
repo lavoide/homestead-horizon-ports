@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:chorus_succulent",
+          "modifier": [
+            {
+              "count": 2,
+              "type": "minecraft:set_count",
+              "condition": {
+                "properties": {
+                  "succulent": "2"
+                },
+                "block": "ends_delight:chorus_succulent",
+                "type": "minecraft:block_state_property"
+              }
+            },
+            {
+              "count": 3,
+              "type": "minecraft:set_count",
+              "condition": {
+                "properties": {
+                  "succulent": "3"
+                },
+                "block": "ends_delight:chorus_succulent",
+                "type": "minecraft:block_state_property"
+              }
+            },
+            {
+              "type": "minecraft:explosion_decay"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

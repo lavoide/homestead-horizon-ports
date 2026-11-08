@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "#c:crops/rice",
+    "ends_delight:dried_endermite_meat",
+    "ends_delight:ender_pearl_grain"
+  ],
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "result": {
+    "id": "ends_delight:ender_congee"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

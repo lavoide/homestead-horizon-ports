@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": "ends_delight:shulker_meat",
+  "result": {
+    "id": "ends_delight:roasted_shulker_meat"
+  },
+  "cookingtime": 200,
+  "experience": 0.35
+}

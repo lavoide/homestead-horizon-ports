@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "cratedelight:golden_carrot_crate"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:golden_carrot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

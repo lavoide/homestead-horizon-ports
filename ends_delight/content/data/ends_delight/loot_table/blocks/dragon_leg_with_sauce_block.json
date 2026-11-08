@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:dragon_leg_with_sauce_block"
+        }
+      ],
+      "condition": {
+        "properties": {
+          "servings": "6",
+          "part": "head"
+        },
+        "block": "ends_delight:dragon_leg_with_sauce_block",
+        "type": "minecraft:block_state_property"
+      }
+    },
+    {
+      "name": "pool2",
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone_meal"
+        }
+      ],
+      "condition": {
+        "term": {
+          "properties": {
+            "servings": "6"
+          },
+          "block": "ends_delight:dragon_leg_with_sauce_block",
+          "type": "minecraft:block_state_property"
+        },
+        "type": "minecraft:inverted"
+      }
+    }
+  ]
+}

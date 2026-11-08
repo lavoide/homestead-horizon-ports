@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "ends_delight:non_hatchable_dragon_egg"
+  ],
+  "tool": "minecraft:nether_star",
+  "result": [
+    {
+      "count": 1,
+      "id": "ends_delight:liquid_dragon_egg"
+    },
+    {
+      "count": 1,
+      "id": "ends_delight:half_dragon_egg_shell"
+    }
+  ]
+}

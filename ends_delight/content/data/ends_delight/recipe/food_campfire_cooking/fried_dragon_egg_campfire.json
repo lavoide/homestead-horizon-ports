@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": "ends_delight:liquid_dragon_egg",
+  "result": {
+    "id": "ends_delight:fried_dragon_egg"
+  },
+  "cookingtime": 600
+}

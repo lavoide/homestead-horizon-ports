@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "ends_delight:dragon_tooth",
+  "base": "ends_delight:dragon_egg_shell_knife",
+  "result": {
+    "id": "ends_delight:dragon_tooth_knife"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "010",
+    "232",
+    "454"
+  ],
+  "key": {
+    "0": "#c:crops/tomato",
+    "1": "ends_delight:chorus_sauce",
+    "2": "minecraft:crimson_fungus",
+    "3": "ends_delight:smoked_dragon_leg",
+    "4": "minecraft:warped_fungus",
+    "5": "minecraft:chorus_fruit"
+  },
+  "result": {
+    "id": "ends_delight:dragon_leg_with_sauce_block"
+  }
+}

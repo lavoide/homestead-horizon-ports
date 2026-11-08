@@ -1,0 +1,17 @@
+{
+  "cookingtime": 200,
+  "experience": 0.65,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "farmersdelight"
+      ]
+    }
+  ],
+  "ingredient": "oceansdelight:elder_guardian_slice",
+  "result": {
+    "id": "oceansdelight:cooked_elder_guardian_slice"
+  },
+  "type": "minecraft:smelting"
+}

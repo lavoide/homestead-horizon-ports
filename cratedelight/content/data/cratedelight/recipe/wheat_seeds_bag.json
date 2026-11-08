@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "minecraft:wheat_seeds"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cratedelight:wheat_seeds_bag"
+  },
+  "type": "minecraft:crafting_shaped"
+}

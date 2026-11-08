@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "353",
+    "412",
+    " 6 "
+  ],
+  "key": {
+    "1": "ends_delight:roasted_shulker_meat",
+    "2": "minecraft:chorus_fruit",
+    "3": "ends_delight:chorus_succulent",
+    "4": "#c:crops/tomato",
+    "5": "#c:crops/onion",
+    "6": "minecraft:shulker_shell"
+  },
+  "result": {
+    "id": "ends_delight:grilled_shulker_block"
+  },
+  "count": 1
+}

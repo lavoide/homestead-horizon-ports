@@ -1,0 +1,17 @@
+{
+  "cookingtime": 100,
+  "experience": 0.35,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "farmersdelight"
+      ]
+    }
+  ],
+  "ingredient": "oceansdelight:stuffed_cod",
+  "result": {
+    "id": "oceansdelight:cooked_stuffed_cod"
+  },
+  "type": "minecraft:smoking"
+}

@@ -1,0 +1,69 @@
+{
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 0.8,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true
+    },
+    "minecraft:food": {
+      "nutrition": 2,
+      "saturation": 3.2
+    }
+  },
+  "template": "minecraft:poppy",
+  "properties": {
+    "hardness": 0.0,
+    "explosion_resistance": 0.0,
+    "sounds": "minecraft:crimson_fungus",
+    "light": 5
+  },
+  "state_properties": {
+    "succulent": {
+      "type": "enum",
+      "values": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  },
+  "default_state": {
+    "succulent": "1"
+  },
+  "shapes": {
+    "property": "succulent",
+    "values": {
+      "1": [
+        [
+          0.375,
+          0.0,
+          0.375,
+          0.625,
+          0.375,
+          0.625
+        ]
+      ],
+      "2": [
+        [
+          0.1875,
+          0.0,
+          0.1875,
+          0.8125,
+          0.375,
+          0.8125
+        ]
+      ],
+      "3": [
+        [
+          0.125,
+          0.0,
+          0.125,
+          0.875,
+          0.375,
+          0.875
+        ]
+      ]
+    }
+  }
+}

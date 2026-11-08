@@ -1,0 +1,69 @@
+{
+  "template": "minecraft:bread",
+  "components": {
+    "minecraft:consumable": {
+      "consume_seconds": 1.6,
+      "animation": "eat",
+      "sound": "minecraft:entity.generic.eat",
+      "has_consume_particles": true,
+      "on_consume_effects": [
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:regeneration",
+              "duration": 400,
+              "amplifier": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:strength",
+              "duration": 1200,
+              "amplifier": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "minecraft:resistance",
+              "duration": 1200,
+              "amplifier": 0
+            }
+          ]
+        },
+        {
+          "type": "minecraft:apply_effects",
+          "effects": [
+            {
+              "id": "farmersdelight:comfort",
+              "duration": 3600,
+              "amplifier": 0
+            }
+          ]
+        },
+        {
+          "type": "farmersdelight:cure_one_harmful"
+        },
+        {
+          "type": "ends_delight:sneak_teleport"
+        }
+      ]
+    },
+    "minecraft:food": {
+      "nutrition": 16,
+      "saturation": 19.2,
+      "can_always_eat": true
+    },
+    "minecraft:use_remainder": {
+      "id": "minecraft:bowl"
+    }
+  },
+  "crafting_remainder": "minecraft:bowl",
+  "max_stack_size": 16
+}

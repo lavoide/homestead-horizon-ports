@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "#c:crops/onion",
+    "#c:crops/tomato",
+    [
+      "minecraft:chorus_fruit",
+      "ends_delight:chorus_fruit_grain"
+    ],
+    "#c:shulker_meat"
+  ],
+  "result": {
+    "id": "ends_delight:stir_fried_shulker_meat"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

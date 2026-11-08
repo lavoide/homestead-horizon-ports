@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "minecraft:sweet_berries"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cratedelight:berry_crate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

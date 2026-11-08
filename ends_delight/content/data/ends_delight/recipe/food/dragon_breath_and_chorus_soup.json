@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "minecraft:suspicious_stew",
+    "minecraft:dragon_breath",
+    "ends_delight:dried_chorus_flower",
+    "minecraft:chorus_fruit",
+    "minecraft:chorus_fruit"
+  ],
+  "result": {
+    "id": "ends_delight:dragon_breath_and_chorus_soup"
+  },
+  "cookingtime": 200,
+  "experience": 1.0
+}

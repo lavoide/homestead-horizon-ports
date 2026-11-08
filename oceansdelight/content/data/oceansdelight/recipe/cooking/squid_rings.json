@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredients": [
+    "oceansdelight:cut_tentacles",
+    "#c:dough"
+  ],
+  "result": {
+    "id": "oceansdelight:squid_rings"
+  }
+}

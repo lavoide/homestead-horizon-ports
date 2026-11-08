@@ -1,0 +1,51 @@
+{
+  "template": "minecraft:iron_sword",
+  "components": {
+    "minecraft:max_damage": 200,
+    "minecraft:enchantable": {
+      "value": 5
+    },
+    "minecraft:repairable": {
+      "items": "minecraft:end_stone"
+    },
+    "minecraft:tool": {
+      "rules": [
+        {
+          "blocks": "#minecraft:incorrect_for_stone_tool",
+          "correct_for_drops": false
+        },
+        {
+          "blocks": "#c:mineable/knife",
+          "speed": 4.0,
+          "correct_for_drops": true
+        },
+        {
+          "blocks": "minecraft:cobweb",
+          "speed": 15.0,
+          "correct_for_drops": true
+        }
+      ],
+      "default_mining_speed": 1.0,
+      "damage_per_block": 1
+    },
+    "minecraft:weapon": {
+      "item_damage_per_attack": 1
+    },
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:attack_damage",
+        "id": "minecraft:base_attack_damage",
+        "amount": 1.5,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "minecraft:base_attack_speed",
+        "amount": -2.0,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ]
+  }
+}

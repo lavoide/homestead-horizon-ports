@@ -1,0 +1,13 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "ends_delight:roasted_dragon_meat"
+  ],
+  "tool": "#c:tools/knives",
+  "result": [
+    {
+      "count": 3,
+      "id": "ends_delight:roasted_dragon_meat_cuts"
+    }
+  ]
+}

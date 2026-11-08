@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "ends_delight:chorus_sauce",
+    "#c:roasted_dragon_meat",
+    "#c:crops/tomato",
+    "minecraft:warped_fungus",
+    "minecraft:crimson_fungus",
+    "minecraft:chorus_fruit",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "ends_delight:roasted_dragon_steak"
+  },
+  "count": 1
+}

@@ -1,0 +1,29 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": [
+          "farmersdelight"
+        ]
+      }
+    }
+  ],
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "name": "cratedelight:beetroot_crate",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1
+    }
+  ],
+  "type": "minecraft:block"
+}

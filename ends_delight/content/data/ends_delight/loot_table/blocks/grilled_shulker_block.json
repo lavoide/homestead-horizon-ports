@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:grilled_shulker_block"
+        }
+      ],
+      "condition": {
+        "properties": {
+          "servings": "4"
+        },
+        "block": "ends_delight:grilled_shulker_block",
+        "type": "minecraft:block_state_property"
+      }
+    },
+    {
+      "name": "pool2",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:shulker_shell"
+        }
+      ],
+      "condition": {
+        "term": {
+          "properties": {
+            "servings": "4"
+          },
+          "block": "ends_delight:grilled_shulker_block",
+          "type": "minecraft:block_state_property"
+        },
+        "type": "minecraft:inverted"
+      }
+    }
+  ]
+}

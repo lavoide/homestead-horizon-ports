@@ -1,0 +1,14 @@
+{
+  "ingredients": [
+    "minecraft:kelp",
+    "#c:crops/onion",
+    "#c:crops/tomato",
+    "minecraft:brown_mushroom",
+    "minecraft:cod",
+    "farmersdelight:rope"
+  ],
+  "result": {
+    "id": "oceansdelight:stuffed_cod"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

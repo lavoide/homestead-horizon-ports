@@ -1,0 +1,19 @@
+{
+  "category": "misc",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "farmersdelight"
+      ]
+    }
+  ],
+  "ingredients": [
+    "cratedelight:pumpkin_slice_crate"
+  ],
+  "result": {
+    "count": 9,
+    "id": "farmersdelight:pumpkin_slice"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

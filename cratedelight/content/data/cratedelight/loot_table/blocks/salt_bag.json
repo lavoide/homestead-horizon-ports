@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "expandeddelight"
+      ]
+    }
+  ],
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "name": "cratedelight:salt_bag",
+          "type": "minecraft:item"
+        }
+      ],
+      "name": "pool1",
+      "rolls": 1
+    }
+  ],
+  "type": "minecraft:block"
+}

@@ -1,0 +1,40 @@
+{
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:enderman_gristle"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "entity": "attacker",
+            "predicate": {
+              "minecraft:equipment": {
+                "mainhand": {
+                  "items": "#c:tools/knives"
+                }
+              }
+            },
+            "type": "minecraft:entity_properties"
+          },
+          {
+            "type": "minecraft:random_chance_with_enchanted_bonus",
+            "enchantment": "minecraft:looting",
+            "unenchanted_chance": 0.35,
+            "enchanted_chance": {
+              "type": "minecraft:linear",
+              "base": 0.45,
+              "per_level_above_first": 0.1
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

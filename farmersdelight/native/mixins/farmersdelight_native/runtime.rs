@@ -27,8 +27,25 @@ const FORTUNE_BONUS: f64 = 0.1;
 // ---------------------------------------------------------------------------------------------
 
 fn short(name: &str) -> Option<&str> {
-    name.strip_prefix(NS)
+    name.strip_prefix(NS).or_else(|| match name {
+        // The add-ons' blocks that work as Farmer's Delight's do (Ocean's Delight, End's Delight):
+        // the End Stove is a stove; the others keep their full names.
+        "ends_delight:end_stove" => Some("stove"),
+        _ if ADDON_BLOCKS.contains(&name) => Some(name),
+        _ => None,
+    })
 }
+const ADDON_BLOCKS: &[&str] = &[
+    "oceansdelight:guardian_soup",
+    "ends_delight:chorus_fruit_pie",
+    "ends_delight:steamed_dragon_egg_block",
+    "ends_delight:dragon_meat_stew_block",
+    "ends_delight:grilled_shulker_block",
+    DRAGON_LEG,
+    SUCCULENT,
+];
+const DRAGON_LEG: &str = "ends_delight:dragon_leg_with_sauce_block";
+const SUCCULENT: &str = "ends_delight:chorus_succulent";
 
 /// Direction by name, as (x, z) steps; `None` for up and down.
 fn step(dir: &str) -> (i32, i32) {
@@ -383,7 +400,8 @@ fn pop(game: &mut Game<'_>, p: [i32; 3], stack: ItemStack) {
 fn heated(game: &Game<'_>, p: [i32; 3], direct: bool) -> bool {
     let source = |game: &Game<'_>, q: [i32; 3]| -> Option<bool> {
         let name = name_at(game, q);
-        block_tag(game, "farmersdelight:heat_sources", &name)
+        // End's Delight puts its End Stove in the tag; here it is a stove (`short`).
+        (block_tag(game, "farmersdelight:heat_sources", &name) || short(&name) == Some("stove"))
             .then(|| prop(game, q, "lit").is_none_or(|v| v == "true"))
     };
     let below = [p[0], p[1] - 1, p[2]];
@@ -1413,12 +1431,12 @@ fn colony_use(game: &mut Game<'_>, at: [i32; 3], n: &str, held: Option<&ItemStac
 }
 
 fn is_pie(n: &str) -> bool {
-    matches!(n, "apple_pie" | "sweet_berry_cheesecake" | "chocolate_pie")
+    matches!(n, "apple_pie" | "sweet_berry_cheesecake" | "chocolate_pie" | "ends_delight:chorus_fruit_pie")
 }
 
 /// `PieBlock.use`: a knife cuts a slice, anything else eats one.
 fn pie_use(game: &mut Game<'_>, at: [i32; 3], n: &str, held: Option<&ItemStack>) {
-    let slice = format!("{NS}{n}_slice");
+    let slice = if n.contains(':') { format!("{n}_slice") } else { format!("{NS}{n}_slice") };
     let bites: i32 = prop(game, at, "bites").and_then(|v| v.parse().ok()).unwrap_or(0);
     let c = centre(at);
     let knife = held.is_some_and(|h| is_knife(game, &h.item));
@@ -1459,6 +1477,12 @@ fn feast(n: &str) -> Option<(&'static str, bool)> {
         "honey_glazed_ham_block" => ("farmersdelight:honey_glazed_ham", true),
         "shepherds_pie_block" => ("farmersdelight:shepherds_pie", true),
         "rice_roll_medley_block" => ("farmersdelight:salmon_roll", true),
+        // GuardianSoupBlock; EDFeastBlock's; DragonLegBlock (two halves sharing the servings).
+        "oceansdelight:guardian_soup" => ("oceansdelight:bowl_of_guardian_soup", true),
+        "ends_delight:steamed_dragon_egg_block" => ("ends_delight:steamed_dragon_egg", true),
+        "ends_delight:dragon_meat_stew_block" => ("ends_delight:dragon_meat_stew", true),
+        "ends_delight:grilled_shulker_block" => ("ends_delight:grilled_shulker", true),
+        DRAGON_LEG => ("ends_delight:dragon_leg_with_sauce", true),
         _ => return None,
     })
 }
@@ -1479,9 +1503,13 @@ fn feast_use(game: &mut Game<'_>, at: [i32; 3], n: &str, held: Option<&ItemStack
     let Some((serving, leftovers)) = feast(n) else { return };
     let c = centre(at);
     let servings: i32 = prop(game, at, "servings").and_then(|v| v.parse().ok()).unwrap_or(0);
+    let pair = (n == DRAGON_LEG).then(|| dragon_leg_pair(game, at)).flatten();
     if servings == 0 {
         play(game, "minecraft:block.wood.break", c, 0.8, 0.8);
         let _ = game.destroy_block_dropping(at);
+        if let Some(q) = pair {
+            remove_block(game, q);
+        }
         return;
     }
     let serving = if n == "rice_roll_medley_block" { MEDLEY[(servings as usize - 1).min(7)] } else { serving };
@@ -1494,6 +1522,9 @@ fn feast_use(game: &mut Game<'_>, at: [i32; 3], n: &str, held: Option<&ItemStack
         return;
     }
     set_props(game, at, &[("servings", &(servings - 1).to_string())]);
+    if let Some(q) = pair {
+        set_props(game, q, &[("servings", &(servings - 1).to_string())]);
+    }
     if container.is_some() {
         use_one(game);
     }
@@ -1502,6 +1533,15 @@ fn feast_use(game: &mut Game<'_>, at: [i32; 3], n: &str, held: Option<&ItemStack
         remove_block(game, at);
     }
     play(game, "minecraft:item.armor.equip_generic", c, 1.0, 1.0);
+}
+
+/// `DragonLegBlock.getDirectionTowardsOtherPart`: the other half, when it is there.
+fn dragon_leg_pair(game: &Game<'_>, at: [i32; 3]) -> Option<[i32; 3]> {
+    let facing = prop(game, at, "facing")?;
+    let (dx, dz) = step(&facing);
+    let k = if prop(game, at, "part").as_deref() == Some("head") { 1 } else { -1 };
+    let q = [at[0] + dx * k, at[1], at[2] + dz * k];
+    (&*name_at(game, q) == DRAGON_LEG && prop(game, q, "part") != prop(game, at, "part")).then_some(q)
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -1522,6 +1562,18 @@ fn seed_crop(item: &str) -> Option<&'static str> {
 pub(crate) fn use_on(game: &mut Game<'_>, item: &ItemStack, at: [i32; 3], side: [i32; 3]) -> bool {
     let name = name_at(game, at);
     let above = [at[0], at[1] + 1, at[2]];
+    // ChorusSucculentBlock.canBeReplaced / getStateForPlacement: one more succulent, up to 3.
+    if &*name == SUCCULENT && &*item.item == SUCCULENT && !sneaking(game) {
+        let n: i32 = prop(game, at, "succulent").and_then(|v| v.parse().ok()).unwrap_or(1);
+        if n < 3 {
+            set_props(game, at, &[("succulent", &(n + 1).to_string())]);
+            if !game.creative {
+                use_one(game);
+            }
+            play(game, "minecraft:block.fungus.place", centre(at), 1.0, 0.8);
+            return true;
+        }
+    }
     // RichSoilBlock.getToolModifiedState: a hoe tills it, with air above.
     if &*name == "farmersdelight:rich_soil" && item_tag(game, "minecraft:hoes", &item.item) && side != [0, -1, 0] {
         if !game.res.facts().is_air(state_at(game, above)) {
@@ -1575,6 +1627,14 @@ pub(crate) fn use_on(game: &mut Game<'_>, item: &ItemStack, at: [i32; 3], side: 
 pub(crate) fn placed(game: &mut Game<'_>, pos: [i32; 3], state: BlockStateId) {
     let name = game.res.facts().get(state).name.clone();
     match short(&name) {
+        Some(DRAGON_LEG) if prop(game, pos, "part").as_deref() == Some("head") => {
+            let facing = prop(game, pos, "facing").unwrap_or_else(|| "north".into());
+            let (dx, dz) = step(&facing);
+            let foot = [pos[0] + dx, pos[1], pos[2] + dz];
+            if game.res.facts().get(state_at(game, foot)).replaceable {
+                set_default(game, foot, DRAGON_LEG, &[("facing", &facing), ("part", "foot")]);
+            }
+        }
         Some("full_tatami_mat") => {
             let facing = prop(game, pos, "facing").unwrap_or_else(|| "north".into());
             let (dx, dz) = step(&facing);
@@ -1633,6 +1693,15 @@ pub(crate) fn consume_effect(game: &mut Game<'_>, kind: &str) {
             game.potions.effects.changes = game.potions.effects.changes.wrapping_add(1);
             game.apply_effect_status();
         }
+        // End's Delight's chorus foods: a chorus fruit teleport when eaten sneaking.
+        "ends_delight:sneak_teleport" => {
+            if sneaking(game) {
+                game.teleport_randomly(&horizon_world::teleport_consume::TeleportConsume {
+                    diameter: 16.0,
+                    directional_particles: false,
+                });
+            }
+        }
         // MelonJuiceItem
         "farmersdelight:heal" => game.apply_effect_action(EffectAction::Heal(2.0)),
         // PopsicleItem
@@ -1682,7 +1751,7 @@ pub(crate) fn player_tick(game: &mut Game<'_>) {
         return;
     }
     let under = [p.position.x.floor() as i32, (p.position.y - 0.2).floor() as i32, p.position.z.floor() as i32];
-    if &*name_at(game, under) == "farmersdelight:stove" && prop(game, under, "lit").as_deref() == Some("true") {
+    if short(&name_at(game, under)) == Some("stove") && prop(game, under, "lit").as_deref() == Some("true") {
         let frost = game.armor[3].as_ref().is_some_and(|s| s.extra.as_deref().is_some_and(|x| format!("{x:?}").contains("frost_walker")));
         if !frost {
             game.apply_effect_action(EffectAction::Hurt("minecraft:hot_floor", 1.0));
@@ -2009,7 +2078,7 @@ pub(crate) fn bonemeal_valid(level: &GameLevel<'_>, pos: BlockPos, state: BlockS
     let b = level.behaviours;
     let n = short(lname(b, state))?;
     Some(match n {
-        "budding_tomatoes" => true,
+        "budding_tomatoes" | SUCCULENT => true,
         "tomatoes" | "rice_panicles" | "brown_mushroom_colony" | "red_mushroom_colony" => lprop_int(b, state, "age") < 3,
         "rice" => {
             let up = level.block_state(off(pos, 0, 1, 0));
@@ -2034,6 +2103,14 @@ pub(crate) fn bonemeal_perform(level: &mut GameLevel<'_>, ticks: &mut Ticks, pos
                 ldefault(b, "farmersdelight:tomatoes").and_then(|d| lwith_int(b, d, "age", grown - 4))
             };
             if let Some(s) = next {
+                set(level, ticks, pos, s, 3);
+            }
+        }
+        // ChorusSucculentBlock.performBonemeal: three on end stone.
+        SUCCULENT => {
+            if lname(b, level.block_state(off(pos, 0, -1, 0))) == "minecraft:end_stone"
+                && let Some(s) = lwith_text(b, state, "succulent", "3")
+            {
                 set(level, ticks, pos, s, 3);
             }
         }
@@ -2096,6 +2173,8 @@ pub(crate) fn can_survive(level: &GameLevel<'_>, pos: BlockPos, state: BlockStat
     match n {
         "tomatoes" if lprop_bool(b, state, "ropelogged") => Some(lname(b, below) == "farmersdelight:tomatoes" && light),
         "rice_panicles" => Some(lname(b, below) == "farmersdelight:rice" && light),
+        // ChorusSucculentBlock.mayPlaceOn: a floor with a top face.
+        SUCCULENT => Some(b.is_solid(below)),
         "brown_mushroom_colony" | "red_mushroom_colony" => {
             let g = lname(b, below);
             Some(
@@ -2114,6 +2193,7 @@ pub(crate) fn may_place_on(level: &GameLevel<'_>, state: BlockStateId, ground: B
     let b = level.behaviours;
     match short(lname(b, state))? {
         "rice_panicles" => Some(lname(b, ground) == "farmersdelight:rice"),
+        SUCCULENT => Some(b.is_solid(ground)),
         "brown_mushroom_colony" | "red_mushroom_colony" => Some(b.is_solid(ground)),
         "tomatoes" | "budding_tomatoes" => {
             let g = lname(b, ground);
@@ -2160,6 +2240,15 @@ pub(crate) fn placement(
             facing(state, hor).and_then(|s| lwith_text(b, s, "part", "foot"))
         }
         "half_tatami_mat" => facing(state, hor),
+        // DragonLegBlock.getStateForPlacement: the head here, the foot one step on.
+        DRAGON_LEG => {
+            let (dx, dz) = step(hor);
+            let pair = level.block_state(off(context.pos, dx, 0, dz));
+            if !b.is_air(pair) && !level.facts.get(pair).replaceable {
+                return Some(None);
+            }
+            facing(state, hor).and_then(|s| lwith_text(b, s, "part", "head"))
+        }
         "rice" => {
             if !(fluid.kind() == horizon_world::fluid::FluidKind::Water && fluid.is_full()) {
                 return Some(None);

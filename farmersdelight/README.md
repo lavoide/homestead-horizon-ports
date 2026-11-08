@@ -4,9 +4,9 @@ Farmer's Delight: stove, cooking pot, skillet, cutting board, crops, rich soil a
 
 A port of [Farmer's Delight](https://github.com/MehVahdJukaar/FarmersDelight) 1.20.1-2.4.1+refabricated by MehVahdJukaar, MerchantPug to [Horizon](https://github.com/horizon-rust/horizon) 26.3, under the original's licence (MIT).
 
-Files (release [`farmersdelight-v0.1.0`](https://github.com/lavoide/homestead-horizon-ports/releases/tag/farmersdelight-v0.1.0)), each folder unpacked from its file:
+Files (release [`farmersdelight-v0.2.0`](https://github.com/lavoide/homestead-horizon-ports/releases/tag/farmersdelight-v0.2.0)), each folder unpacked from its file:
 
-- `farmersdelight_native-0.1.0.hnmod` (native source mod): `native/`
+- `farmersdelight_native-0.2.0.hnmod` (native source mod): `native/`
 - `farmersdelight-2.4.1+horizon.1.hmod` (content mod): `content/`
 
 Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.

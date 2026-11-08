@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": "ends_delight:shulker_meat",
+  "result": {
+    "id": "ends_delight:roasted_shulker_meat"
+  },
+  "cookingtime": 100,
+  "experience": 0.35
+}

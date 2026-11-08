@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "cratedelight:golden_apple_crate"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:golden_apple"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

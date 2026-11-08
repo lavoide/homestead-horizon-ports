@@ -1,0 +1,26 @@
+{
+  "template": "minecraft:cake",
+  "state_properties": {
+    "facing": {
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    }
+  },
+  "shapes": {
+    "default": [
+      [
+        0.125,
+        0.0,
+        0.125,
+        0.875,
+        0.25,
+        0.875
+      ]
+    ]
+  }
+}

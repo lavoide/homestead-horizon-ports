@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "cratedelight:salmon_crate"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:salmon"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

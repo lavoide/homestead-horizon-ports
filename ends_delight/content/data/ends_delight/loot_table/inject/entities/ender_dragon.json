@@ -1,0 +1,156 @@
+{
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 5,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:raw_dragon_meat"
+        }
+      ]
+    },
+    {
+      "name": "pool2",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:raw_dragon_meat"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:random_chance_with_enchanted_bonus",
+        "enchantment": "minecraft:looting",
+        "unenchanted_chance": 0.75,
+        "enchanted_chance": {
+          "type": "minecraft:linear",
+          "base": 0.85,
+          "per_level_above_first": 0.1
+        }
+      }
+    },
+    {
+      "name": "pool3",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:raw_dragon_meat"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:random_chance_with_enchanted_bonus",
+        "enchantment": "minecraft:looting",
+        "unenchanted_chance": 0.5,
+        "enchanted_chance": {
+          "type": "minecraft:linear",
+          "base": 0.6,
+          "per_level_above_first": 0.1
+        }
+      }
+    },
+    {
+      "name": "pool4",
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:raw_dragon_meat"
+        }
+      ],
+      "condition": {
+        "entity": "attacker",
+        "predicate": {
+          "minecraft:equipment": {
+            "mainhand": {
+              "items": "#c:tools/knives"
+            }
+          }
+        },
+        "type": "minecraft:entity_properties"
+      }
+    },
+    {
+      "name": "pool5",
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:dragon_leg"
+        }
+      ]
+    },
+    {
+      "name": "pool6",
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:dragon_tooth"
+        }
+      ]
+    },
+    {
+      "name": "pool7",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:dragon_tooth"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:random_chance_with_enchanted_bonus",
+        "enchantment": "minecraft:looting",
+        "unenchanted_chance": 0.75,
+        "enchanted_chance": {
+          "type": "minecraft:linear",
+          "base": 0.85,
+          "per_level_above_first": 0.1
+        }
+      }
+    },
+    {
+      "name": "pool8",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:dragon_tooth"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:random_chance_with_enchanted_bonus",
+        "enchantment": "minecraft:looting",
+        "unenchanted_chance": 0.5,
+        "enchanted_chance": {
+          "type": "minecraft:linear",
+          "base": 0.6,
+          "per_level_above_first": 0.1
+        }
+      }
+    },
+    {
+      "name": "pool9",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ends_delight:dragon_tooth"
+        }
+      ],
+      "condition": {
+        "entity": "attacker",
+        "predicate": {
+          "minecraft:equipment": {
+            "mainhand": {
+              "items": "#c:tools/knives"
+            }
+          }
+        },
+        "type": "minecraft:entity_properties"
+      }
+    }
+  ]
+}

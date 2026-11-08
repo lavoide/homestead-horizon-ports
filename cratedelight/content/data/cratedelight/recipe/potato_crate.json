@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": [
+          "farmersdelight"
+        ]
+      }
+    }
+  ],
+  "key": {
+    "#": "minecraft:potato"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cratedelight:potato_crate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

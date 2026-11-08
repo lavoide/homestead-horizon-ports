@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:raw_dragon_meat",
+    "ends_delight:enderman_gristle",
+    "ends_delight:chorus_sauce"
+  ],
+  "result": {
+    "count": 2,
+    "id": "ends_delight:raw_ender_sausage"
+  }
+}

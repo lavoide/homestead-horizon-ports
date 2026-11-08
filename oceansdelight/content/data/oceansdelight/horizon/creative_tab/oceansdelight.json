@@ -1,0 +1,28 @@
+{
+  "title": "itemGroup.oceansdelight",
+  "icon": "oceansdelight:guardian_soup",
+  "items": [
+    "oceansdelight:tentacles",
+    "oceansdelight:cut_tentacles",
+    "oceansdelight:squid_rings",
+    "oceansdelight:tentacle_on_a_stick",
+    "oceansdelight:baked_tentacle_on_a_stick",
+    "oceansdelight:guardian",
+    "oceansdelight:guardian_soup",
+    "oceansdelight:guardian_tail",
+    "oceansdelight:cooked_guardian_tail",
+    "oceansdelight:bowl_of_guardian_soup",
+    "oceansdelight:elder_guardian_slab",
+    "oceansdelight:elder_guardian_slice",
+    "oceansdelight:cooked_elder_guardian_slice",
+    "oceansdelight:elder_guardian_roll",
+    "oceansdelight:cabbage_wrapped_elder_guardian",
+    "oceansdelight:fugu_slice",
+    "oceansdelight:fugu_roll",
+    "oceansdelight:braised_sea_pickle",
+    "oceansdelight:stuffed_cod",
+    "oceansdelight:cooked_stuffed_cod",
+    "oceansdelight:honey_fried_kelp",
+    "oceansdelight:seagrass_salad"
+  ]
+}

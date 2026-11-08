@@ -1,0 +1,14 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    "ends_delight:enderman_gristle",
+    "ends_delight:enderman_gristle",
+    "ends_delight:dried_chorus_flower",
+    "ends_delight:chorus_succulent"
+  ],
+  "result": {
+    "id": "ends_delight:enderman_gristle_stew"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}
