@@ -1,0 +1,44 @@
+# emojiful: Emojiful 4.2.0 (HorizonStudio, MIT) for Horizon, with Homestead's config: `:short_name:`
+# in chat shows the Twemoji emoji (iamcal/emoji-data's names, as Emojiful loads them).
+#
+# A module in the chat (`horizon_client_render::chat::emojiful`) rewrites the line shown, and a
+# cancellable HEAD on `Chat::push_message` hands it the message. The images are the Emojiful
+# resource pack (`packs/emojiful`): bitmap glyphs on the default font. Without the pack the codes
+# turn into empty boxes for private-use emoji, so enable both.
+[mod]
+id = "emojiful"
+version = "0.1.0"
+
+[compatibility]
+horizon_revision = "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client-render/src/chat.rs"
+name = "emojiful"
+source = "runtime.rs"
+
+[[injection]]
+id = "push"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_render::chat::Chat::push_message"
+helper = "push.rs"
+bindings = [
+  { name = "chat", ty = "&mut Chat", value = "self" },
+  { name = "font", ty = "&crate::font::Font", value = "font" },
+  { name = "message", ty = "&Message", value = "&message" },
+  { name = "focused", ty = "bool", value = "focused" },
+]
+
+[[injection]]
+id = "suggest"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_render::chat::ChatScreen::update_command_info"
+helper = "update.rs"
+bindings = [
+  { name = "screen", ty = "&mut ChatScreen", value = "self" },
+  { name = "m", ty = "&Measure", value = "m" },
+  { name = "c", ty = "&Commands", value = "c" },
+]

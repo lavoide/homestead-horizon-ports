@@ -1,0 +1,10 @@
+{
+ "pack": {
+  "description": "Emojiful: Twemoji in chat (Homestead-Horizon)",
+  "pack_format": 97,
+  "supported_formats": [
+   97,
+   97
+  ]
+ }
+}
