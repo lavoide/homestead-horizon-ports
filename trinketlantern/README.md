@@ -8,4 +8,4 @@ Files (release [`trinketlantern-v1.0.1`](https://github.com/lavoide/homestead-ho
 
 - `trinketlantern-1.0.1.hmod` (content mod): `content/`
 
-Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
+Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

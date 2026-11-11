@@ -8,4 +8,4 @@ Files (release [`ends_delight-v2.5+horizon.2`](https://github.com/lavoide/homest
 
 - `ends_delight-2.5+horizon.2.hmod` (content mod): `content/`
 
-Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
+Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

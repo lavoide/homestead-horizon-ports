@@ -91,23 +91,25 @@ fn worn_light(game: &Game<'_>, worn: &[(String, ItemStack)], wet: bool) -> Optio
 }
 
 /// GameRenderer's dynamic lights with Radiant Gear: the window's own player's worn light.
-pub(crate) fn worn_lights(
-    game: &Game<'_>,
-    mut sources: Vec<(horizon_client::dynamic_light::Source, Option<String>)>,
-    _alpha: f64,
-) -> Vec<(horizon_client::dynamic_light::Source, Option<String>)> {
+/// Horizon's `gather_dynamic_lights` with the worn trinket's light added to its sources
+/// (the nearest MAX are kept, as before).
+pub(crate) fn gather_with_worn(game: &mut Game<'_>, camera: glam::DVec3, alpha: f64) -> core::ops::ControlFlow<()> {
     if !game.settings.extras.dynamic_lights {
-        return sources;
+        return core::ops::ControlFlow::Continue(());
     }
-    let Some(p) = game.player.as_ref().filter(|p| !p.spectator) else { return sources };
-    let Some((level, item)) = worn_light(game, &worn_view(game), eyes_in_water(game, p)) else {
-        return sources;
+    let Some(p) = game.player.as_ref().filter(|p| !p.spectator) else { return core::ops::ControlFlow::Continue(()) };
+    let Some((level, _item)) = worn_light(game, &worn_view(game), eyes_in_water(game, p)) else {
+        return core::ops::ControlFlow::Continue(());
     };
     let feet = game.previous_position.lerp(p.position, game.clock.camera_fraction());
-    sources.push((
-        horizon_client::dynamic_light::Source { at: glam::DVec3::new(feet.x, feet.y + 0.9, feet.z), level },
-        Some(item),
-    ));
-    sources
+    let worn = horizon_client::dynamic_light::Source { at: glam::DVec3::new(feet.x, feet.y + 0.9, feet.z), level };
+    let mut out = std::mem::take(&mut game.dynamic_lights);
+    horizon_client::dynamic_light::select_iter(
+        game.dynamic_light_sources(alpha).map(|(s, _)| s).chain(std::iter::once(worn)),
+        camera,
+        &mut out,
+    );
+    game.dynamic_lights = out;
+    core::ops::ControlFlow::Break(())
 }
 

@@ -37,7 +37,7 @@ pub(crate) fn share_key(game: &mut Game<'_>, key: KeyCode) -> bool {
     }
     game.close_container();
     game.screen = Screen::Playing;
-    game.open_chat(&name);
+    game.open_chat(&name, false);
     *SHARE.lock().unwrap() = Some((name, component));
     true
 }

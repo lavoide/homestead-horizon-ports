@@ -1,4 +1,4 @@
-// Radiant Gear: the worn trinkets' light.
-fn radiantgear_lights(value: Vec<(Source, Option<String>)>, game: &Game<'_>, alpha: f64) -> Vec<(Source, Option<String>)> {
-    crate::game::radiantgear::worn_lights(game, value, alpha)
+// Radiant Gear: the worn trinkets' light, chosen with the other dynamic lights.
+fn radiantgear_lights(game: &mut Game<'_>, camera: glam::DVec3, alpha: f64) -> core::ops::ControlFlow<()> {
+    crate::game::radiantgear::gather_with_worn(game, camera, alpha)
 }

@@ -8,4 +8,4 @@ Files (release [`oceansdelight-v1.0.2+horizon.1`](https://github.com/lavoide/hom
 
 - `oceansdelight-1.0.2+horizon.1.hmod` (content mod): `content/`
 
-Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
+Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

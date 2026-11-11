@@ -470,7 +470,7 @@ pub(crate) fn milk(game: &mut Game<'_>, target: Option<InteractTarget>) -> Contr
     };
     let index = match target {
         Some(t) => game.mobs.iter().position(|m| m.id as i64 == t.id as i64),
-        None => game.mob_hit().map(|(i, _)| i),
+        None => game.mob_hit().map(|(i, _, _)| i),
     };
     let cow = index.is_some_and(|i| {
         matches!(

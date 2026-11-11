@@ -7,7 +7,7 @@ fn shear_name(game: &mut Game<'_>, target: Option<InteractTarget>) -> core::ops:
     }
     let index = match target {
         Some(t) => Game::named_entity(&game.mobs, t.id, |m| m.id),
-        None => game.mob_hit().map(|(i, _)| i),
+        None => game.mob_hit().map(|(i, _, _)| i),
     };
     let Some(index) = index else { return core::ops::ControlFlow::Continue(()) };
     let m = &game.mobs[index];

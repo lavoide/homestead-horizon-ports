@@ -8,4 +8,4 @@ Files (release [`nethersdelight-v4.1.1+horizon.1`](https://github.com/lavoide/ho
 
 - `nethersdelight-4.1.1+horizon.1.hmod` (content mod): `content/`
 
-Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
+Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

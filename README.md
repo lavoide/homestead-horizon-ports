@@ -2,7 +2,7 @@
 
 Ports of mods from the Homestead 2.0 modpack (Fabric 1.20.1) to [Horizon](https://github.com/horizon-rust/horizon) 26.3. Each folder holds one port, unpacked from its files (`.hnmod` native source mods, `.hmod` content mods), with the original's licence and a NOTICE. Each port is under its original's licence. The files are in this repository's releases, one per port (`<port>-v<version>`).
 
-Pinned to Horizon `3fb4c31` and Horizon Mixins `e8cd0aa`.
+Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.
 
 | Port | What it does | Original | Licence |
 |---|---|---|---|
