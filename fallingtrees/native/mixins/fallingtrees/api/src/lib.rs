@@ -193,35 +193,58 @@ pub struct Felling {
 }
 
 impl Felling {
-    pub fn commands(&self) -> Vec<String> {
-        let dim = &self.dimension;
+    fn loot_line(&self, [bx, by, bz]: [i32; 3]) -> String {
         let [ox, oy, oz] = self.origin;
         let (x, y, z) = (f64::from(ox) + 0.5, f64::from(oy) + 0.125, f64::from(oz) + 0.5);
-        let order = || self.tree.attached.iter().chain(&self.tree.leaves).chain(&self.tree.logs);
-        let mut out: Vec<String> = order()
-            .map(|[bx, by, bz]| {
-                format!(
-                    "execute in {dim} as {} run loot spawn {x:.1} {y:.3} {z:.1} mine {bx} {by} {bz} mainhand",
-                    self.player
-                )
-            })
-            .collect();
-        out.extend(order().map(|[bx, by, bz]| {
-            format!("execute in {dim} run setblock {bx} {by} {bz} minecraft:air")
-        }));
-        if let Some(max) = self.axe.as_deref().and_then(axe_durability) {
-            let extra = self.tree.logs.len() as f64;
-            if extra > 0.0 {
-                out.push(format!(
-                    "execute as {} run item modify entity @s weapon.mainhand {{\"type\":\"minecraft:set_damage\",\"damage\":{:.6},\"add\":true}}",
-                    self.player,
-                    // `SetItemDamageFunction` floors a float: half a point keeps it from
-                    // landing one short.
-                    -(extra + 0.5) / f64::from(max)
-                ));
-            }
+        format!(
+            "execute in {} as {} run loot spawn {x:.1} {y:.3} {z:.1} mine {bx} {by} {bz} mainhand",
+            self.dimension, self.player
+        )
+    }
+    fn clear_line(&self, [bx, by, bz]: [i32; 3]) -> String {
+        format!("execute in {} run setblock {bx} {by} {bz} minecraft:air", self.dimension)
+    }
+    /// The axe's wear for `logs` felled logs, if it's a known axe.
+    fn wear_line(&self, logs: usize) -> Option<String> {
+        let max = self.axe.as_deref().and_then(axe_durability)?;
+        if logs == 0 {
+            return None;
         }
-        out
+        Some(format!(
+            "execute as {} run item modify entity @s weapon.mainhand {{\"type\":\"minecraft:set_damage\",\"damage\":{:.6},\"add\":true}}",
+            self.player,
+            // `SetItemDamageFunction` floors a float: half a point keeps it from landing one short.
+            -(logs as f64 + 0.5) / f64::from(max)
+        ))
+    }
+
+    /// Fells the tree with `run`: each block's drops spawn at the stump, then the block is
+    /// cleared. A block whose loot command fails is left standing, so nothing is removed without
+    /// its drops; the axe wears for the logs actually felled. Returns how many blocks were felled.
+    pub fn run(&self, run: &mut dyn FnMut(&str) -> bool) -> usize {
+        let mut felled = 0;
+        let mut logs = 0;
+        let blocks = self.tree.attached.iter().chain(&self.tree.leaves).map(|b| (b, false));
+        for (&b, is_log) in blocks.chain(self.tree.logs.iter().map(|b| (b, true))) {
+            let loot = self.loot_line(b);
+            if !run(&loot) {
+                eprintln!("[fallingtrees] command failed, block left standing: {loot}");
+                continue;
+            }
+            let clear = self.clear_line(b);
+            if !run(&clear) {
+                eprintln!("[fallingtrees] command failed: {clear}");
+                continue;
+            }
+            felled += 1;
+            logs += usize::from(is_log);
+        }
+        if let Some(line) = self.wear_line(logs)
+            && !run(&line)
+        {
+            eprintln!("[fallingtrees] command failed: {line}");
+        }
+        felled
     }
 }
 
@@ -285,9 +308,7 @@ impl Hooks for Mod {
         }
         let pending = std::mem::take(&mut *self.queue.lock().unwrap_or_else(|e| e.into_inner()));
         for felling in pending {
-            for line in felling.commands() {
-                host.run_command(&line);
-            }
+            felling.run(&mut |line| host.run_command(line));
         }
     }
 }
@@ -368,20 +389,41 @@ mod tests {
         assert_eq!(find_tree([0, 0, 0], &reader(&w)), None);
     }
 
-    #[test]
-    fn commands_drop_at_the_stump_then_clear_then_wear() {
-        let f = Felling {
+    fn felling() -> Felling {
+        Felling {
             dimension: "minecraft:overworld".into(),
             player: "Steve".into(),
             origin: [-3, 64, 2],
             tree: Tree { logs: vec![[-3, 65, 2]], leaves: vec![[-3, 66, 2]], attached: vec![] },
             axe: Some("minecraft:iron_axe".into()),
-        };
-        let c = f.commands();
+        }
+    }
+
+    #[test]
+    fn each_block_drops_at_the_stump_then_clears_then_the_axe_wears() {
+        let mut c = Vec::new();
+        let felled = felling().run(&mut |l| {
+            c.push(l.to_string());
+            true
+        });
+        assert_eq!(felled, 2);
         assert_eq!(c.len(), 5);
         assert_eq!(c[0], "execute in minecraft:overworld as Steve run loot spawn -2.5 64.125 2.5 mine -3 66 2 mainhand");
-        assert_eq!(c[2], "execute in minecraft:overworld run setblock -3 66 2 minecraft:air");
+        assert_eq!(c[1], "execute in minecraft:overworld run setblock -3 66 2 minecraft:air");
         assert_eq!(c[3], "execute in minecraft:overworld run setblock -3 65 2 minecraft:air");
         assert!(c[4].ends_with("{\"type\":\"minecraft:set_damage\",\"damage\":-0.006000,\"add\":true}"), "{}", c[4]);
+    }
+
+    #[test]
+    fn a_block_whose_loot_fails_stays_and_doesnt_wear_the_axe() {
+        let mut c = Vec::new();
+        // The log's loot fails: it isn't cleared, and with no log felled the axe doesn't wear.
+        let felled = felling().run(&mut |l| {
+            c.push(l.to_string());
+            !(l.contains("loot spawn") && l.contains("mine -3 65 2"))
+        });
+        assert_eq!(felled, 1);
+        assert!(!c.iter().any(|l| l.contains("setblock -3 65 2")));
+        assert!(!c.iter().any(|l| l.contains("set_damage")));
     }
 }

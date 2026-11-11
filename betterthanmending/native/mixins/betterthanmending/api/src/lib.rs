@@ -160,10 +160,9 @@ impl Hooks for Mod {
                 .collect();
             (queue, sneakers)
         };
+        // The repair, then the experience it costs: no experience is taken for a failed repair.
         for repair in queue {
-            for line in repair.commands() {
-                host.run_command(&line);
-            }
+            run_in_order(&repair.commands(), &mut |line| host.run_command(line));
         }
         for (uuid, name) in sneakers {
             for line in probe(&name) {
@@ -178,9 +177,39 @@ impl Hooks for Mod {
     }
 }
 
+/// Runs `lines` in order and stops at the first one that fails, so a later step never runs
+/// without the one before it. True when every line ran.
+pub fn run_in_order(lines: &[String], run: &mut dyn FnMut(&str) -> bool) -> bool {
+    for line in lines {
+        if !run(line) {
+            eprintln!("[{}] command failed, the rest skipped: {line}", env!("CARGO_PKG_NAME"));
+            return false;
+        }
+    }
+    true
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_failed_step_stops_the_rest() {
+        let lines = vec!["first".to_string(), "second".to_string()];
+        let mut ran = Vec::new();
+        assert!(!run_in_order(&lines, &mut |l| {
+            ran.push(l.to_string());
+            false
+        }));
+        assert_eq!(ran, ["first"]);
+        ran.clear();
+        assert!(run_in_order(&lines, &mut |l| {
+            ran.push(l.to_string());
+            true
+        }));
+        assert_eq!(ran, ["first", "second"]);
+    }
+
 
     const RICH: Xp = Xp { at_least_2: true, at_least_30: true };
     const POOR: Xp = Xp { at_least_2: true, at_least_30: false };

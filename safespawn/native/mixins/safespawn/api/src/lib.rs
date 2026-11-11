@@ -78,7 +78,7 @@ struct State {
     spawned: HashSet<String>,
     /// Checked this session.
     checked: HashSet<u128>,
-    queue: Vec<String>,
+    queue: Vec<Vec<String>>,
 }
 
 #[derive(Default)]
@@ -177,8 +177,11 @@ impl Hooks for Mod {
                 Some([x, y, z]) => {
                     eprintln!("[safespawn] moving {} from {below} at {feet:?} to {x},{y},{z}", player.name);
                     let dim = &player.dimension;
-                    state.queue.push(format!("execute in {dim} run tp {} {x}.5 {y} {z}.5", player.name));
-                    state.queue.push(format!("execute in {dim} run spawnpoint {} {x} {y} {z}", player.name));
+                    // The spawn point moves only once the teleport worked.
+                    state.queue.push(vec![
+                        format!("execute in {dim} run tp {} {x}.5 {y} {z}.5", player.name),
+                        format!("execute in {dim} run spawnpoint {} {x} {y} {z}", player.name),
+                    ]);
                 }
                 None => eprintln!("[safespawn] no safe spawn near {feet:?} for {}", player.name),
             }
@@ -192,15 +195,45 @@ impl Hooks for Mod {
             return;
         }
         let queue = std::mem::take(&mut self.state.lock().unwrap_or_else(|e| e.into_inner()).queue);
-        for line in queue {
-            host.run_command(&line);
+        for steps in queue {
+            run_in_order(&steps, &mut |line| host.run_command(line));
         }
     }
+}
+
+/// Runs `lines` in order and stops at the first one that fails, so a later step never runs
+/// without the one before it. True when every line ran.
+pub fn run_in_order(lines: &[String], run: &mut dyn FnMut(&str) -> bool) -> bool {
+    for line in lines {
+        if !run(line) {
+            eprintln!("[{}] command failed, the rest skipped: {line}", env!("CARGO_PKG_NAME"));
+            return false;
+        }
+    }
+    true
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_failed_step_stops_the_rest() {
+        let lines = vec!["first".to_string(), "second".to_string()];
+        let mut ran = Vec::new();
+        assert!(!run_in_order(&lines, &mut |l| {
+            ran.push(l.to_string());
+            false
+        }));
+        assert_eq!(ran, ["first"]);
+        ran.clear();
+        assert!(run_in_order(&lines, &mut |l| {
+            ran.push(l.to_string());
+            true
+        }));
+        assert_eq!(ran, ["first", "second"]);
+    }
+
 
     #[test]
     fn blocked_blocks() {
