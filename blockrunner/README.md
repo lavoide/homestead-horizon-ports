@@ -4,7 +4,7 @@ Walk faster on path blocks.
 
 A port of [Block Runner](https://github.com/Fuzss/blockrunner) 8.0.4 by Fuzs to [Horizon](https://github.com/horizon-rust/horizon) 26.3, under the original's licence (MPL-2.0).
 
-Files (release [`blockrunner-v0.2.1`](https://github.com/lavoide/homestead-horizon-ports/releases/tag/blockrunner-v0.2.1)), each folder unpacked from its file:
+Files (release [`blockrunner-v0.2.1`](https://github.com/lavoide/horizon-ports/releases/tag/blockrunner-v0.2.1)), each folder unpacked from its file:
 
 - `blockrunner-0.2.1.hnmod` (native source mod): `native/`
 
