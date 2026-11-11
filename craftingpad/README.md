@@ -7,6 +7,6 @@ A port of [Crafting Pad](https://github.com/StrikerRockers-Mods/CraftingPad) 1.0
 Files (release [`craftingpad-v0.1.1`](https://github.com/lavoide/homestead-horizon-ports/releases/tag/craftingpad-v0.1.1)), each folder unpacked from its file:
 
 - `craftingpad_native-0.1.1.hnmod` (native source mod): `native/`
-- `craftingpad-0.1.0.hmod` (content mod): `content/`
+- `craftingpad-0.1.1.hmod` (content mod): `content/`
 
 Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

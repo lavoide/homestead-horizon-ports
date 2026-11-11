@@ -1,4 +1,4 @@
-trinketlantern for Horizon 26.3 (version 1.0.1)
+trinketlantern for Horizon 26.3 (version 1.0.1+horizon.1)
 
 A port of Wearable lanterns 1.0.1 by tsuki, Absent Abigail.
 Original source: https://github.com/AbsentAbigail/WearableLantern
@@ -7,5 +7,4 @@ Original licence: MIT
 Ported to Horizon by lavoide: the rules are re-implemented as a Horizon native mod (Rust), and
 the content (items, blocks, textures, models, data) is carried over from the original jar.
 This port is distributed under the same licence as the original (MIT); the licence text is
-in LICENSE (the original's own file where its jar has one). It needs Horizon at commit
-fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca.
+in LICENSE (the original's own file where its jar has one).

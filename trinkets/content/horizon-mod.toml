@@ -2,7 +2,7 @@
 # in the trinket menu (native/trinkets). Written by tools/trinkets_port.py.
 id = "trinkets"
 name = "Trinkets"
-version = "3.7.2"
+version = "3.7.2+horizon.1"
 api = "0.2"
 side = "both"
 capabilities = ["registries"]

@@ -2,7 +2,7 @@
 # Licence: MIT
 id = "trinketlantern"
 name = "Wearable lanterns"
-version = "1.0.1"
+version = "1.0.1+horizon.1"
 api = "0.2"
 side = "both"
 capabilities = ["registries"]

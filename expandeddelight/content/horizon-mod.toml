@@ -1,7 +1,7 @@
 # Expanded Delight 0.3.2 (ianm1647; MIT), ported by tools/delight_addons.py from expandeddelight-0.3.2.jar.
 id = "expandeddelight"
 name = "Expanded Delight"
-version = "0.3.2+horizon.1"
+version = "0.3.2+horizon.2"
 description = "More Farmer's Delight crops and foods: asparagus, sweet potatoes, chili peppers, peanuts, cinnamon, salt, cheese, the juicer and the mortar and pestle."
 authors = ["ianm1647"]
 api = "0.2"

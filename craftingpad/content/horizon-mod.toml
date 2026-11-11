@@ -3,7 +3,7 @@
 # mixin bundle native/craftingpad, which has to be built into the game.
 id = "craftingpad"
 name = "Crafting Pad"
-version = "0.1.0"
+version = "0.1.1"
 description = "A portable crafting table (content half; the native mod opens the grid)."
 api = "0.2"
 side = "both"

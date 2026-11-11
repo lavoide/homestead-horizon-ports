@@ -7,6 +7,6 @@ A port of [Emojiful](https://github.com/InnovativeOnlineIndustries/Emojiful) 4.2
 Files (release [`emojiful-v0.1.1`](https://github.com/lavoide/homestead-horizon-ports/releases/tag/emojiful-v0.1.1)), each folder unpacked from its file:
 
 - `emojiful-0.1.1.hnmod` (native source mod): `native/`
-- `emojiful_twemoji-0.1.0.zip` (resource pack): `resourcepack/`
+- `emojiful_twemoji-0.1.1.zip` (resource pack): `resourcepack/`
 
 Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

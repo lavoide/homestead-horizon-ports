@@ -7,6 +7,6 @@ A port of [Trinkets](https://github.com/emilyploszaj/trinkets) 3.7.2 by Emi, C4 
 Files (release [`trinkets-v0.1.1`](https://github.com/lavoide/homestead-horizon-ports/releases/tag/trinkets-v0.1.1)), each folder unpacked from its file:
 
 - `trinkets_native-0.1.1.hnmod` (native source mod): `native/`
-- `trinkets-3.7.2.hmod` (content mod): `content/`
+- `trinkets-3.7.2+horizon.1.hmod` (content mod): `content/`
 
 Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

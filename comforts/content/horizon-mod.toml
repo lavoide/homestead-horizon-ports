@@ -3,7 +3,7 @@
 # the native mixin bundle native/comforts, which has to be built into the game.
 id = "comforts"
 name = "Comforts"
-version = "0.1.0"
+version = "0.1.1"
 description = "Sleeping bags and hammocks (content half; native/comforts has the rules)."
 api = "0.2"
 side = "both"

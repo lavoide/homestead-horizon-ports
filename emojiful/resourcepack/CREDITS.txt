@@ -4,7 +4,7 @@ jdecked/twemoji contributors, licensed under CC-BY 4.0
 sheet_twitter_32_clean.png (https://github.com/iamcal/emoji-data, MIT). The images are
 cut into font sheets by tools/emojiful_port.py; they are otherwise unchanged.
 
-emojiful for Horizon 26.3 (version 0.1.0)
+emojiful for Horizon 26.3 (version 0.1.1)
 
 A port of Emojiful 4.2.0 by HorizonStudio.
 Original source: https://github.com/InnovativeOnlineIndustries/Emojiful
@@ -13,5 +13,4 @@ Original licence: MIT
 Ported to Horizon by lavoide: the rules are re-implemented as a Horizon native mod (Rust), and
 the content (items, blocks, textures, models, data) is carried over from the original jar.
 This port is distributed under the same licence as the original (MIT); the licence text is
-in LICENSE (the original's own file where its jar has one). It needs Horizon at commit
-fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca.
+in LICENSE (the original's own file where its jar has one).

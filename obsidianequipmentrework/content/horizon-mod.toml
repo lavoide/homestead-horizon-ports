@@ -2,7 +2,7 @@
 # and fixed up by tools/obsidian_port.py. Chest loot: native/obsidianequipmentrework.
 id = "obsidianequipmentrework"
 name = "Obsidian Equipment Reworked"
-version = "1.0"
+version = "1.0+horizon.1"
 api = "0.2"
 side = "both"
 capabilities = ["registries"]

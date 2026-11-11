@@ -1,7 +1,7 @@
 # Crate Delight 26.07.01 (Axperty; MIT), ported by tools/delight_addons.py from cratedelight-26.07.01-1.20-fabric.jar.
 id = "cratedelight"
 name = "Crate Delight"
-version = "26.07.01+horizon.1"
+version = "26.07.01+horizon.2"
 description = "Storage crates and bags for crops, fish and other foods."
 authors = ["Axperty"]
 api = "0.2"
