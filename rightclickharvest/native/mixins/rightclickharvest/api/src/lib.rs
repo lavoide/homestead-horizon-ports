@@ -60,6 +60,18 @@ impl Harvest {
     }
 }
 
+/// Runs a harvest's commands in order and stops at the first one that fails, so a crop whose
+/// loot didn't drop is never reset. True when every command ran.
+pub fn run_harvest(harvest: &Harvest, run: &mut dyn FnMut(&str) -> bool) -> bool {
+    for line in harvest.commands() {
+        if !run(&line) {
+            eprintln!("[rightclickharvest] command failed, harvest stopped: {line}");
+            return false;
+        }
+    }
+    true
+}
+
 /// The replanted state for `block` if it's a supported crop at full age.
 /// `prop` reads a property of the clicked block.
 pub fn replant_state(block: &str, prop: &dyn Fn(&str) -> Option<String>) -> Option<String> {
@@ -112,11 +124,7 @@ impl Hooks for Mod {
             std::mem::take(&mut *queue)
         };
         for harvest in pending {
-            for line in harvest.commands() {
-                if !host.run_command(&line) {
-                    eprintln!("[rightclickharvest] command failed: {line}");
-                }
-            }
+            run_harvest(&harvest, &mut |line| host.run_command(line));
         }
     }
 }
@@ -149,6 +157,38 @@ mod tests {
             replant_state("minecraft:cocoa", &p).as_deref(),
             Some("minecraft:cocoa[age=0,facing=west]")
         );
+    }
+
+    fn carrots() -> Harvest {
+        Harvest {
+            dimension: "minecraft:overworld".into(),
+            player: "Steve".into(),
+            pos: [-3, 64, 12],
+            replant: "minecraft:carrots[age=0]".into(),
+        }
+    }
+
+    #[test]
+    fn failed_loot_leaves_the_crop_alone() {
+        let mut ran = Vec::new();
+        let done = run_harvest(&carrots(), &mut |line| {
+            ran.push(line.to_string());
+            false
+        });
+        assert!(!done);
+        assert_eq!(ran.len(), 1, "setblock must not run after the loot command fails");
+        assert!(ran[0].contains("loot spawn"));
+    }
+
+    #[test]
+    fn successful_harvest_loots_then_replants() {
+        let mut ran = Vec::new();
+        let done = run_harvest(&carrots(), &mut |line| {
+            ran.push(line.to_string());
+            true
+        });
+        assert!(done);
+        assert_eq!(ran, carrots().commands().to_vec());
     }
 
     #[test]

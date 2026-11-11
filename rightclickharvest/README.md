@@ -4,8 +4,8 @@ Right-click a grown crop to harvest and replant it.
 
 A port of [Right Click Harvest](https://github.com/JamCoreModding/right-click-harvest) 4.6.1+1.20.1 by Jamalam to [Horizon](https://github.com/horizon-rust/horizon) 26.3, under the original's licence (MIT).
 
-Files (release [`rightclickharvest-v0.1.1`](https://github.com/lavoide/horizon-ports/releases/tag/rightclickharvest-v0.1.1)), each folder unpacked from its file:
+Files (release [`rightclickharvest-v0.1.2`](https://github.com/lavoide/horizon-ports/releases/tag/rightclickharvest-v0.1.2)), each folder unpacked from its file:
 
-- `rightclickharvest-0.1.1.hnmod` (native source mod): `native/`
+- `rightclickharvest-0.1.2.hnmod` (native source mod): `native/`
 
 Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.
