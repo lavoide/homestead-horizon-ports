@@ -2,7 +2,7 @@
 # tools/things_port.py. Rules: native/things.
 id = "things"
 name = "Things"
-version = "0.3.3+horizon.1"
+version = "0.3.3-horizon.1"
 api = "0.2"
 side = "both"
 capabilities = ["registries"]

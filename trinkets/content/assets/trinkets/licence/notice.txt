@@ -1,4 +1,4 @@
-trinkets for Horizon 26.3 (version 3.7.2+horizon.1)
+trinkets for Horizon 26.3 (version 3.7.2-horizon.1)
 
 A port of Trinkets 3.7.2 by Emi, C4.
 Original source: https://github.com/emilyploszaj/trinkets

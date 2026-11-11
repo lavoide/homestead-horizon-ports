@@ -7,6 +7,6 @@ A port of [Farmer's Delight](https://github.com/MehVahdJukaar/FarmersDelight) 1.
 Files (release [`farmersdelight-v0.3.1`](https://github.com/lavoide/horizon-ports/releases/tag/farmersdelight-v0.3.1)), each folder unpacked from its file:
 
 - `farmersdelight_native-0.3.1.hnmod` (native source mod): `native/`
-- `farmersdelight-2.4.1+horizon.3.hmod` (content mod): `content/`
+- `farmersdelight-2.4.1-horizon.3.hmod` (content mod): `content/`
 
 Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

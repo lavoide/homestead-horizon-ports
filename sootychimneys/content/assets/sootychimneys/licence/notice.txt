@@ -1,4 +1,4 @@
-sootychimneys for Horizon 26.3 (version 1.3.4+horizon.1)
+sootychimneys for Horizon 26.3 (version 1.3.4-horizon.1)
 
 A port of Sooty Chimneys 1.3.4 by mortuusars.
 Original source: https://github.com/mortuusars/sootychimneys

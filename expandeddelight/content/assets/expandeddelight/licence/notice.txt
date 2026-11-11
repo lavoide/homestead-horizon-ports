@@ -1,4 +1,4 @@
-expandeddelight for Horizon 26.3 (version 0.3.2+horizon.2)
+expandeddelight for Horizon 26.3 (version 0.3.2-horizon.2)
 
 A port of Expanded Delight 0.3.2 by ianm1647.
 Original source: https://github.com/ianm1647/expandeddelight

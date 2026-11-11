@@ -7,6 +7,6 @@ A port of [Sooty Chimneys](https://github.com/mortuusars/sootychimneys) 1.3.4 by
 Files (release [`sootychimneys-v0.1.1`](https://github.com/lavoide/horizon-ports/releases/tag/sootychimneys-v0.1.1)), each folder unpacked from its file:
 
 - `sootychimneys_native-0.1.1.hnmod` (native source mod): `native/`
-- `sootychimneys-1.3.4+horizon.1.hmod` (content mod): `content/`
+- `sootychimneys-1.3.4-horizon.1.hmod` (content mod): `content/`
 
 Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

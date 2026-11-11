@@ -7,6 +7,6 @@ A port of [Minecraft Accelerated](https://github.com/Cookieglue/PumpkinsAccelera
 Files (release [`mcaccel-v0.1.1`](https://github.com/lavoide/horizon-ports/releases/tag/mcaccel-v0.1.1)), each folder unpacked from its file:
 
 - `mcaccel_native-0.1.1.hnmod` (native source mod): `native/`
-- `mcaccel-1.0.0+horizon.1.hmod` (content mod): `content/`
+- `mcaccel-1.0.0-horizon.1.hmod` (content mod): `content/`
 
 Pinned to Horizon `fdc87ae` and Horizon Mixins `e8cd0aa`.

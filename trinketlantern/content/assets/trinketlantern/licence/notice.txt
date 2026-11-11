@@ -1,4 +1,4 @@
-trinketlantern for Horizon 26.3 (version 1.0.1+horizon.1)
+trinketlantern for Horizon 26.3 (version 1.0.1-horizon.1)
 
 A port of Wearable lanterns 1.0.1 by tsuki, Absent Abigail.
 Original source: https://github.com/AbsentAbigail/WearableLantern

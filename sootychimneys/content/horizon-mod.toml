@@ -2,7 +2,7 @@
 # tools/sootychimneys_port.py. Rules: native/sootychimneys.
 id = "sootychimneys"
 name = "Sooty Chimneys"
-version = "1.3.4+horizon.1"
+version = "1.3.4-horizon.1"
 api = "0.2"
 side = "both"
 capabilities = ["registries"]

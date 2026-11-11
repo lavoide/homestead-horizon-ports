@@ -1,4 +1,4 @@
-mcaccel for Horizon 26.3 (version 1.0.0+horizon.1)
+mcaccel for Horizon 26.3 (version 1.0.0-horizon.1)
 
 A port of Minecraft Accelerated 1.0.0 by Mari.
 Original source: https://github.com/Cookieglue/PumpkinsAccelerated

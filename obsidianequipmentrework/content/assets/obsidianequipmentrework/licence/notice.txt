@@ -1,4 +1,4 @@
-obsidianequipmentrework for Horizon 26.3 (version 1.0+horizon.1)
+obsidianequipmentrework for Horizon 26.3 (version 1.0-horizon.1)
 
 A port of Obsidian Equipment Reworked 1.0 by Tokimi, CozyStudios.
 Original source: https://github.com/CozyCord/Obsidian-Equipment-Reworked

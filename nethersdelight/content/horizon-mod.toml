@@ -1,7 +1,7 @@
 # Nether's Delight 4.1.1 (RaymondBlaze, Umpaz, SoyTutta, Sammy; LGPL-2.1), ported by tools/delight_addons.py from NethersDelight-Refabricated-1.20.1-4.1.1.jar.
 id = "nethersdelight"
 name = "Nether's Delight"
-version = "4.1.1+horizon.2"
+version = "4.1.1-horizon.2"
 description = "Nether foods for Farmer's Delight: hoglin and strider dishes, the Blackstone Stove, soul compost, fungus colonies, propelplants and machetes."
 authors = ["RaymondBlaze", "Umpaz", "SoyTutta", "Sammy"]
 api = "0.2"

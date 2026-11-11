@@ -1,4 +1,4 @@
-things for Horizon 26.3 (version 0.3.3+horizon.1)
+things for Horizon 26.3 (version 0.3.3-horizon.1)
 
 A port of Things 0.3.3+1.20 by glisco.
 Original source: https://github.com/glisco03/things
